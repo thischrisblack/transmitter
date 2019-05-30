@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "description": "An austere blog.",
   "author": "Chris Black <black@chrisblack.net>",
-  "homepage": "https://thischrisblack.github.io/transmitter/",
   "license": "MIT",
   "dependencies": {
     "react": "^16.8.6",
