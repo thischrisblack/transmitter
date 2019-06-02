@@ -1,17 +1,34 @@
 import React from 'react';
-import logo from './CB-Logo-v06.png';
+import { 
+  BrowserRouter as Router,
+  Route,
+} from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
+import Navigation from './components/Navigation';
+import Signup from './components/Signup';
+import Signin from './components/Signin';
+import Admin from './components/Admin';
+import Placeholder from './components/Placeholder';
+import HomePage from './components/HomePage';
 
-      <div className="logo">
-        <img src={logo} />
-        <code>Chris Black</code>
-      </div>
+import * as ROUTES from './constants/routes';
+import { withAuthentication } from './components/Session';
 
+
+const App = () => (
+  <Router>
+    <div>
+      <Navigation />
+
+      <hr />
+
+      <Route exact path={ROUTES.HOME} component={Placeholder} />
+      <Route path={ROUTES.SIGN_UP} component={Signup} />
+      <Route path={ROUTES.SIGN_IN} component={Signin} />
+      <Route path={ROUTES.ADMIN} component={Admin} />
+      <Route path={ROUTES.TEST_HOME} component={HomePage} />
     </div>
-  );
-}
+  </Router>
+)
 
-export default App;
+export default withAuthentication(App);
