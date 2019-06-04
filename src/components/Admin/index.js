@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-
 import { withAuthorization } from '../Session';
-
 import { withFirebase } from '../Firebase';
+import { compose } from 'recompose';
+import { config } from '../../config';
 
 class Admin extends Component {
   constructor(props) {
@@ -69,8 +69,11 @@ const UserList = ({ users }) => (
   </ul>
 );
 
-const condition = authUser => (authUser && authUser.uid === 'tSpBZmOJMSQhabUwarZdptZPE7b2');
+const condition = authUser => (authUser && authUser.uid === config.adminUid);
 
-// export default withFirebase(Admin);
+// export default withAuthorization(condition)(withFirebase(Admin));
 
-export default withAuthorization(condition)(withFirebase(Admin));
+export default compose(
+  withAuthorization(condition),
+  withFirebase,
+)(Admin);
