@@ -1,8 +1,12 @@
+/**
+ * NOT GOING TO KEEP THIS
+ */
+
 import React from 'react';
 
-import { withAuthorization } from './Session';
+import { withAuthorization } from '../Session';
 
-const HomePage = () => (
+const AuthPageTest = () => (
   <div>
     <h1>Home Page</h1>
     <p>The Home Page is accessible by every signed in user.</p>
@@ -11,4 +15,4 @@ const HomePage = () => (
 
 const condition = authUser => !!authUser;
 
-export default withAuthorization(condition)(HomePage);
+export default withAuthorization(condition)(AuthPageTest);

@@ -1,7 +1,7 @@
 import React from 'react';
-import logo from '../assets/CB-Logo-v06.png';
+import logo from '../../assets/CB-Logo-v06.png';
 
-class Placeholder extends React.Component {
+class PlaceHolder extends React.Component {
   render() {
     return (
       <div className="logo">
@@ -12,4 +12,4 @@ class Placeholder extends React.Component {
   }
 }
 
-export default Placeholder;
+export default PlaceHolder;

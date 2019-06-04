@@ -26,7 +26,7 @@ img {
 }
 .logo:after {
   content: '';
-  background: url('static04.gif');
+  background: url('assets/static04.gif');
   width: 100%;
   height: 100%;
   opacity: .1;
