@@ -11,6 +11,7 @@ class Admin extends Component {
     this.state = {
       loading: false,
       messages: [],
+      typeList: []
     };
   }
 
@@ -25,8 +26,14 @@ class Admin extends Component {
         timestamp: key,
       }));
 
+      const typeList = [];
+      messagesList.forEach(message => {
+        if (!typeList.includes(message.type)) typeList.push(message.type);
+      });
+
       this.setState({
         messages: messagesList,
+        typeList: typeList,
         loading: false,
       });
     });
@@ -37,7 +44,7 @@ class Admin extends Component {
   }
 
   render() {
-    const { messages, loading } = this.state;
+    const { messages, typeList, loading } = this.state;
 
     return (
       <div>
@@ -45,13 +52,26 @@ class Admin extends Component {
 
         {loading && <div>Loading ...</div>}
 
-        <UserList messages={messages} />
+        <TypeList types={typeList} />
+        <MessageList messages={messages} />
       </div>
     );
   }
 }
 
-const UserList = ({ messages }) => (
+const TypeList = ({ types }) => (
+  <ul>
+    {types.map(type => (
+      <li key={type}>
+        <span>
+          <strong>Type:</strong> {type}
+        </span>
+      </li>
+    ))}
+  </ul>
+);
+
+const MessageList = ({ messages }) => (
   <ul>
     {messages.map(message => (
       <li key={message.timestamp}>
@@ -70,8 +90,6 @@ const UserList = ({ messages }) => (
 );
 
 const condition = authUser => (authUser && authUser.uid === config.adminUid);
-
-// export default withAuthorization(condition)(withFirebase(Admin));
 
 export default compose(
   withAuthorization(condition),

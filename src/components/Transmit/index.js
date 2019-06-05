@@ -37,8 +37,6 @@ class TransmitFormBase extends Component {
 
     const timestamp = new Date().toISOString().replace('.', '-');
 
-    console.log(timestamp);
-
     this.props.firebase
       .message(timestamp)
       .set({
