@@ -1,3 +1,5 @@
+import Admin from "./src/components/Admin";
+
 const messageSchema = {
   type,
   title,
@@ -10,5 +12,11 @@ const messageSchema = {
   social // Not in DB, just for sharing function.
 }
 
-let date = new Date().getTime();
+// Transmit/index.js:
+return (
+  <div>
+    <h1>New Transmission</h1>
 
+    
+  </div>
+);

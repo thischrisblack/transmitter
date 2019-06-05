@@ -8,6 +8,7 @@ import Navigation from '../Navigation';
 import Signup from '../SignUp';
 import Signin from '../SignIn';
 import Admin from '../Admin';
+import Transmit from '../Transmit';
 import Home from '../Home';
 import AuthPageTest from '../AuthPageTest';
 
@@ -26,6 +27,7 @@ const App = () => (
       <Route path={ROUTES.SIGN_UP} component={Signup} />
       <Route path={ROUTES.SIGN_IN} component={Signin} />
       <Route path={ROUTES.ADMIN} component={Admin} />
+      <Route path={ROUTES.TRANSMIT} component={Transmit} />
       <Route path={ROUTES.TEST_HOME} component={AuthPageTest} />
     </div>
   </Router>

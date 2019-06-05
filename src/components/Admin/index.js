@@ -10,34 +10,34 @@ class Admin extends Component {
 
     this.state = {
       loading: false,
-      users: [],
+      messages: [],
     };
   }
 
   componentDidMount() {
     this.setState({ loading: true });
 
-    this.props.firebase.users().on('value', snapshot => {
-      const usersObject = snapshot.val();
+    this.props.firebase.messages().on('value', snapshot => {
+      const messagesObject = snapshot.val();
 
-      const usersList = Object.keys(usersObject).map(key => ({
-        ...usersObject[key],
-        uid: key,
+      const messagesList = Object.keys(messagesObject).map(key => ({
+        ...messagesObject[key],
+        timestamp: key,
       }));
 
       this.setState({
-        users: usersList,
+        messages: messagesList,
         loading: false,
       });
     });
   }
 
   componentWillUnmount() {
-    this.props.firebase.users().off();
+    this.props.firebase.messages().off();
   }
 
   render() {
-    const { users, loading } = this.state;
+    const { messages, loading } = this.state;
 
     return (
       <div>
@@ -45,24 +45,24 @@ class Admin extends Component {
 
         {loading && <div>Loading ...</div>}
 
-        <UserList users={users} />
+        <UserList messages={messages} />
       </div>
     );
   }
 }
 
-const UserList = ({ users }) => (
+const UserList = ({ messages }) => (
   <ul>
-    {users.map(user => (
-      <li key={user.uid}>
+    {messages.map(message => (
+      <li key={message.timestamp}>
         <span>
-          <strong>ID:</strong> {user.uid}
+          <strong>ID:</strong> {message.timestamp}
         </span>
         <span>
-          <strong>E-Mail:</strong> {user.email}
+          <strong>E-Mail:</strong> {message.title}
         </span>
         <span>
-          <strong>Username:</strong> {user.username}
+          <strong>Username:</strong> <pre>{message.message}</pre>
         </span>
       </li>
     ))}
