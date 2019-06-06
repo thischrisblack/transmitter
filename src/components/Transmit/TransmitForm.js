@@ -1,47 +1,44 @@
-import React, { Component } from 'react';
-import { withAuthorization } from '../Session';
-import { withFirebase } from '../Firebase';
-import { compose } from 'recompose';
-import { config } from '../../config';
-import * as ROUTES from '../../constants/routes';
-import getUniqueTypes from '../../helpers/getUniqueTypes';
-
-const INITIAL_STATE = {
-  type: '',
-  title: '',
-  message: '',
-  image: '',
-  sound: '',
-  link: '',
-  privatePost: true,
-  sticky: false,
-  social: false,
-  error: '',
-  typeList: []
-};
+import React, { Component } from "react";
+import { withAuthorization } from "../Session";
+import { withFirebase } from "../Firebase";
+import { compose } from "recompose";
+import { config } from "../../config";
+import * as ROUTES from "../../constants/routes";
+import getUniqueTypes from "../../helpers/getUniqueTypes";
 
 class TransmitFormBase extends Component {
   constructor(props) {
     super(props);
-    this.state = { ...INITIAL_STATE };
+    this.state = {
+      type: "",
+      title: "",
+      message: "",
+      image: "",
+      sound: "",
+      link: "",
+      privatePost: true,
+      sticky: false,
+      social: false,
+      error: "",
+      typeList: []
+    };
   }
 
   componentDidMount() {
     this.setState({ loading: true });
 
-    this.props.firebase.messages().on('value', snapshot => {
+    this.props.firebase.messages().on("value", snapshot => {
       const messagesObject = snapshot.val();
 
       const messagesList = Object.keys(messagesObject).map(key => ({
         ...messagesObject[key],
-        timestamp: key,
+        timestamp: key
       }));
 
       const typeList = getUniqueTypes(messagesList);
 
       this.setState({
-        typeList: typeList,
-        loading: false
+        typeList: typeList
       });
     });
   }
@@ -51,9 +48,18 @@ class TransmitFormBase extends Component {
   }
 
   onSubmit = event => {
-    const { type, title, message, image, sound, link, privatePost, sticky } = this.state;
+    const {
+      type,
+      title,
+      message,
+      image,
+      sound,
+      link,
+      privatePost,
+      sticky
+    } = this.state;
 
-    const timestamp = new Date().toISOString().replace('.', '-');
+    const timestamp = new Date().toISOString().replace(".", "-");
 
     this.props.firebase
       .message(timestamp)
@@ -65,15 +71,17 @@ class TransmitFormBase extends Component {
         sound,
         link,
         privatePost,
-        sticky,
-      })      
+        sticky
+      })
       .then(() => {
-        this.setState({ ...INITIAL_STATE });
         this.props.history.push(ROUTES.ADMIN);
+      })
+      .catch(error => {
+        this.setState({ error });
       });
 
     event.preventDefault();
-  }
+  };
 
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
@@ -81,7 +89,6 @@ class TransmitFormBase extends Component {
 
   onChangeBox = event => {
     this.setState({ [event.target.name]: event.target.checked });
-    console.log(event.target.checked);
   };
 
   render() {
@@ -167,9 +174,7 @@ class TransmitFormBase extends Component {
           type="checkbox"
         />
 
-        <button type="submit">
-          Transmit
-        </button>
+        <button type="submit">Transmit</button>
 
         {error && <p>{error.message}</p>}
       </form>
@@ -177,11 +182,11 @@ class TransmitFormBase extends Component {
   }
 }
 
-const condition = authUser => (authUser && authUser.uid === config.adminUid);
+const condition = authUser => authUser && authUser.uid === config.adminUid;
 
 const TransmitForm = compose(
   withAuthorization(condition),
-  withFirebase,
+  withFirebase
 )(TransmitFormBase);
 
 export default TransmitForm;

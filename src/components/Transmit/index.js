@@ -1,5 +1,5 @@
-import React from 'react';
-import TransmitForm from './TransmitForm';
+import React from "react";
+import TransmitForm from "./TransmitForm";
 
 const Transmit = () => (
   <div>
