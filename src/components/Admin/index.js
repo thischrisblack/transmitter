@@ -3,6 +3,8 @@ import { withAuthorization } from '../Session';
 import { withFirebase } from '../Firebase';
 import { compose } from 'recompose';
 import { config } from '../../config';
+import getUniqueTypes from '../../helpers/getUniqueTypes';
+import SignOutButton from '../SignOut';
 
 class Admin extends Component {
   constructor(props) {
@@ -26,10 +28,7 @@ class Admin extends Component {
         timestamp: key,
       }));
 
-      const typeList = [];
-      messagesList.forEach(message => {
-        if (!typeList.includes(message.type)) typeList.push(message.type);
-      });
+      const typeList = getUniqueTypes(messagesList);
 
       this.setState({
         messages: messagesList,
@@ -54,6 +53,7 @@ class Admin extends Component {
 
         <TypeList types={typeList} />
         <MessageList messages={messages} />
+        <SignOutButton />
       </div>
     );
   }

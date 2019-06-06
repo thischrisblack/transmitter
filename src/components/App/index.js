@@ -4,7 +4,6 @@ import {
   Route,
 } from 'react-router-dom';
 
-import Navigation from '../Navigation';
 import Signup from '../SignUp';
 import Signin from '../SignIn';
 import Admin from '../Admin';
@@ -19,10 +18,6 @@ import { withAuthentication } from '../Session';
 const App = () => (
   <Router>
     <div>
-      <Navigation />
-
-      <hr />
-
       <Route exact path={ROUTES.HOME} component={Home} />
       <Route path={ROUTES.SIGN_UP} component={Signup} />
       <Route path={ROUTES.SIGN_IN} component={Signin} />
