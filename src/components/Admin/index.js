@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { withAuthorization } from '../Session';
-import { withFirebase } from '../Firebase';
-import { compose } from 'recompose';
-import { config } from '../../config';
-import getUniqueTypes from '../../helpers/getUniqueTypes';
-import SignOutButton from '../SignOut';
+import React, { Component } from "react";
+import { withAuthorization } from "../Session";
+import { withFirebase } from "../Firebase";
+import { compose } from "recompose";
+import { config } from "../../config";
+import getUniqueTypes from "../../helpers/getUniqueTypes";
+import SignOutButton from "../SignOut";
 
 class Admin extends Component {
   constructor(props) {
@@ -20,20 +20,20 @@ class Admin extends Component {
   componentDidMount() {
     this.setState({ loading: true });
 
-    this.props.firebase.messages().on('value', snapshot => {
+    this.props.firebase.messages().on("value", snapshot => {
       const messagesObject = snapshot.val();
 
       const messagesList = Object.keys(messagesObject).map(key => ({
         ...messagesObject[key],
-        timestamp: key,
+        timestamp: key
       }));
 
-      const typeList = getUniqueTypes(messagesList);
+      const typeList = getUniqueTypes(messagesList, "type");
 
       this.setState({
         messages: messagesList,
         typeList: typeList,
-        loading: false,
+        loading: false
       });
     });
   }
@@ -89,9 +89,9 @@ const MessageList = ({ messages }) => (
   </ul>
 );
 
-const condition = authUser => (authUser && authUser.uid === config.adminUid);
+const condition = authUser => authUser && authUser.uid === config.adminUid;
 
 export default compose(
   withAuthorization(condition),
-  withFirebase,
+  withFirebase
 )(Admin);

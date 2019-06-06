@@ -1,9 +1,9 @@
-const getUniqueTypes = messagesList => {
+const getUniqueTypes = (messagesList, key) => {
   const typeList = [];
   messagesList.forEach(message => {
-    if (!typeList.includes(message.type)) typeList.push(message.type);
+    if (!typeList.includes(message[key])) typeList.push(message[key]);
   });
   return typeList;
-}
+};
 
 export default getUniqueTypes;

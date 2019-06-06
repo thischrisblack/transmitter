@@ -35,7 +35,7 @@ class TransmitFormBase extends Component {
         timestamp: key
       }));
 
-      const typeList = getUniqueTypes(messagesList);
+      const typeList = getUniqueTypes(messagesList, "type");
 
       this.setState({
         typeList: typeList
