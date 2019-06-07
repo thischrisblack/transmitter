@@ -4,8 +4,8 @@ import { withFirebase } from "../Firebase";
 import { compose } from "recompose";
 import { config } from "../../config";
 import * as ROUTES from "../../constants/routes";
-import getUniqueTypes from "../../helpers/getUniqueTypes";
-import { transmitMessage } from "../../helpers/crud";
+import { transmitMessage } from "../../helpers/firebaseCRUD";
+import { getMessagesAndTypes } from "../../helpers/firebaseCRUD";
 
 class TransmitFormBase extends Component {
   constructor(props) {
@@ -26,27 +26,14 @@ class TransmitFormBase extends Component {
   }
 
   componentDidMount() {
-    this.setState({ loading: true });
-
-    this.props.firebase.messages().on("value", snapshot => {
-      const messagesObject = snapshot.val();
-
-      const messagesList = Object.keys(messagesObject).map(key => ({
-        ...messagesObject[key],
-        timestamp: key
-      }));
-
-      const typeList = getUniqueTypes(messagesList, "type");
-
+    getMessagesAndTypes(this.props.firebase).then(response => {
       this.setState({
-        typeList: typeList
+        typeList: response.typeList
       });
     });
   }
 
-  componentWillUnmount() {
-    this.props.firebase.messages().off();
-  }
+  componentWillUnmount() {}
 
   onSubmit = event => {
     transmitMessage(this.state, this.props.firebase)

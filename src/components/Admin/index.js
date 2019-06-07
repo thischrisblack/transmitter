@@ -5,13 +5,14 @@ import { compose } from "recompose";
 import { config } from "../../config";
 import getUniqueTypes from "../../helpers/getUniqueTypes";
 import SignOutButton from "../SignOut";
+import { getMessagesAndTypes } from "../../helpers/firebaseCRUD";
 
 class Admin extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      loading: false,
+      loading: true,
       messages: [],
       typeList: []
     };
@@ -20,27 +21,33 @@ class Admin extends Component {
   componentDidMount() {
     this.setState({ loading: true });
 
-    this.props.firebase.messages().on("value", snapshot => {
-      const messagesObject = snapshot.val();
-
-      const messagesList = Object.keys(messagesObject).map(key => ({
-        ...messagesObject[key],
-        timestamp: key
-      }));
-
-      const typeList = getUniqueTypes(messagesList, "type");
-
+    getMessagesAndTypes(this.props.firebase).then(response => {
       this.setState({
-        messages: messagesList,
-        typeList: typeList,
+        messages: response.messagesList,
+        typeList: response.typeList,
         loading: false
       });
     });
+
+    // this.props.firebase.messages().on("value", snapshot => {
+    //   const messagesObject = snapshot.val();
+
+    //   const messagesList = Object.keys(messagesObject).map(key => ({
+    //     ...messagesObject[key],
+    //     timestamp: key
+    //   }));
+
+    //   const typeList = getUniqueTypes(messagesList, "type");
+
+    //   this.setState({
+    //     messages: messagesList,
+    //     typeList: typeList,
+    //     loading: false
+    //   });
+    // });
   }
 
-  componentWillUnmount() {
-    this.props.firebase.messages().off();
-  }
+  componentWillUnmount() {}
 
   render() {
     const { messages, typeList, loading } = this.state;
