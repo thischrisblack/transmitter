@@ -5,6 +5,7 @@ import { compose } from "recompose";
 import { config } from "../../config";
 import * as ROUTES from "../../constants/routes";
 import getUniqueTypes from "../../helpers/getUniqueTypes";
+import { transmitMessage } from "../../helpers/crud";
 
 class TransmitFormBase extends Component {
   constructor(props) {
@@ -48,31 +49,7 @@ class TransmitFormBase extends Component {
   }
 
   onSubmit = event => {
-    const {
-      type,
-      title,
-      message,
-      image,
-      sound,
-      link,
-      privatePost,
-      sticky
-    } = this.state;
-
-    const timestamp = new Date().getTime();
-
-    this.props.firebase
-      .message(timestamp)
-      .set({
-        type,
-        title,
-        message,
-        image,
-        sound,
-        link,
-        privatePost,
-        sticky
-      })
+    transmitMessage(this.state, this.props.firebase)
       .then(() => {
         this.props.history.push(ROUTES.ADMIN);
       })
