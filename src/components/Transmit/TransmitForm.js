@@ -59,7 +59,7 @@ class TransmitFormBase extends Component {
       sticky
     } = this.state;
 
-    const timestamp = new Date().toISOString().replace(".", "-");
+    const timestamp = new Date().getTime();
 
     this.props.firebase
       .message(timestamp)
