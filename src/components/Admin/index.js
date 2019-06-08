@@ -3,7 +3,6 @@ import { withAuthorization } from "../Session";
 import { withFirebase } from "../Firebase";
 import { compose } from "recompose";
 import { config } from "../../config";
-import getUniqueTypes from "../../helpers/getUniqueTypes";
 import SignOutButton from "../SignOut";
 import { getMessagesAndTypes } from "../../helpers/firebaseCRUD";
 
@@ -28,26 +27,7 @@ class Admin extends Component {
         loading: false
       });
     });
-
-    // this.props.firebase.messages().on("value", snapshot => {
-    //   const messagesObject = snapshot.val();
-
-    //   const messagesList = Object.keys(messagesObject).map(key => ({
-    //     ...messagesObject[key],
-    //     timestamp: key
-    //   }));
-
-    //   const typeList = getUniqueTypes(messagesList, "type");
-
-    //   this.setState({
-    //     messages: messagesList,
-    //     typeList: typeList,
-    //     loading: false
-    //   });
-    // });
   }
-
-  componentWillUnmount() {}
 
   render() {
     const { messages, typeList, loading } = this.state;

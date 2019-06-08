@@ -33,8 +33,6 @@ class TransmitFormBase extends Component {
     });
   }
 
-  componentWillUnmount() {}
-
   onSubmit = event => {
     transmitMessage(this.state, this.props.firebase)
       .then(() => {
