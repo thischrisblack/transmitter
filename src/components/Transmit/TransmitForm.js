@@ -5,9 +5,9 @@ import { compose } from "recompose";
 import { config } from "../../config";
 import * as ROUTES from "../../constants/routes";
 import { transmitMessage } from "../../helpers/firebaseCRUD";
-import { getMessages } from "../../helpers/firebaseCRUD";
 import getUniqueTypes from "../../helpers/getUniqueTypes";
 // import { uploadFile } from "../../helpers/firebaseCRUD";
+// import { getMessages } from "../../helpers/firebaseCRUD";
 
 class TransmitFormBase extends Component {
   constructor(props) {
@@ -16,26 +16,52 @@ class TransmitFormBase extends Component {
       type: "",
       title: "",
       message: "",
-      image: {},
+      image: "",
       sound: "",
       link: "",
       privatePost: true,
       sticky: false,
       social: false,
       error: "",
-      typeList: []
+      typeList: [],
+      loading: false,
+      ready: true
     };
     this.setImageRef = ref => {
       this.image = ref;
     };
+    this.setSoundRef = ref => {
+      this.sound = ref;
+    };
   }
 
   componentDidMount() {
-    getMessages(this.props.firebase).then(messageList => {
+    this.setState({ loading: true });
+
+    this.props.firebase.messages().on("value", snapshot => {
+      const messagesObject = snapshot.val();
+
+      const messagesList = Object.keys(messagesObject).map(key => ({
+        ...messagesObject[key],
+        timestamp: key
+      }));
+
       this.setState({
-        typeList: getUniqueTypes(messageList, "type")
+        typeList: getUniqueTypes(messagesList, "type"),
+        loading: false
       });
     });
+
+    // // If I want to use the external function.
+    // getMessages(this.props.firebase).then(messageList => {
+    //   this.setState({
+    //     typeList: getUniqueTypes(messageList, "type")
+    //   });
+    // });
+  }
+
+  componentWillUnmount() {
+    this.props.firebase.messages().off();
   }
 
   onSubmit = event => {
@@ -59,14 +85,19 @@ class TransmitFormBase extends Component {
     this.setState({ [event.target.name]: event.target.checked });
   };
 
-  onImageUpload = () => {
-    const uploadFile = this.image.files[0];
-    const storage = this.props.firebase.storage;
-    const storageRef = storage.ref();
-    const newFile = storageRef.child(uploadFile.name);
-    newFile.put(uploadFile).then(() => {
-      newFile.getDownloadURL().then(url => {
+  onFileSelect = event => {
+    this.setState({ ready: false });
+    const fileType = event.target.name;
+    const uploadFile = this[fileType].files[0];
+    const storageRef = this.props.firebase.storage.ref();
+    const filePath = storageRef.child(uploadFile.name);
+    filePath.put(uploadFile).then(() => {
+      filePath.getDownloadURL().then(url => {
         console.log(url);
+        this.setState({
+          [fileType]: url,
+          ready: true
+        });
       });
     });
   };
@@ -76,13 +107,14 @@ class TransmitFormBase extends Component {
       type,
       title,
       message,
-      sound,
       link,
       privatePost,
       sticky,
       social,
       error,
-      typeList
+      typeList,
+      loading,
+      ready
     } = this.state;
 
     return (
@@ -93,7 +125,8 @@ class TransmitFormBase extends Component {
           onChange={this.onChange}
           type="text"
           list="prevTypes"
-          placeholder="Message Type"
+          placeholder={loading ? "Loading ..." : "Message Type"}
+          disabled={loading}
         />
         <datalist id="prevTypes">
           {typeList.map(type => (
@@ -116,16 +149,14 @@ class TransmitFormBase extends Component {
         <input
           name="image"
           type="file"
-          onChange={this.onImageUpload}
+          onChange={this.onFileSelect}
           ref={this.setImageRef}
-          placeholder="Image"
         />
         <input
           name="sound"
-          value={sound}
-          onChange={this.onChange}
           type="file"
-          placeholder="Sound"
+          onChange={this.onFileSelect}
+          ref={this.setSoundRef}
         />
         <input
           name="link"
@@ -153,7 +184,9 @@ class TransmitFormBase extends Component {
           type="checkbox"
         />
 
-        <button type="submit">Transmit</button>
+        <button type="submit" disabled={!ready}>
+          Transmit
+        </button>
 
         {error && <p>{error.message}</p>}
       </form>

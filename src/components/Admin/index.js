@@ -4,7 +4,7 @@ import { withFirebase } from "../Firebase";
 import { compose } from "recompose";
 import { config } from "../../config";
 import SignOutButton from "../SignOut";
-import { getMessages } from "../../helpers/firebaseCRUD";
+// import { getMessages } from "../../helpers/firebaseCRUD";
 import getUniqueTypes from "../../helpers/getUniqueTypes";
 
 class Admin extends Component {
@@ -21,13 +21,33 @@ class Admin extends Component {
   componentDidMount() {
     this.setState({ loading: true });
 
-    getMessages(this.props.firebase).then(messageList => {
+    this.props.firebase.messages().on("value", snapshot => {
+      const messagesObject = snapshot.val();
+
+      const messagesList = Object.keys(messagesObject).map(key => ({
+        ...messagesObject[key],
+        timestamp: key
+      }));
+
       this.setState({
-        messages: messageList,
-        typeList: getUniqueTypes(messageList, "type"),
+        messages: messagesList,
+        typeList: getUniqueTypes(messagesList, "type"),
         loading: false
       });
     });
+
+    // // If I want to use the external function.
+    // getMessages(this.props.firebase).then(messageList => {
+    //   this.setState({
+    //     messages: messageList,
+    //     typeList: getUniqueTypes(messageList, "type"),
+    //     loading: false
+    //   });
+    // });
+  }
+
+  componentWillUnmount() {
+    this.props.firebase.messages().off();
   }
 
   render() {
@@ -63,15 +83,17 @@ const MessageList = ({ messages }) => (
   <ul>
     {messages.map(message => (
       <li key={message.timestamp}>
-        <span>
+        <div>
           <strong>ID:</strong> {message.timestamp}
-        </span>
-        <span>
-          <strong>E-Mail:</strong> {message.title}
-        </span>
-        <span>
-          <strong>Username:</strong> <pre>{message.message}</pre>
-        </span>
+        </div>
+        {message.image && (
+          <div>
+            <img src={message.image} alt={message.title} />
+          </div>
+        )}
+        <div>
+          <strong>Sound:</strong> <pre>{message.sound}</pre>
+        </div>
       </li>
     ))}
   </ul>
