@@ -7,6 +7,7 @@ import * as ROUTES from "../../constants/routes";
 import { transmitMessage } from "../../helpers/firebaseCRUD";
 import { getMessages } from "../../helpers/firebaseCRUD";
 import getUniqueTypes from "../../helpers/getUniqueTypes";
+// import { uploadFile } from "../../helpers/firebaseCRUD";
 
 class TransmitFormBase extends Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class TransmitFormBase extends Component {
       type: "",
       title: "",
       message: "",
-      image: "",
+      image: {},
       sound: "",
       link: "",
       privatePost: true,
@@ -23,6 +24,9 @@ class TransmitFormBase extends Component {
       social: false,
       error: "",
       typeList: []
+    };
+    this.setImageRef = ref => {
+      this.image = ref;
     };
   }
 
@@ -36,7 +40,8 @@ class TransmitFormBase extends Component {
 
   onSubmit = event => {
     transmitMessage(this.state, this.props.firebase)
-      .then(() => {
+      .then(response => {
+        console.log(response);
         this.props.history.push(ROUTES.ADMIN);
       })
       .catch(error => {
@@ -54,12 +59,23 @@ class TransmitFormBase extends Component {
     this.setState({ [event.target.name]: event.target.checked });
   };
 
+  onImageUpload = () => {
+    const uploadFile = this.image.files[0];
+    const storage = this.props.firebase.storage;
+    const storageRef = storage.ref();
+    const newFile = storageRef.child(uploadFile.name);
+    newFile.put(uploadFile).then(() => {
+      newFile.getDownloadURL().then(url => {
+        console.log(url);
+      });
+    });
+  };
+
   render() {
     const {
       type,
       title,
       message,
-      image,
       sound,
       link,
       privatePost,
@@ -99,9 +115,9 @@ class TransmitFormBase extends Component {
         />
         <input
           name="image"
-          value={image}
-          onChange={this.onChange}
           type="file"
+          onChange={this.onImageUpload}
+          ref={this.setImageRef}
           placeholder="Image"
         />
         <input

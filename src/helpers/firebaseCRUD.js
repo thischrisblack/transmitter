@@ -38,3 +38,5 @@ export const getMessages = firebase => {
     });
   });
 };
+
+export const uploadFile = (file, firebase) => {};
