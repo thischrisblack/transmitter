@@ -5,7 +5,8 @@ import { compose } from "recompose";
 import { config } from "../../config";
 import * as ROUTES from "../../constants/routes";
 import { transmitMessage } from "../../helpers/firebaseCRUD";
-import { getMessagesAndTypes } from "../../helpers/firebaseCRUD";
+import { getMessages } from "../../helpers/firebaseCRUD";
+import getUniqueTypes from "../../helpers/getUniqueTypes";
 
 class TransmitFormBase extends Component {
   constructor(props) {
@@ -26,9 +27,9 @@ class TransmitFormBase extends Component {
   }
 
   componentDidMount() {
-    getMessagesAndTypes(this.props.firebase).then(response => {
+    getMessages(this.props.firebase).then(messageList => {
       this.setState({
-        typeList: response.typeList
+        typeList: getUniqueTypes(messageList, "type")
       });
     });
   }

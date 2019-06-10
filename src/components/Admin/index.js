@@ -4,7 +4,8 @@ import { withFirebase } from "../Firebase";
 import { compose } from "recompose";
 import { config } from "../../config";
 import SignOutButton from "../SignOut";
-import { getMessagesAndTypes } from "../../helpers/firebaseCRUD";
+import { getMessages } from "../../helpers/firebaseCRUD";
+import getUniqueTypes from "../../helpers/getUniqueTypes";
 
 class Admin extends Component {
   constructor(props) {
@@ -20,10 +21,10 @@ class Admin extends Component {
   componentDidMount() {
     this.setState({ loading: true });
 
-    getMessagesAndTypes(this.props.firebase).then(response => {
+    getMessages(this.props.firebase).then(messageList => {
       this.setState({
-        messages: response.messagesList,
-        typeList: response.typeList,
+        messages: messageList,
+        typeList: getUniqueTypes(messageList, "type"),
         loading: false
       });
     });

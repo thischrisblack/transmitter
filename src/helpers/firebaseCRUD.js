@@ -1,5 +1,3 @@
-import getUniqueTypes from "./getUniqueTypes";
-
 export const transmitMessage = (state, firebase) => {
   const {
     type,
@@ -26,7 +24,7 @@ export const transmitMessage = (state, firebase) => {
   });
 };
 
-export const getMessagesAndTypes = firebase => {
+export const getMessages = firebase => {
   return new Promise(resolve => {
     firebase.messages().once("value", snapshot => {
       const messagesObject = snapshot.val();
@@ -36,11 +34,7 @@ export const getMessagesAndTypes = firebase => {
         timestamp: key
       }));
 
-      const typeList = getUniqueTypes(messagesList, "type");
-
-      const response = { messagesList, typeList };
-
-      resolve(response);
+      resolve(messagesList);
     });
   });
 };
