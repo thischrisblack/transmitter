@@ -39,4 +39,15 @@ export const getMessages = firebase => {
   });
 };
 
-export const uploadFile = (file, firebase) => {};
+export const uploadFile = (file, firebase) => {
+  return new Promise(resolve => {
+    const storageRef = firebase.storage.ref();
+    const filePath = storageRef.child(file.name);
+
+    filePath.put(file).then(() => {
+      filePath.getDownloadURL().then(url => {
+        resolve(url);
+      });
+    });
+  });
+};
