@@ -6,9 +6,12 @@ import { config } from "../../config";
 import * as ROUTES from "../../constants/routes";
 import { transmitMessage, uploadFile } from "../../helpers/firebaseCRUD";
 import getUniqueTypes from "../../helpers/getUniqueTypes";
+import "flatpickr/dist/themes/airbnb.css";
+import Flatpickr from "react-flatpickr";
 
 class TransmitFormBase extends Component {
   state = {
+    timestamp: "",
     type: "",
     title: "",
     message: "",
@@ -39,6 +42,7 @@ class TransmitFormBase extends Component {
       }));
 
       this.setState({
+        timestamp: new Date().getTime(),
         typeList: getUniqueTypes(messagesList, "type"),
         loading: false
       });
@@ -70,7 +74,7 @@ class TransmitFormBase extends Component {
     });
 
     transmitMessage(this.state, this.props.firebase)
-      .then(response => {
+      .then(() => {
         this.props.history.push(ROUTES.ADMIN);
       })
       .catch(error => {
@@ -86,8 +90,14 @@ class TransmitFormBase extends Component {
     this.setState({ [event.target.name]: event.target.checked });
   };
 
+  onDateChange = event => {
+    const newStamp = event[0].getTime();
+    this.setState({ timestamp: newStamp });
+  };
+
   render() {
     const {
+      timestamp,
       type,
       title,
       message,
@@ -103,6 +113,12 @@ class TransmitFormBase extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
+        <Flatpickr
+          name="timestamp"
+          data-enable-time
+          value={timestamp}
+          onChange={this.onDateChange}
+        />
         <input
           name="type"
           value={type}

@@ -1,5 +1,6 @@
 export const transmitMessage = (state, firebase) => {
   const {
+    timestamp,
     type,
     title,
     message,
@@ -9,8 +10,6 @@ export const transmitMessage = (state, firebase) => {
     privatePost,
     sticky
   } = state;
-
-  const timestamp = new Date().getTime();
 
   return firebase.message(timestamp).set({
     type,
@@ -24,6 +23,7 @@ export const transmitMessage = (state, firebase) => {
   });
 };
 
+// Not used ...
 export const getMessages = firebase => {
   return new Promise(resolve => {
     firebase.messages().once("value", snapshot => {
