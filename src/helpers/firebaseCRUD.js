@@ -1,3 +1,8 @@
+/**
+ * Post a new message to the Firebase Realtime Database.
+ * @param {*} state - the state object from the calling component.
+ * @param {*} firebase - the Firebase instnance.
+ */
 export const transmitMessage = (state, firebase) => {
   const {
     timestamp,
@@ -23,6 +28,24 @@ export const transmitMessage = (state, firebase) => {
   });
 };
 
+/**
+ * Uploads the given file to the Firebase Storage and returns the download URL for the file.
+ * @param {*} file
+ * @param {*} firebase - the Firebase instance.
+ */
+export const uploadFile = (file, firebase) => {
+  return new Promise(resolve => {
+    const storageRef = firebase.storage.ref();
+    const filePath = storageRef.child(file.name);
+
+    filePath.put(file).then(() => {
+      filePath.getDownloadURL().then(url => {
+        resolve(url);
+      });
+    });
+  });
+};
+
 // Not used ...
 export const getMessages = firebase => {
   return new Promise(resolve => {
@@ -35,19 +58,6 @@ export const getMessages = firebase => {
       }));
 
       resolve(messagesList);
-    });
-  });
-};
-
-export const uploadFile = (file, firebase) => {
-  return new Promise(resolve => {
-    const storageRef = firebase.storage.ref();
-    const filePath = storageRef.child(file.name);
-
-    filePath.put(file).then(() => {
-      filePath.getDownloadURL().then(url => {
-        resolve(url);
-      });
     });
   });
 };

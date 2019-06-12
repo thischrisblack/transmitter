@@ -27,12 +27,14 @@ class TransmitFormBase extends Component {
     transmitting: false
   };
 
+  // Refs for the file input elements.
   imageRef = React.createRef();
   soundRef = React.createRef();
 
   componentDidMount() {
     this.setState({ loading: true });
 
+    // Connect to the Firebase Realtime Database.
     this.props.firebase.messages().on("value", snapshot => {
       const messagesObject = snapshot.val();
 
@@ -42,7 +44,9 @@ class TransmitFormBase extends Component {
       }));
 
       this.setState({
+        // Timestamp of right now, default post ID.
         timestamp: new Date().getTime(),
+        // Array of unique "types" from previous messages posted.
         typeList: getUniqueTypes(messagesList, "type"),
         loading: false
       });
@@ -58,21 +62,21 @@ class TransmitFormBase extends Component {
 
     this.setState({ transmitting: true });
 
+    // Check for image/sound files, upload and set state if they exist.
     const imageFile = this.imageRef.current.files;
     const soundFile = this.soundRef.current.files;
 
-    const imageURL = imageFile.length
-      ? await uploadFile(imageFile[0], this.props.firebase)
-      : "";
-    const soundURL = soundFile.length
-      ? await uploadFile(soundFile[0], this.props.firebase)
-      : "";
+    if (imageFile.length) {
+      const imageURL = await uploadFile(imageFile[0], this.props.firebase);
+      this.setState({ image: imageURL });
+    }
 
-    this.setState({
-      image: imageURL,
-      sound: soundURL
-    });
+    if (soundFile.length) {
+      const soundURL = await uploadFile(soundFile[0], this.props.firebase);
+      this.setState({ sound: soundURL });
+    }
 
+    // Post the new message (state) to the database.
     transmitMessage(this.state, this.props.firebase)
       .then(() => {
         this.props.history.push(ROUTES.ADMIN);

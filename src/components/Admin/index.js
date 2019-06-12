@@ -4,7 +4,6 @@ import { withFirebase } from "../Firebase";
 import { compose } from "recompose";
 import { config } from "../../config";
 import SignOutButton from "../SignOut";
-// import { getMessages } from "../../helpers/firebaseCRUD";
 import getUniqueTypes from "../../helpers/getUniqueTypes";
 
 class Admin extends Component {
