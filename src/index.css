@@ -5,7 +5,7 @@ body {
   grid-template-rows: 98vh;
   grid-template-columns: 98vw;
   justify-items: center;
-  align-items: center;
+  align-items: start;
 }
 .logo {
   opacity: 1;
@@ -15,7 +15,7 @@ body {
   font-family: arial;
   font-size: 18px;
   position: relative;
-  box-shadow: inset 0 0 35px rgba(0, 0, 0, 1);
+  /* box-shadow: inset 0 0 35px rgba(0, 0, 0, 1); */
   background: #fff;
   border-radius: 5px;
 }
@@ -26,7 +26,7 @@ img {
 }
 .logo:after {
   content: "";
-  background: url("assets/static04.gif");
+  /* background: url("assets/static04.gif"); */
   width: 100%;
   height: 100%;
   opacity: 0.1;

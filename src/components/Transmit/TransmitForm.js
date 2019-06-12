@@ -3,7 +3,6 @@ import { withAuthorization } from "../Session";
 import { withFirebase } from "../Firebase";
 import { compose } from "recompose";
 import { config } from "../../config";
-import * as ROUTES from "../../constants/routes";
 import { transmitMessage, uploadFile } from "../../helpers/firebaseCRUD";
 import getUniqueTypes from "../../helpers/getUniqueTypes";
 import "flatpickr/dist/themes/airbnb.css";
@@ -11,6 +10,7 @@ import Flatpickr from "react-flatpickr";
 
 class TransmitFormBase extends Component {
   state = {
+    // Message fields.
     timestamp: "",
     type: "",
     title: "",
@@ -21,6 +21,7 @@ class TransmitFormBase extends Component {
     privatePost: true,
     sticky: false,
     social: false,
+    // Other fields.
     error: "",
     typeList: [],
     loading: false,

@@ -13,7 +13,8 @@ export const transmitMessage = (state, firebase) => {
     sound,
     link,
     privatePost,
-    sticky
+    sticky,
+    social
   } = state;
 
   return firebase.message(timestamp).set({
@@ -24,7 +25,8 @@ export const transmitMessage = (state, firebase) => {
     sound,
     link,
     privatePost,
-    sticky
+    sticky,
+    social
   });
 };
 

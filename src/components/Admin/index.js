@@ -7,10 +7,6 @@ import SignOutButton from "../SignOut";
 import getUniqueTypes from "../../helpers/getUniqueTypes";
 import TransmitForm from "../Transmit/TransmitForm";
 
-/**
- * Just started conditional rendering of TransmitForm component, rather than using the Transmit ROUTE!
- */
-
 class Admin extends Component {
   constructor(props) {
     super(props);
