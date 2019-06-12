@@ -5,6 +5,11 @@ import { compose } from "recompose";
 import { config } from "../../config";
 import SignOutButton from "../SignOut";
 import getUniqueTypes from "../../helpers/getUniqueTypes";
+import TransmitForm from "../Transmit/TransmitForm";
+
+/**
+ * Just started conditional rendering of TransmitForm component, rather than using the Transmit ROUTE!
+ */
 
 class Admin extends Component {
   constructor(props) {
@@ -13,7 +18,8 @@ class Admin extends Component {
     this.state = {
       loading: true,
       messages: [],
-      typeList: []
+      typeList: [],
+      transmit: true
     };
   }
 
@@ -34,30 +40,25 @@ class Admin extends Component {
         loading: false
       });
     });
-
-    // // If I want to use the external function.
-    // getMessages(this.props.firebase).then(messageList => {
-    //   this.setState({
-    //     messages: messageList,
-    //     typeList: getUniqueTypes(messageList, "type"),
-    //     loading: false
-    //   });
-    // });
   }
+
+  toggleComponentDisplay = component => {
+    this.setState({ [component]: ![component] });
+  };
 
   componentWillUnmount() {
     this.props.firebase.messages().off();
   }
 
   render() {
-    const { messages, typeList, loading } = this.state;
+    const { messages, typeList, loading, transmit } = this.state;
 
     return (
       <div>
         <h1>Admin</h1>
 
         {loading && <div>Loading ...</div>}
-
+        {transmit && <TransmitForm action={this.toggleComponentDisplay} />}
         <TypeList types={typeList} />
         <MessageList messages={messages} />
         <SignOutButton />

@@ -79,7 +79,10 @@ class TransmitFormBase extends Component {
     // Post the new message (state) to the database.
     transmitMessage(this.state, this.props.firebase)
       .then(() => {
-        this.props.history.push(ROUTES.ADMIN);
+        // this.props.history.push(ROUTES.ADMIN);
+        // This is for using this component in the Admin parent component.
+        // If not this than uncomment the history line above.
+        this.props.action("transmit");
       })
       .catch(error => {
         this.setState({ transmitting: false, error });
