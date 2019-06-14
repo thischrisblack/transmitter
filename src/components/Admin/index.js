@@ -6,6 +6,7 @@ import { config } from "../../config";
 import SignOutButton from "../SignOut";
 import getUniqueTypes from "../../helpers/getUniqueTypes";
 import TransmitForm from "../Transmit/TransmitForm";
+import { Link, Route } from "react-router-dom";
 
 class Admin extends Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class Admin extends Component {
       loading: true,
       messages: [],
       typeList: [],
-      transmit: true
+      display: "transmit"
     };
   }
 
@@ -38,26 +39,28 @@ class Admin extends Component {
     });
   }
 
-  toggleComponentDisplay = component => {
-    this.setState({ [component]: ![component] });
-  };
-
   componentWillUnmount() {
     this.props.firebase.messages().off();
   }
 
   render() {
-    const { messages, typeList, loading, transmit } = this.state;
+    const { messages, typeList, loading, display } = this.state;
 
     return (
-      <div>
-        <h1>Admin</h1>
+      <div className="admin">
+        <div className="adminContent">
+          <h1>Admin</h1>
 
-        {loading && <div>Loading ...</div>}
-        {transmit && <TransmitForm action={this.toggleComponentDisplay} />}
-        <TypeList types={typeList} />
-        <MessageList messages={messages} />
-        <SignOutButton />
+          {/* Look at this shit right here! */}
+          <Route path={`/lord/transmit`} component={TransmitForm} />
+          <Link to={`/lord/transmit`}>TRANSMIT</Link>
+
+          {loading && <div>Loading ...</div>}
+
+          <TypeList types={typeList} />
+          <MessageList messages={messages} />
+          <SignOutButton />
+        </div>
       </div>
     );
   }

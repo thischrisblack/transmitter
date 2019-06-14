@@ -7,6 +7,7 @@ import { transmitMessage, uploadFile } from "../../helpers/firebaseCRUD";
 import getUniqueTypes from "../../helpers/getUniqueTypes";
 import "flatpickr/dist/themes/airbnb.css";
 import Flatpickr from "react-flatpickr";
+import * as ROUTES from "../../constants/routes";
 
 class TransmitFormBase extends Component {
   state = {
@@ -35,7 +36,6 @@ class TransmitFormBase extends Component {
   componentDidMount() {
     this.setState({ loading: true });
 
-    // Connect to the Firebase Realtime Database.
     this.props.firebase.messages().on("value", snapshot => {
       const messagesObject = snapshot.val();
 
@@ -45,9 +45,7 @@ class TransmitFormBase extends Component {
       }));
 
       this.setState({
-        // Timestamp of right now, default post ID.
         timestamp: new Date().getTime(),
-        // Array of unique "types" from previous messages posted.
         typeList: getUniqueTypes(messagesList, "type"),
         loading: false
       });
@@ -80,10 +78,7 @@ class TransmitFormBase extends Component {
     // Post the new message (state) to the database.
     transmitMessage(this.state, this.props.firebase)
       .then(() => {
-        // this.props.history.push(ROUTES.ADMIN);
-        // This is for using this component in the Admin parent component.
-        // If not this than uncomment the history line above.
-        this.props.action("transmit");
+        this.props.history.push(ROUTES.ADMIN);
       })
       .catch(error => {
         this.setState({ transmitting: false, error });

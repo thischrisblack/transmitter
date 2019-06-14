@@ -1,5 +1,4 @@
 import React from "react";
-// import logo from '../../assets/CB-Logo-v06.png';
 import Logo from "../Logo";
 
 class PlaceHolder extends React.Component {
@@ -7,7 +6,7 @@ class PlaceHolder extends React.Component {
     return (
       <div className="logo">
         <Logo width={"100%"} />
-        <code>Chris Black</code>
+        <strong>Chris Black</strong>
       </div>
     );
   }
