@@ -8,6 +8,7 @@ import getUniqueTypes from "../../helpers/getUniqueTypes";
 import "flatpickr/dist/themes/airbnb.css";
 import Flatpickr from "react-flatpickr";
 import * as ROUTES from "../../constants/routes";
+import PropTypes from "prop-types";
 
 class TransmitFormBase extends Component {
   state = {
@@ -184,6 +185,11 @@ class TransmitFormBase extends Component {
     );
   }
 }
+
+TransmitFormBase.propTypes = {
+  firebase: PropTypes.object,
+  history: PropTypes.object
+};
 
 const condition = authUser => authUser && authUser.uid === config.adminUid;
 

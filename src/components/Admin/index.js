@@ -7,18 +7,14 @@ import SignOutButton from "../SignOut";
 import getUniqueTypes from "../../helpers/getUniqueTypes";
 import TransmitForm from "../Transmit/TransmitForm";
 import { Link, Route } from "react-router-dom";
+import PropTypes from "prop-types";
 
 class Admin extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      loading: true,
-      messages: [],
-      typeList: [],
-      display: "transmit"
-    };
-  }
+  state = {
+    loading: true,
+    messages: [],
+    typeList: []
+  };
 
   componentDidMount() {
     this.setState({ loading: true });
@@ -44,14 +40,15 @@ class Admin extends Component {
   }
 
   render() {
-    const { messages, typeList, loading, display } = this.state;
+    const { messages, typeList, loading } = this.state;
 
     return (
       <div className="admin">
         <div className="adminContent">
           <h1>Admin</h1>
 
-          {/* Look at this shit right here! */}
+          {/* Look at this shit right here! 
+          Put the nav in its own component with the '/' subroute */}
           <Route path={`/lord/transmit`} component={TransmitForm} />
           <Link to={`/lord/transmit`}>TRANSMIT</Link>
 
@@ -97,6 +94,10 @@ const MessageList = ({ messages }) => (
     ))}
   </ul>
 );
+
+Admin.propTypes = {
+  firebase: PropTypes.object
+};
 
 const condition = authUser => authUser && authUser.uid === config.adminUid;
 
