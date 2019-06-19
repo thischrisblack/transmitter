@@ -99,12 +99,26 @@ class TransmitFormBase extends Component {
     this.setState({ timestamp: newStamp });
   };
 
+  displayFile = event => {
+    const fileType = event.currentTarget.name;
+    let fileName;
+    if (fileType === "image") {
+      fileName = this.imageRef.current.files[0].name;
+    }
+    if (fileType === "sound") {
+      fileName = this.soundRef.current.files[0].name;
+    }
+    this.setState({ [fileType]: [fileName] });
+  };
+
   render() {
     const {
       timestamp,
       type,
       title,
       message,
+      image,
+      sound,
       link,
       privatePost,
       sticky,
@@ -149,8 +163,6 @@ class TransmitFormBase extends Component {
           onChange={this.onChange}
           placeholder="Message"
         />
-        <input name="image" type="file" ref={this.imageRef} />
-        <input name="sound" type="file" ref={this.soundRef} />
         <input
           name="link"
           value={link}
@@ -159,25 +171,63 @@ class TransmitFormBase extends Component {
           placeholder="Link"
         />
         <input
+          className="inputFile"
+          id="image"
+          name="image"
+          type="file"
+          ref={this.imageRef}
+          onChange={this.displayFile}
+        />
+        <label htmlFor="image">{image ? image : "IMAGE"}</label>
+        <input
+          className="inputFile"
+          name="sound"
+          id="sound"
+          type="file"
+          ref={this.soundRef}
+          onChange={this.displayFile}
+        />
+        <label htmlFor="sound">{sound ? sound : "SOUND"}</label>
+        <input
+          className="inputCheckbox"
           name="privatePost"
+          id="privatePost"
           checked={privatePost}
           onChange={this.onChangeBox}
           type="checkbox"
         />
+        <label
+          htmlFor="privatePost"
+          className={privatePost ? "selected" : "unselected"}
+        >
+          PRIVATE
+        </label>
         <input
+          className="inputCheckbox"
           name="sticky"
+          id="sticky"
           checked={sticky}
           onChange={this.onChangeBox}
           type="checkbox"
         />
+        <label htmlFor="sticky" className={sticky ? "selected" : "unselected"}>
+          STICKY
+        </label>
         <input
+          className="inputCheckbox"
           name="social"
+          id="social"
           checked={social}
           onChange={this.onChangeBox}
           type="checkbox"
         />
+        <label htmlFor="social" className={social ? "selected" : "unselected"}>
+          SOCIAL
+        </label>
 
-        <button type="submit">Transmit</button>
+        <button type="submit" className="transmit-button">
+          TRANSMIT
+        </button>
 
         {error && <p>{error.message}</p>}
         {transmitting && <p>Transmitting</p>}

@@ -8,6 +8,9 @@
 * font-family: 'Source Code Pro', monospace;
 */
 
+$logo-yellow: #fff200;
+$logo-red: #471100;
+
 *,
 *::before,
 *::after {
@@ -30,8 +33,81 @@ body {
   position: relative;
 }
 
+/*********************************
+FORMS
+*********************************/
+
+.flatpickr-mobile {
+  background: #fff;
+}
+
+input,
+textarea {
+  display: block;
+  width: 100%;
+  font-size: 2rem;
+  margin: 2rem 0;
+  padding: 3px 5px;
+  border: 0;
+  border-bottom: 1px solid #333;
+  font-family: "Roboto Mono", monospace;
+}
+
+.inputFile,
+.inputCheckbox {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.inputFile + label,
+.inputCheckbox + label {
+  display: block;
+  font-size: 1.5rem;
+  padding: 3px 5px;
+  margin: 7px 0;
+  text-align: left;
+  cursor: pointer;
+}
+
+.inputFile:focus + label,
+.inputFile + label:hover,
+.inputCheckbox + label:hover {
+  font-weight: 700;
+}
+
+.inputCheckbox + label.selected:after {
+  content: " ✔";
+}
+
+.transmit-button {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-family: "Roboto Mono", monospace;
+  font-size: 4rem;
+  margin-top: 1.5rem;
+  border: 0;
+  background-color: #fff;
+  text-align: center;
+  cursor: pointer;
+
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-image: url(./assets/static03.gif);
+  color: white;
+}
+
+/*********************************
+ADMIN
+*********************************/
+
 .admin {
-  padding: 3rem;
+  padding: 1rem 3rem;
 }
 
 @media screen and (min-width: 700px) {

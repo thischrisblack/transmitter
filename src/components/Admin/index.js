@@ -6,6 +6,7 @@ import { config } from "../../config";
 import SignOutButton from "../SignOut";
 import getUniqueTypes from "../../helpers/getUniqueTypes";
 import TransmitForm from "../Transmit/TransmitForm";
+import AdminNav from "../AdminNav";
 import { Link, Route } from "react-router-dom";
 import PropTypes from "prop-types";
 
@@ -45,18 +46,8 @@ class Admin extends Component {
     return (
       <div className="admin">
         <div className="adminContent">
-          <h1>Admin</h1>
-
-          {/* Look at this shit right here! 
-          Put the nav in its own component with the '/' subroute */}
+          <Route exact path={"/lord/"} component={AdminNav} />
           <Route path={`/lord/transmit`} component={TransmitForm} />
-          <Link to={`/lord/transmit`}>TRANSMIT</Link>
-
-          {loading && <div>Loading ...</div>}
-
-          <TypeList types={typeList} />
-          <MessageList messages={messages} />
-          <SignOutButton />
         </div>
       </div>
     );
