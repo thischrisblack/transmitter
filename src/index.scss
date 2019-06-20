@@ -107,7 +107,7 @@ ADMIN
 *********************************/
 
 .admin {
-  padding: 1rem 3rem;
+  padding: 2rem 3rem;
 }
 
 @media screen and (min-width: 700px) {
@@ -123,14 +123,32 @@ ADMIN
 }
 
 .logo {
-  opacity: 1;
-  padding: 2rem;
-  width: 18rem;
-  text-align: center;
-  font-family: "Cutive Mono", monospace;
   font-size: 2rem;
-  position: relative;
   /* box-shadow: inset 0 0 35px rgba(0, 0, 0, 1); */
   background: #fff;
   border-radius: 5px;
+  display: inline-block;
+}
+
+.admin__nav {
+  display: block;
+  text-decoration: none;
+  text-align: center;
+
+  &--link {
+    font-size: 3.5rem;
+    margin-top: 2rem;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-image: url(./assets/static03.gif);
+    color: white;
+  }
+
+  &--cancel {
+    margin-top: 1.5rem;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: $logo-red;
+  }
 }

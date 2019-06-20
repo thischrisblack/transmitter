@@ -3,7 +3,7 @@
  * @param {*} state - the state object from the calling component.
  * @param {*} firebase - the Firebase instnance.
  */
-export const transmitMessage = (state, firebase) => {
+export const transmitMessage = (post, firebase) => {
   const {
     timestamp,
     type,
@@ -15,7 +15,7 @@ export const transmitMessage = (state, firebase) => {
     privatePost,
     sticky,
     social
-  } = state;
+  } = post;
 
   return firebase.message(timestamp).set({
     type,

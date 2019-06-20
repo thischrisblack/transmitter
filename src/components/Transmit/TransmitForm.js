@@ -9,21 +9,22 @@ import "flatpickr/dist/themes/airbnb.css";
 import Flatpickr from "react-flatpickr";
 import * as ROUTES from "../../constants/routes";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 class TransmitFormBase extends Component {
   state = {
-    // Message fields.
-    timestamp: "",
-    type: "",
-    title: "",
-    message: "",
-    image: "",
-    sound: "",
-    link: "",
-    privatePost: true,
-    sticky: false,
-    social: false,
-    // Other fields.
+    post: {
+      timestamp: "",
+      type: "",
+      title: "",
+      message: "",
+      image: "",
+      sound: "",
+      link: "",
+      privatePost: true,
+      sticky: false,
+      social: false
+    },
     error: "",
     typeList: [],
     loading: false,
@@ -45,11 +46,14 @@ class TransmitFormBase extends Component {
         timestamp: key
       }));
 
-      this.setState({
-        timestamp: new Date().getTime(),
+      this.setState(prevState => ({
+        post: {
+          ...prevState.post,
+          timestamp: new Date().getTime()
+        },
         typeList: getUniqueTypes(messagesList, "type"),
         loading: false
-      });
+      }));
     });
   }
 
@@ -68,16 +72,26 @@ class TransmitFormBase extends Component {
 
     if (imageFile.length) {
       const imageURL = await uploadFile(imageFile[0], this.props.firebase);
-      this.setState({ image: imageURL });
+      this.setState(prevState => ({
+        post: {
+          ...prevState.post,
+          image: imageURL
+        }
+      }));
     }
 
     if (soundFile.length) {
       const soundURL = await uploadFile(soundFile[0], this.props.firebase);
-      this.setState({ sound: soundURL });
+      this.setState(prevState => ({
+        post: {
+          ...prevState.post,
+          sound: soundURL
+        }
+      }));
     }
 
-    // Post the new message (state) to the database.
-    transmitMessage(this.state, this.props.firebase)
+    // Post the new message to the database.
+    transmitMessage(this.state.post, this.props.firebase)
       .then(() => {
         this.props.history.push(ROUTES.ADMIN);
       })
@@ -87,16 +101,28 @@ class TransmitFormBase extends Component {
   };
 
   onChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
-  };
-
-  onChangeBox = event => {
-    this.setState({ [event.target.name]: event.target.checked });
+    const changeSource = event.target;
+    const newValue =
+      changeSource.type === "checkbox"
+        ? changeSource.checked
+        : changeSource.value;
+    this.setState(prevState => ({
+      post: {
+        ...prevState.post,
+        [changeSource.name]: newValue
+      }
+    }));
   };
 
   onDateChange = event => {
     const newStamp = event[0].getTime();
-    this.setState({ timestamp: newStamp });
+    console.log(event);
+    this.setState(prevState => ({
+      post: {
+        ...prevState.post,
+        timestamp: newStamp
+      }
+    }));
   };
 
   displayFile = event => {
@@ -108,38 +134,29 @@ class TransmitFormBase extends Component {
     if (fileType === "sound") {
       fileName = this.soundRef.current.files[0].name;
     }
-    this.setState({ [fileType]: [fileName] });
+    console.log(fileName);
+    this.setState(prevState => ({
+      post: {
+        ...prevState.post,
+        [fileType]: fileName
+      }
+    }));
   };
 
   render() {
-    const {
-      timestamp,
-      type,
-      title,
-      message,
-      image,
-      sound,
-      link,
-      privatePost,
-      sticky,
-      social,
-      error,
-      typeList,
-      loading,
-      transmitting
-    } = this.state;
+    const { post, error, typeList, loading, transmitting } = this.state;
 
     return (
       <form onSubmit={this.onSubmit}>
         <Flatpickr
           name="timestamp"
           data-enable-time
-          value={timestamp}
+          value={post.timestamp}
           onChange={this.onDateChange}
         />
         <input
           name="type"
-          value={type}
+          value={post.type}
           onChange={this.onChange}
           type="text"
           list="prevTypes"
@@ -152,20 +169,20 @@ class TransmitFormBase extends Component {
         </datalist>
         <input
           name="title"
-          value={title}
+          value={post.title}
           onChange={this.onChange}
           type="text"
           placeholder="Title"
         />
         <textarea
           name="message"
-          value={message}
+          value={post.message}
           onChange={this.onChange}
           placeholder="Message"
         />
         <input
           name="link"
-          value={link}
+          value={post.link}
           onChange={this.onChange}
           type="text"
           placeholder="Link"
@@ -178,7 +195,7 @@ class TransmitFormBase extends Component {
           ref={this.imageRef}
           onChange={this.displayFile}
         />
-        <label htmlFor="image">{image ? image : "IMAGE"}</label>
+        <label htmlFor="image">{post.image ? post.image : "IMAGE"}</label>
         <input
           className="inputFile"
           name="sound"
@@ -187,18 +204,18 @@ class TransmitFormBase extends Component {
           ref={this.soundRef}
           onChange={this.displayFile}
         />
-        <label htmlFor="sound">{sound ? sound : "SOUND"}</label>
+        <label htmlFor="sound">{post.sound ? post.sound : "SOUND"}</label>
         <input
           className="inputCheckbox"
           name="privatePost"
           id="privatePost"
-          checked={privatePost}
-          onChange={this.onChangeBox}
+          checked={post.privatePost}
+          onChange={this.onChange}
           type="checkbox"
         />
         <label
           htmlFor="privatePost"
-          className={privatePost ? "selected" : "unselected"}
+          className={post.privatePost ? "selected" : "unselected"}
         >
           PRIVATE
         </label>
@@ -206,28 +223,38 @@ class TransmitFormBase extends Component {
           className="inputCheckbox"
           name="sticky"
           id="sticky"
-          checked={sticky}
-          onChange={this.onChangeBox}
+          checked={post.sticky}
+          onChange={this.onChange}
           type="checkbox"
         />
-        <label htmlFor="sticky" className={sticky ? "selected" : "unselected"}>
+        <label
+          htmlFor="sticky"
+          className={post.sticky ? "selected" : "unselected"}
+        >
           STICKY
         </label>
         <input
           className="inputCheckbox"
           name="social"
           id="social"
-          checked={social}
-          onChange={this.onChangeBox}
+          checked={post.social}
+          onChange={this.onChange}
           type="checkbox"
         />
-        <label htmlFor="social" className={social ? "selected" : "unselected"}>
+        <label
+          htmlFor="social"
+          className={post.social ? "selected" : "unselected"}
+        >
           SOCIAL
         </label>
 
         <button type="submit" className="transmit-button">
           TRANSMIT
         </button>
+
+        <Link to={`/lord`} className="admin__nav admin__nav--cancel">
+          CANCEL
+        </Link>
 
         {error && <p>{error.message}</p>}
         {transmitting && <p>Transmitting</p>}

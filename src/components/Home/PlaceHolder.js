@@ -5,7 +5,7 @@ class PlaceHolder extends React.Component {
   render() {
     return (
       <div className="logo">
-        <Logo width={"100%"} />
+        <Logo width={"140"} />
         <strong>Chris Black</strong>
       </div>
     );
