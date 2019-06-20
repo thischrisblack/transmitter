@@ -6,6 +6,7 @@ import { config } from "../../config";
 import SignOutButton from "../SignOut";
 import getUniqueTypes from "../../helpers/getUniqueTypes";
 import TransmitForm from "../Transmit/TransmitForm";
+import MessageList from "../MessageList";
 import AdminNav from "../AdminNav";
 import { Link, Route } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -48,6 +49,7 @@ class Admin extends Component {
         <div className="adminContent">
           <Route exact path={"/lord/"} component={AdminNav} />
           <Route path={`/lord/transmit`} component={TransmitForm} />
+          <Route path={`/lord/messages`} component={MessageList} />
         </div>
       </div>
     );
@@ -66,7 +68,7 @@ const TypeList = ({ types }) => (
   </ul>
 );
 
-const MessageList = ({ messages }) => (
+const MOnkeyTown = ({ messages }) => (
   <ul>
     {messages.map(message => (
       <li key={message.timestamp}>

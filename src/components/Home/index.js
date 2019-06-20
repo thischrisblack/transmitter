@@ -6,6 +6,7 @@ class Home extends React.Component {
     return (
       <div className="home">
         <PlaceHolder />
+
         <p>I like to get all monkeyfied and go out to bananatown.</p>
       </div>
     );

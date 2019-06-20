@@ -3,13 +3,13 @@ import { withAuthorization } from "../Session";
 import { withFirebase } from "../Firebase";
 import { compose } from "recompose";
 import { config } from "../../config";
-import { transmitMessage, uploadFile } from "../../helpers/firebaseCRUD";
-import getUniqueTypes from "../../helpers/getUniqueTypes";
-import "flatpickr/dist/themes/airbnb.css";
-import Flatpickr from "react-flatpickr";
 import * as ROUTES from "../../constants/routes";
 import PropTypes from "prop-types";
+import "flatpickr/dist/themes/airbnb.css";
+import Flatpickr from "react-flatpickr";
 import { Link } from "react-router-dom";
+import { transmitMessage, uploadFile } from "../../helpers/firebaseCRUD";
+import getUniqueTypes from "../../helpers/getUniqueTypes";
 
 class TransmitFormBase extends Component {
   state = {
