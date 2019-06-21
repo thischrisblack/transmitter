@@ -10,6 +10,7 @@ import Flatpickr from "react-flatpickr";
 import { Link } from "react-router-dom";
 import { transmitMessage, uploadFile } from "../../helpers/firebaseCRUD";
 import getUniqueTypes from "../../helpers/getUniqueTypes";
+import Static from "../Loading";
 
 class TransmitFormBase extends Component {
   state = {
@@ -257,7 +258,7 @@ class TransmitFormBase extends Component {
         </Link>
 
         {error && <p>{error.message}</p>}
-        {transmitting && <p>Transmitting</p>}
+        {transmitting && <Static message="Transmitting..." />}
       </form>
     );
   }

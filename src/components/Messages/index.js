@@ -6,6 +6,8 @@ import { config } from "../../config";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import getUniqueTypes from "../../helpers/getUniqueTypes";
+import MessageList from "./MessageList";
+import Static from "../Loading";
 
 class Messages extends Component {
   state = {
@@ -46,15 +48,13 @@ class Messages extends Component {
 
   render() {
     return (
-      <div>
-        {this.state.loading ? (
-          <p>Loading ...</p>
-        ) : (
-          <MessageList
-            messages={this.state.messages}
-            filter={this.state.filter}
-          />
-        )}
+      <div className="messages">
+        {this.state.loading && <Static message="Loading..." />}
+
+        <MessageList
+          messages={this.state.messages}
+          filter={this.state.filter}
+        />
       </div>
     );
   }
@@ -65,35 +65,9 @@ Messages.propTypes = {
   history: PropTypes.object
 };
 
-const MessageList = ({ messages, filter }) => {
-  filter && (messages = messages.filter(message => message.type === filter));
-  if (!messages.length) return <p>No messages.</p>;
-  return (
-    <ul>
-      {messages.map(message => (
-        <li key={message.timestamp}>
-          <div>
-            <strong>ID:</strong> {message.timestamp}
-          </div>
-          {message.image && (
-            <div>
-              <img src={message.image} alt={message.title} />
-            </div>
-          )}
-          <div>
-            <strong>Sound:</strong> <pre>{message.sound}</pre>
-          </div>
-        </li>
-      ))}
-    </ul>
-  );
-};
-
 const condition = authUser => authUser && authUser.uid === config.adminUid;
 
-const TransmitForm = compose(
+export default compose(
   withAuthorization(condition),
   withFirebase
 )(Messages);
-
-export default TransmitForm;
