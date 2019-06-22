@@ -37,6 +37,11 @@ const MessageList = ({ messages, filter }) => {
               className="messages__list--message"
             />
           )}
+          {message.link && (
+            <a className="messages__list--link" href={message.link}>
+              {message.link}
+            </a>
+          )}
           <div className="clear" />
           {message.sound && <SoundPlayer source={message.sound} />}
         </li>

@@ -19,6 +19,7 @@ class TransmitFormBase extends Component {
       type: "",
       title: "",
       message: "",
+      link: "",
       image: "",
       sound: "",
       privatePost: true,
@@ -183,6 +184,13 @@ class TransmitFormBase extends Component {
           value={post.message}
           onChange={this.onChange}
           placeholder="Message"
+        />
+        <input
+          name="link"
+          value={post.link}
+          onChange={this.onChange}
+          type="text"
+          placeholder="Link"
         />
         <input
           className="inputFile"
