@@ -39,10 +39,12 @@ STATIC
 *********************************/
 
 .static {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
   height: 100vh;
   z-index: 10;
   background-image: url(./assets/static03.gif);
@@ -256,6 +258,7 @@ SOUND PLAYER
 
 .sound-player {
   line-height: 3rem;
+  font-size: 1.4rem;
   &__controls {
     display: inline-block;
     width: 5rem;

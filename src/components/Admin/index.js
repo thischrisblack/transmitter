@@ -3,12 +3,11 @@ import { withAuthorization } from "../Session";
 import { withFirebase } from "../Firebase";
 import { compose } from "recompose";
 import { config } from "../../config";
-import SignOutButton from "../SignOut";
 import getUniqueTypes from "../../helpers/getUniqueTypes";
 import TransmitForm from "../Transmit/TransmitForm";
 import Messages from "../Messages";
 import AdminNav from "../AdminNav";
-import { Link, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import PropTypes from "prop-types";
 
 class Admin extends Component {
@@ -42,39 +41,20 @@ class Admin extends Component {
   }
 
   render() {
-    const { messages, typeList, loading } = this.state;
-
     return (
       <div className="admin">
         <div className="adminContent">
           <Route exact path="/lord/" component={AdminNav} />
           <Route path="/lord/transmit" component={TransmitForm} />
-          <Route path="/lord/messages/:filter?" component={Messages} />
+          <Route
+            path="/lord/messages/:filter?"
+            render={props => <Messages {...props} showPrivate={true} />} // No need to pass showPrivate for public-only messages
+          />
         </div>
       </div>
     );
   }
 }
-
-const MOnkeyTown = ({ messages }) => (
-  <ul>
-    {messages.map(message => (
-      <li key={message.timestamp}>
-        <div>
-          <strong>ID:</strong> {message.timestamp}
-        </div>
-        {message.image && (
-          <div>
-            <img src={message.image} alt={message.title} />
-          </div>
-        )}
-        <div>
-          <strong>Sound:</strong> <pre>{message.sound}</pre>
-        </div>
-      </li>
-    ))}
-  </ul>
-);
 
 Admin.propTypes = {
   firebase: PropTypes.object

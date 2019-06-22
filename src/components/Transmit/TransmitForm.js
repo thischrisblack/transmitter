@@ -148,9 +148,9 @@ class TransmitFormBase extends Component {
     return (
       <form onSubmit={this.onSubmit}>
         {transmitting && <Static message="Transmitting..." />}
-        <Link to={`/lord`} className="closer">
+        {/* <Link to={`/lord`} className="closer">
           [CANCEL]
-        </Link>
+        </Link> */}
         <Flatpickr
           name="timestamp"
           data-enable-time
@@ -166,6 +166,7 @@ class TransmitFormBase extends Component {
           placeholder={loading ? "Loading ..." : "Message Type"}
         />
         <datalist id="prevTypes">
+          <option value="calendar" />
           {typeList.map(type => (
             <option key={type} value={type} />
           ))}

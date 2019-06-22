@@ -19,22 +19,33 @@ class Messages extends Component {
   };
 
   componentDidMount() {
+    // This whole thing may not be necessary
+    // There's so much admin-particular shit in here.
+    const showPrivate = this.props.showPrivate ? true : false;
+
     this.setState({ loading: true });
 
-    this.props.firebase.messages().on("value", snapshot => {
-      const messagesObject = snapshot.val();
+    this.props.firebase
+      .messages()
+      .orderByChild("privatePost")
+      .startAt(false)
+      .endAt(showPrivate)
+      .on("value", snapshot => {
+        const messagesObject = snapshot.val();
 
-      const messagesList = Object.keys(messagesObject).map(key => ({
-        ...messagesObject[key],
-        timestamp: key
-      }));
+        const messagesList = Object.keys(messagesObject).map(key => ({
+          ...messagesObject[key],
+          timestamp: key
+        }));
 
-      this.setState({
-        messages: messagesList,
-        typeList: getUniqueTypes(messagesList, "type"),
-        loading: false
+        messagesList.sort((a, b) => (a.timestamp < b.timestamp ? 1 : -1));
+
+        this.setState({
+          messages: messagesList,
+          typeList: getUniqueTypes(messagesList, "type"),
+          loading: false
+        });
       });
-    });
 
     const { filter } = this.props.match.params;
 
@@ -54,9 +65,9 @@ class Messages extends Component {
   render() {
     return (
       <div className="messages">
-        <Link to={`/lord`} className="closer">
-          [close]
-        </Link>
+        {/* <Link to={`/lord`} className="closer">
+          [CLOSE]
+        </Link> */}
         {this.state.loading && <Static message="Loading..." />}
 
         <TypeList
