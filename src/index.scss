@@ -76,6 +76,15 @@ h1 {
   clear: both;
 }
 
+a {
+  text-decoration: none;
+  font-weight: 700;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 /*********************************
 FORMS
 *********************************/
@@ -153,7 +162,7 @@ ADMIN
 @media screen and (min-width: 700px) {
   .admin {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr;
     grid-template-areas: ". content .";
   }
 }
@@ -226,14 +235,36 @@ MESSAGE LIST
     }
 
     &--link {
+      &:after {
+        content: " →";
+      }
     }
 
-    &--image img {
-      width: 30%;
+    &--image {
+      position: relative;
+      width: 20rem;
       float: left;
       margin: 0 2rem 2rem 0;
       transition: all 0.2s;
       cursor: pointer;
+
+      &::after {
+        content: "";
+        background-image: url(./assets/static02.gif);
+        background-size: 300px 400px;
+        opacity: 0.2;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+        z-index: -1;
+      }
+
+      img {
+        width: 100%;
+        display: block;
+      }
     }
 
     &--sound {

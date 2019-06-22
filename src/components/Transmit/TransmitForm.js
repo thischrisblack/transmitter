@@ -10,6 +10,7 @@ import Flatpickr from "react-flatpickr";
 // import { Link } from "react-router-dom";
 import { transmitMessage, uploadFile } from "../../helpers/firebaseCRUD";
 import getUniqueTypes from "../../helpers/getUniqueTypes";
+import aspectRatioCalculator from "../../helpers/aspectRatioCalculator";
 import Loading from "../Loading";
 
 class TransmitFormBase extends Component {
@@ -21,6 +22,7 @@ class TransmitFormBase extends Component {
       message: "",
       link: "",
       image: "",
+      imageRatio: null,
       sound: "",
       privatePost: true,
       sticky: false,
@@ -130,17 +132,25 @@ class TransmitFormBase extends Component {
     let fileName;
     if (fileType === "image") {
       fileName = this.imageRef.current.files[0].name;
+      aspectRatioCalculator(this.imageRef.current.files[0]).then(ratio => {
+        this.setState(prevState => ({
+          post: {
+            ...prevState.post,
+            image: fileName,
+            imageRatio: ratio
+          }
+        }));
+      });
     }
     if (fileType === "sound") {
       fileName = this.soundRef.current.files[0].name;
+      this.setState(prevState => ({
+        post: {
+          ...prevState.post,
+          sound: fileName
+        }
+      }));
     }
-    console.log(fileName);
-    this.setState(prevState => ({
-      post: {
-        ...prevState.post,
-        [fileType]: fileName
-      }
-    }));
   };
 
   render() {
