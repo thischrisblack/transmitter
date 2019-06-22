@@ -3,7 +3,6 @@ const getUniqueTypes = (messagesList, key) => {
   messagesList.forEach(message => {
     if (!typeList.includes(message[key])) typeList.push(message[key]);
   });
-  typeList.push("calendar");
   typeList.sort();
   return typeList;
 };

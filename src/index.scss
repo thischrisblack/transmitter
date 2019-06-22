@@ -42,7 +42,7 @@ STATIC
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   z-index: 10;
   background-image: url(./assets/static03.gif);
@@ -120,7 +120,7 @@ textarea {
 
 .transmit-button {
   font-family: "Roboto Mono", monospace;
-  font-size: 4rem;
+  font-size: 3.4rem;
   margin-top: 1rem;
   border: 0;
   background-color: #fff;
@@ -265,5 +265,12 @@ SOUND PLAYER
 
   &__timer {
     color: #999;
+  }
+
+  &__progress-bar {
+    background-image: url(./assets/static04.gif);
+    background-size: cover;
+    height: 1px;
+    display: block;
   }
 }

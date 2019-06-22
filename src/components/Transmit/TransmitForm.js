@@ -21,7 +21,6 @@ class TransmitFormBase extends Component {
       message: "",
       image: "",
       sound: "",
-      link: "",
       privatePost: true,
       sticky: false,
       social: false
@@ -148,6 +147,7 @@ class TransmitFormBase extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
+        {transmitting && <Static message="Transmitting..." />}
         <Link to={`/lord`} className="closer">
           [CANCEL]
         </Link>
@@ -182,13 +182,6 @@ class TransmitFormBase extends Component {
           value={post.message}
           onChange={this.onChange}
           placeholder="Message"
-        />
-        <input
-          name="link"
-          value={post.link}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Link"
         />
         <input
           className="inputFile"
@@ -256,7 +249,6 @@ class TransmitFormBase extends Component {
         </button>
 
         {error && <p>{error.message}</p>}
-        {transmitting && <Static message="Transmitting..." />}
       </form>
     );
   }

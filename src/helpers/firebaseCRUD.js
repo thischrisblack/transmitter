@@ -11,21 +11,19 @@ export const transmitMessage = (post, firebase) => {
     message,
     image,
     sound,
-    link,
     privatePost,
     sticky,
     social
   } = post;
 
-  const dbNode = type === "calendar" ? "calendarEvent" : "message";
+  // const dbNode = type === "calendar" ? "calendarEvent" : "message";
 
-  return firebase[dbNode](timestamp).set({
+  return firebase.message(timestamp).set({
     type,
     title,
     message,
     image,
     sound,
-    link,
     privatePost,
     sticky,
     social
