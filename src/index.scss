@@ -70,6 +70,12 @@ h1 {
   display: block;
 }
 
+.clear {
+  display: block;
+  height: 0px;
+  clear: both;
+}
+
 /*********************************
 FORMS
 *********************************/
@@ -192,8 +198,6 @@ MESSAGE LIST
   list-style-type: none;
 
   &__list {
-    margin-top: 3rem;
-
     li {
       margin-bottom: 5rem;
 
@@ -225,7 +229,11 @@ MESSAGE LIST
     }
 
     &--image img {
-      width: 100%;
+      width: 30%;
+      float: left;
+      margin: 0 2rem 2rem 0;
+      transition: all 0.2s;
+      cursor: pointer;
     }
 
     &--sound {
@@ -239,6 +247,7 @@ TYPE LIST
 
 .typelist {
   list-style-type: none;
+  margin-bottom: 5rem;
 
   &__type {
     display: inline-block;

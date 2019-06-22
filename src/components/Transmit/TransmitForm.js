@@ -7,7 +7,7 @@ import { compose } from "recompose";
 import * as ROUTES from "../../constants/routes";
 import "flatpickr/dist/themes/airbnb.css";
 import Flatpickr from "react-flatpickr";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { transmitMessage, uploadFile } from "../../helpers/firebaseCRUD";
 import getUniqueTypes from "../../helpers/getUniqueTypes";
 import Loading from "../Loading";
@@ -124,7 +124,7 @@ class TransmitFormBase extends Component {
     }));
   };
 
-  displayFile = event => {
+  diplayFileName = event => {
     const fileType = event.currentTarget.name;
     let fileName;
     if (fileType === "image") {
@@ -190,7 +190,7 @@ class TransmitFormBase extends Component {
           name="image"
           type="file"
           ref={this.imageRef}
-          onChange={this.displayFile}
+          onChange={this.diplayFileName}
         />
         <label htmlFor="image">{post.image ? post.image : "IMAGE"}</label>
         <input
@@ -199,7 +199,7 @@ class TransmitFormBase extends Component {
           id="sound"
           type="file"
           ref={this.soundRef}
-          onChange={this.displayFile}
+          onChange={this.diplayFileName}
         />
         <label htmlFor="sound">{post.sound ? post.sound : "SOUND"}</label>
         <input
