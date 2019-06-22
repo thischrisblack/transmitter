@@ -7,6 +7,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import getUniqueTypes from "../../helpers/getUniqueTypes";
 import MessageList from "./MessageList";
+import TypeList from "./TypeList";
 import Static from "../Loading";
 
 class Messages extends Component {
@@ -42,6 +43,10 @@ class Messages extends Component {
     });
   }
 
+  updateFilter = event => {
+    this.setState({ filter: event.target.id });
+  };
+
   componentWillUnmount() {
     this.props.firebase.messages().off();
   }
@@ -49,7 +54,15 @@ class Messages extends Component {
   render() {
     return (
       <div className="messages">
+        <Link to={`/lord`} className="closer">
+          [close]
+        </Link>
         {this.state.loading && <Static message="Loading..." />}
+
+        <TypeList
+          types={this.state.typeList}
+          updateFilter={this.updateFilter}
+        />
 
         <MessageList
           messages={this.state.messages}

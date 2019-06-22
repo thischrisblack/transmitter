@@ -56,18 +56,6 @@ class Admin extends Component {
   }
 }
 
-const TypeList = ({ types }) => (
-  <ul>
-    {types.map(type => (
-      <li key={type}>
-        <span>
-          <strong>Type:</strong> {type}
-        </span>
-      </li>
-    ))}
-  </ul>
-);
-
 const MOnkeyTown = ({ messages }) => (
   <ul>
     {messages.map(message => (

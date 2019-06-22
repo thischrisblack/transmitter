@@ -117,7 +117,6 @@ class TransmitFormBase extends Component {
 
   onDateChange = event => {
     const newStamp = event[0].getTime();
-    console.log(event);
     this.setState(prevState => ({
       post: {
         ...prevState.post,
@@ -253,9 +252,9 @@ class TransmitFormBase extends Component {
           TRANSMIT
         </button>
 
-        <Link to={`/lord`} className="admin__nav admin__nav--cancel">
-          CANCEL
-        </Link>
+        {/* <Link to={`/lord`} className="closer">
+          [CANCEL]
+        </Link> */}
 
         {error && <p>{error.message}</p>}
         {transmitting && <Static message="Transmitting..." />}

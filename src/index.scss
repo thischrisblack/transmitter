@@ -54,6 +54,21 @@ STATIC
 }
 
 /*********************************
+TYPOGRAPHY
+*********************************/
+
+h1 {
+  margin-bottom: 2rem;
+}
+
+.closer {
+  text-decoration: none;
+  color: #555;
+  font-size: 1.2rem;
+  display: block;
+}
+
+/*********************************
 FORMS
 *********************************/
 
@@ -104,12 +119,9 @@ textarea {
 }
 
 .transmit-button {
-  display: block;
-  width: 100%;
-  text-align: center;
   font-family: "Roboto Mono", monospace;
   font-size: 5rem;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   border: 0;
   background-color: #fff;
   text-align: center;
@@ -176,24 +188,58 @@ MESSAGE LIST
 
 .messages {
   list-style-type: none;
+
   &__list {
-    &--timestamp {
+    margin-top: 3rem;
+    li {
+      margin-bottom: 3rem;
+
+      div {
+        margin-bottom: 0.5rem;
+      }
     }
+
+    &--timestamp {
+      font-size: 1rem;
+      color: #999;
+    }
+
     &--title {
       font-weight: 700;
+      font-size: 1.8rem;
+      color: #333;
     }
+
     &--message {
     }
+
     &--link {
     }
+
     &--image img {
       width: 100%;
     }
+
     &--sound {
     }
   }
 }
 
-.messages li {
-  margin-top: 2rem;
+/*********************************
+TYPE LIST
+*********************************/
+
+.typelist {
+  list-style-type: none;
+  margin-top: 3rem;
+
+  &__type {
+    display: inline-block;
+    margin-right: 1rem;
+    cursor: pointer;
+
+    &:hover {
+      font-weight: 700;
+    }
+  }
 }
