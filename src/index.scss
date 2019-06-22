@@ -120,7 +120,7 @@ textarea {
 
 .transmit-button {
   font-family: "Roboto Mono", monospace;
-  font-size: 5rem;
+  font-size: 4rem;
   margin-top: 1rem;
   border: 0;
   background-color: #fff;
@@ -161,17 +161,17 @@ ADMIN
 .admin__nav {
   display: block;
   text-decoration: none;
-  text-align: center;
+  // text-align: center;
 
   &--link {
     font-size: 3.5rem;
     margin-top: 2rem;
     color: black;
-    // -webkit-text-fill-color: transparent;
-    // background-clip: text;
-    // -webkit-background-clip: text;
-    // background-image: url(./assets/static03.gif);
-    // color: white;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-image: url(./assets/static03.gif);
+    color: white;
   }
 
   &--cancel {
@@ -191,8 +191,9 @@ MESSAGE LIST
 
   &__list {
     margin-top: 3rem;
+
     li {
-      margin-bottom: 3rem;
+      margin-bottom: 5rem;
 
       div {
         margin-bottom: 0.5rem;
@@ -208,6 +209,11 @@ MESSAGE LIST
       font-weight: 700;
       font-size: 1.8rem;
       color: #333;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
+      background-image: url(./assets/static03.gif);
+      color: white;
     }
 
     &--message {

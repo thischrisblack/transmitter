@@ -1,4 +1,6 @@
 import React from "react";
+const ReactDOM = require("react-dom");
+const ReactMarkdown = require("react-markdown");
 
 const MessageList = ({ messages, filter }) => {
   filter && (messages = messages.filter(message => message.type === filter));
@@ -16,7 +18,11 @@ const MessageList = ({ messages, filter }) => {
             <div className="messages__list--title">{message.title}</div>
           )}
           {message.message && (
-            <div className="messages__list--message">{message.message}</div>
+            <ReactMarkdown
+              source={message.message}
+              className="messages__list--message"
+            />
+            // <div className="messages__list--message">{message.message}</div>
           )}
           {message.image && (
             <div className="messages__list--image">

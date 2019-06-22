@@ -148,6 +148,9 @@ class TransmitFormBase extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
+        <Link to={`/lord`} className="closer">
+          [CANCEL]
+        </Link>
         <Flatpickr
           name="timestamp"
           data-enable-time
@@ -251,10 +254,6 @@ class TransmitFormBase extends Component {
         <button type="submit" className="transmit-button">
           TRANSMIT
         </button>
-
-        {/* <Link to={`/lord`} className="closer">
-          [CANCEL]
-        </Link> */}
 
         {error && <p>{error.message}</p>}
         {transmitting && <Static message="Transmitting..." />}
