@@ -1,6 +1,7 @@
 import React from "react";
-const ReactDOM = require("react-dom");
-const ReactMarkdown = require("react-markdown");
+import ReactMarkdown from "react-markdown";
+import SoundPlayer from "../SoundPlayer";
+import ReactPlayer from "react-player";
 
 const MessageList = ({ messages, filter }) => {
   filter && (messages = messages.filter(message => message.type === filter));
@@ -33,7 +34,13 @@ const MessageList = ({ messages, filter }) => {
             <div className="messages__list--link">{message.link}</div>
           )}
           {message.sound && (
-            <div className="messages__list--sound">{message.sound}</div>
+            <SoundPlayer source={message.sound} />
+            // <ReactPlayer
+            //   url={message.sound}
+            //   controls
+            //   height="50px"
+            //   width="100%"
+            // />
           )}
         </li>
       ))}

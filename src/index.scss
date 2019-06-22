@@ -249,3 +249,21 @@ TYPE LIST
     }
   }
 }
+
+/*********************************
+SOUND PLAYER
+*********************************/
+
+.sound-player {
+  line-height: 3rem;
+  &__controls {
+    display: inline-block;
+    width: 5rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  &__timer {
+    color: #999;
+  }
+}
