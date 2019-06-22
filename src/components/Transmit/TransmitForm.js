@@ -1,16 +1,16 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { withAuthorization } from "../Session";
 import { withFirebase } from "../Firebase";
-import { compose } from "recompose";
 import { config } from "../../config";
+import { compose } from "recompose";
 import * as ROUTES from "../../constants/routes";
-import PropTypes from "prop-types";
 import "flatpickr/dist/themes/airbnb.css";
 import Flatpickr from "react-flatpickr";
 import { Link } from "react-router-dom";
 import { transmitMessage, uploadFile } from "../../helpers/firebaseCRUD";
 import getUniqueTypes from "../../helpers/getUniqueTypes";
-import Static from "../Loading";
+import Loading from "../Loading";
 
 class TransmitFormBase extends Component {
   state = {
@@ -147,7 +147,7 @@ class TransmitFormBase extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
-        {transmitting && <Static message="Transmitting..." />}
+        {transmitting && <Loading message="Transmitting..." />}
         {/* <Link to={`/lord`} className="closer">
           [CANCEL]
         </Link> */}

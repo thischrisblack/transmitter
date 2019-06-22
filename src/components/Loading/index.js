@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 
-class Static extends Component {
+class Loading extends Component {
   render() {
-    return <div className="static">{this.props.message}</div>;
+    return <div className="loading">{this.props.message}</div>;
   }
 }
 
-export default Static;
+export default Loading;

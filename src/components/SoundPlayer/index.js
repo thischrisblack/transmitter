@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import timerFormat from "../../helpers/timerFormat";
+import formatTimer from "../../helpers/formatTimer";
 
 class SoundPlayer extends Component {
   state = {
@@ -61,8 +61,8 @@ class SoundPlayer extends Component {
           {this.state.playing ? "STOP" : "PLAY"}
         </span>
         <span className="sound-player sound-player__timer">
-          {timerFormat(this.state.progress)} /{" "}
-          {timerFormat(this.state.duration)}
+          {formatTimer(this.state.progress)} /{" "}
+          {formatTimer(this.state.duration)}
         </span>
         <div
           className="sound-player__progress-bar"

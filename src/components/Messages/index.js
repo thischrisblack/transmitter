@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import getUniqueTypes from "../../helpers/getUniqueTypes";
 import MessageList from "./MessageList";
 import TypeList from "./TypeList";
-import Static from "../Loading";
+import Loading from "../Loading";
 
 class Messages extends Component {
   state = {
@@ -68,7 +68,7 @@ class Messages extends Component {
         {/* <Link to={`/lord`} className="closer">
           [CLOSE]
         </Link> */}
-        {this.state.loading && <Static message="Loading..." />}
+        {this.state.loading && <Loading message="Loading..." />}
 
         <TypeList
           types={this.state.typeList}

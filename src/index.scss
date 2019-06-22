@@ -35,10 +35,10 @@ body {
 }
 
 /*********************************
-STATIC
+LOADING
 *********************************/
 
-.static {
+.loading {
   position: fixed;
   top: 0;
   left: 0;
@@ -50,7 +50,7 @@ STATIC
   background-image: url(./assets/static03.gif);
   background-size: cover;
   padding: 5rem 4rem;
-  font-size: 3rem;
+  font-size: 2rem;
   color: #fff;
   font-family: "Press Start 2P", monospace;
 }
@@ -239,7 +239,6 @@ TYPE LIST
 
 .typelist {
   list-style-type: none;
-  margin-top: 3rem;
 
   &__type {
     display: inline-block;
