@@ -42,7 +42,7 @@ class TransmitFormBase extends Component {
     this.setState({ loading: true });
 
     this.props.firebase.messages().on("value", snapshot => {
-      const messagesObject = snapshot.val();
+      const messagesObject = snapshot.val() || {};
 
       const messagesList = Object.keys(messagesObject).map(key => ({
         ...messagesObject[key]
@@ -139,7 +139,6 @@ class TransmitFormBase extends Component {
     const fileType = event.currentTarget.name;
     let fileName;
     if (fileType === "image") {
-      console.log(this.imageRef.current.files[0]);
       fileName = this.imageRef.current.files[0].name;
       aspectRatioCalculator(this.imageRef.current.files[0]).then(ratio => {
         this.setState(prevState => ({

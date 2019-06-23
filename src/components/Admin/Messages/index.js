@@ -22,7 +22,7 @@ class Messages extends Component {
     this.setState({ loading: true });
 
     this.props.firebase.messages().on("value", snapshot => {
-      const messagesObject = snapshot.val();
+      const messagesObject = snapshot.val() || {};
 
       const messagesList = Object.keys(messagesObject).map(key => ({
         ...messagesObject[key],
