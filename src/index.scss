@@ -47,7 +47,7 @@ LOADING
   width: 100vw;
   height: 100vh;
   z-index: 10;
-  background-image: url(./assets/static03.gif);
+  background-image: url(./assets/static02.gif);
   background-size: cover;
   padding: 5rem 4rem;
   font-size: 2rem;
@@ -150,17 +150,23 @@ textarea {
 .transmit-button {
   font-family: "Roboto Mono", monospace;
   font-size: 3.4rem;
-  margin-top: 1rem;
+  margin-top: 2rem;
   border: 0;
   background-color: #fff;
   text-align: center;
-  cursor: pointer;
-
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
   background-image: url(./assets/static03.gif);
+  background-size: cover;
+  cursor: pointer;
   color: white;
+  display: block;
+  width: 100%;
+  text-align: center;
+
+  // -webkit-text-fill-color: transparent;
+  // background-clip: text;
+  // -webkit-background-clip: text;
+  // background-image: url(./assets/static03.gif);
+  // color: white;
 }
 
 /*********************************

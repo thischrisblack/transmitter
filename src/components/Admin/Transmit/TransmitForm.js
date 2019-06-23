@@ -180,6 +180,7 @@ class TransmitFormBase extends Component {
           data-enable-time
           value={post.timestamp}
           onChange={this.onDateChange}
+          options={{ disableMobile: "true" }}
         />
         <input
           name="type"
