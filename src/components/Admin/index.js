@@ -5,6 +5,7 @@ import { compose } from "recompose";
 import { config } from "../../config";
 import TransmitForm from "./Transmit/TransmitForm";
 import Messages from "./Messages";
+import Calendar from "./Calendar";
 import AdminNav from "./Nav";
 import { Route } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -17,6 +18,7 @@ class Admin extends Component {
           <Route exact path="/lord/" component={AdminNav} />
           <Route path="/lord/transmit" component={TransmitForm} />
           <Route path="/lord/messages/" component={Messages} />
+          <Route path="/lord/calendar/" component={Calendar} />
         </div>
       </div>
     );

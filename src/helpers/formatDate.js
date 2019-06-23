@@ -1,19 +1,26 @@
 const formatDate = dateObject => {
-  let year = dateObject.getFullYear().toString();
+  const weekdays = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+  ];
+  // let year = dateObject.getFullYear().toString();
   let month = (dateObject.getMonth() + 1).toString();
-  let day = dateObject.getDate().toString();
+  let day = dateObject.getDay();
+  let date = dateObject.getDate().toString();
   let hours = dateObject.getHours().toString();
   let minutes = dateObject.getMinutes().toString();
-  let seconds = dateObject.getSeconds().toString();
+  let ampm = hours >= 12 ? "pm" : "am";
+  hours = hours % 12;
+  hours = hours ? hours : 12; // the hour '0' should be '12'
 
-  let date = year + "-" + month.padStart(2, "0") + "-" + day.padStart(2, "0");
-  let time =
-    hours.padStart(2, "0") +
-    ":" +
-    minutes.padStart(2, "0") +
-    ":" +
-    seconds.padStart(2, "0");
-  let dateTime = date + " " + time;
+  let dayDate = weekdays[day] + " " + month + "/" + date;
+  let time = hours + ":" + minutes.padStart(2, "0");
+  let dateTime = dayDate + " " + time + " " + ampm;
   return dateTime;
 };
 

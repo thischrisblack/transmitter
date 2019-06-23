@@ -11,6 +11,9 @@ class AdminNav extends Component {
         <Link to={`/lord/messages`} className="admin__nav admin__nav--link">
           MESSAGES
         </Link>
+        <Link to={`/lord/calendar`} className="admin__nav admin__nav--link">
+          CALENDAR
+        </Link>
       </div>
     );
   }

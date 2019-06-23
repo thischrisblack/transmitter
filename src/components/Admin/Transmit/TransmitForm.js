@@ -41,17 +41,20 @@ class TransmitFormBase extends Component {
   componentDidMount() {
     this.setState({ loading: true });
 
-    this.props.firebase.messages().on("value", snapshot => {
-      const messagesObject = snapshot.val() || {};
+    // If this isn't adding a calendar date, get previous post types.
+    if (!this.props.location.type) {
+      this.props.firebase.messages().on("value", snapshot => {
+        const messagesObject = snapshot.val() || {};
 
-      const messagesList = Object.keys(messagesObject).map(key => ({
-        ...messagesObject[key]
-      }));
+        const messagesList = Object.keys(messagesObject).map(key => ({
+          ...messagesObject[key]
+        }));
 
-      this.setState({
-        typeList: getUniqueTypes(messagesList, "type")
+        this.setState({
+          typeList: getUniqueTypes(messagesList, "type")
+        });
       });
-    });
+    }
 
     const postToEdit = this.props.location.post;
 
@@ -61,6 +64,8 @@ class TransmitFormBase extends Component {
     // Create new post object which is EITHER the post to edit, or the current state with new timestamp
     const postForState = postToEdit || {
       ...this.state.post,
+      // Set post type = calendar if prop exists.
+      type: this.props.location.type || "",
       timestamp: new Date().getTime()
     };
 
