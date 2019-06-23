@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import { withAuthorization } from "../Session";
+import { withAuthorization } from "../Firebase/Session";
 import { withFirebase } from "../Firebase";
 import { compose } from "recompose";
 import { config } from "../../config";
 import getUniqueTypes from "../../helpers/getUniqueTypes";
-import TransmitForm from "../Transmit/TransmitForm";
-import Messages from "../Messages";
-import AdminNav from "../AdminNav";
+import TransmitForm from "./Transmit/TransmitForm";
+import Messages from "./Messages";
+import AdminNav from "./Nav";
 import { Route } from "react-router-dom";
 import PropTypes from "prop-types";
 
@@ -46,10 +46,7 @@ class Admin extends Component {
         <div className="adminContent">
           <Route exact path="/lord/" component={AdminNav} />
           <Route path="/lord/transmit" component={TransmitForm} />
-          <Route
-            path="/lord/messages/:filter?"
-            render={props => <Messages {...props} showPrivate={true} />} // No need to pass showPrivate for public-only messages
-          />
+          <Route path="/lord/messages/:filter?" component={Messages} />
         </div>
       </div>
     );

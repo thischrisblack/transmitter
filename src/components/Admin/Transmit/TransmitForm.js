@@ -1,17 +1,17 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { withAuthorization } from "../Session";
-import { withFirebase } from "../Firebase";
-import { config } from "../../config";
+import { withAuthorization } from "../../Firebase/Session";
+import { withFirebase } from "../../Firebase";
+import { config } from "../../../config";
 import { compose } from "recompose";
-import * as ROUTES from "../../constants/routes";
+import * as ROUTES from "../../../constants/routes";
 import "flatpickr/dist/themes/airbnb.css";
 import Flatpickr from "react-flatpickr";
 // import { Link } from "react-router-dom";
-import { transmitMessage, uploadFile } from "../../helpers/firebaseCRUD";
-import getUniqueTypes from "../../helpers/getUniqueTypes";
-import aspectRatioCalculator from "../../helpers/aspectRatioCalculator";
-import Loading from "../Loading";
+import { transmitMessage, uploadFile } from "../../../helpers/firebaseCRUD";
+import getUniqueTypes from "../../../helpers/getUniqueTypes";
+import aspectRatioCalculator from "../../../helpers/aspectRatioCalculator";
+import Loading from "../../UI/LoadingScreen";
 
 class TransmitFormBase extends Component {
   state = {
@@ -131,6 +131,7 @@ class TransmitFormBase extends Component {
     const fileType = event.currentTarget.name;
     let fileName;
     if (fileType === "image") {
+      console.log(this.imageRef.current.files[0]);
       fileName = this.imageRef.current.files[0].name;
       aspectRatioCalculator(this.imageRef.current.files[0]).then(ratio => {
         this.setState(prevState => ({

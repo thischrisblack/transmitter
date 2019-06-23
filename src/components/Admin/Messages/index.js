@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import { withAuthorization } from "../Session";
-import { withFirebase } from "../Firebase";
+import { withAuthorization } from "../../Firebase/Session";
+import { withFirebase } from "../../Firebase";
 import { compose } from "recompose";
-import { config } from "../../config";
+import { config } from "../../../config";
 import PropTypes from "prop-types";
 // import { Link } from "react-router-dom";
-import getUniqueTypes from "../../helpers/getUniqueTypes";
+import getUniqueTypes from "../../../helpers/getUniqueTypes";
 import MessageList from "./MessageList";
 import TypeList from "./TypeList";
-import Loading from "../Loading";
+import Loading from "../../UI/LoadingScreen";
 
 class Messages extends Component {
   state = {
@@ -19,33 +19,24 @@ class Messages extends Component {
   };
 
   componentDidMount() {
-    // This whole thing may not be necessary
-    // There's so much admin-particular shit in here.
-    const showPrivate = this.props.showPrivate ? true : false;
-
     this.setState({ loading: true });
 
-    this.props.firebase
-      .messages()
-      .orderByChild("privatePost")
-      .startAt(false)
-      .endAt(showPrivate)
-      .on("value", snapshot => {
-        const messagesObject = snapshot.val();
+    this.props.firebase.messages().on("value", snapshot => {
+      const messagesObject = snapshot.val();
 
-        const messagesList = Object.keys(messagesObject).map(key => ({
-          ...messagesObject[key],
-          timestamp: key
-        }));
+      const messagesList = Object.keys(messagesObject).map(key => ({
+        ...messagesObject[key],
+        timestamp: key
+      }));
 
-        messagesList.sort((a, b) => (a.timestamp < b.timestamp ? 1 : -1));
+      messagesList.sort((a, b) => (a.timestamp < b.timestamp ? 1 : -1));
 
-        this.setState({
-          messages: messagesList,
-          typeList: getUniqueTypes(messagesList, "type"),
-          loading: false
-        });
+      this.setState({
+        messages: messagesList,
+        typeList: getUniqueTypes(messagesList, "type"),
+        loading: false
       });
+    });
 
     const { filter } = this.props.match.params;
 

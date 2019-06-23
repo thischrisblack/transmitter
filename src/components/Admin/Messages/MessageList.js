@@ -1,6 +1,6 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
-import SoundPlayer from "../SoundPlayer";
+import SoundPlayer from "../../UI/SoundPlayer";
 
 const MessageList = ({ messages, filter }) => {
   filter && (messages = messages.filter(message => message.type === filter));

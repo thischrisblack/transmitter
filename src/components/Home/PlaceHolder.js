@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../Logo";
+import Logo from "../UI/Logo";
 
 class PlaceHolder extends React.Component {
   render() {

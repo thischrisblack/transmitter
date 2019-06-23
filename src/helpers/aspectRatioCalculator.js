@@ -25,7 +25,7 @@ async function aspectRatioCalculator(file) {
     let ratio = await readFileAsync(file);
     return ratio;
   } catch (err) {
-    console.log(err);
+    return err;
   }
 }
 

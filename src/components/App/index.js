@@ -1,14 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import Signup from "../SignUp";
-import Signin from "../SignIn";
+import Signup from "../Account/SignUp";
+import Signin from "../Account/SignIn";
 import Admin from "../Admin";
-import Transmit from "../Transmit";
+import Transmit from "../Admin/Transmit";
 import Home from "../Home";
 
 import * as ROUTES from "../../constants/routes";
-import { withAuthentication } from "../Session";
+import { withAuthentication } from "../Firebase/Session";
 
 const App = () => (
   <Router>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import formatTimer from "../../helpers/formatTimer";
+import formatTimer from "../../../helpers/formatTimer";
 
 class SoundPlayer extends Component {
   state = {
