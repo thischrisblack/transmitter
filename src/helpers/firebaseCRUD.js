@@ -34,8 +34,21 @@ export const transmitMessage = (post, firebase) => {
   });
 };
 
-export const deleteMessage = (id, firebase) => {
-  firebase.message(id).remove();
+export const deleteMessage = (messageData, firebase) => {
+  const [postId, imageUrl, soundUrl] = messageData.split(" ");
+  if (imageUrl) {
+    const imageReference = firebase.storage.refFromURL(imageUrl);
+    imageReference.delete().then(() => {
+      console.log("Deleted image!");
+    });
+  }
+  if (soundUrl) {
+    const soundReference = firebase.storage.refFromURL(soundUrl);
+    soundReference.delete().then(() => {
+      console.log("Deleted sound!");
+    });
+  }
+  firebase.message(postId).remove();
 };
 
 /**

@@ -15,7 +15,6 @@ const MessageList = ({ messages, filter, firebase }) => {
   };
 
   const deletePost = event => {
-    console.log(event.target.id);
     deleteMessage(event.target.id, firebase);
   };
 
@@ -36,7 +35,12 @@ const MessageList = ({ messages, filter, firebase }) => {
                 edit
               </Link>
               {" | "}
-              <span id={message.timestamp} onClick={deletePost}>
+              <span
+                id={
+                  message.timestamp + " " + message.image + " " + message.sound
+                }
+                onClick={deletePost}
+              >
                 &times;
               </span>
             </div>
