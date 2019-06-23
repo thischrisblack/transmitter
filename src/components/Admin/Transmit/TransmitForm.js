@@ -16,7 +16,7 @@ import Loading from "../../UI/LoadingScreen";
 class TransmitFormBase extends Component {
   state = {
     post: {
-      timestamp: "",
+      timestamp: null,
       type: "",
       title: "",
       message: "",
@@ -45,19 +45,27 @@ class TransmitFormBase extends Component {
       const messagesObject = snapshot.val();
 
       const messagesList = Object.keys(messagesObject).map(key => ({
-        ...messagesObject[key],
-        timestamp: key
+        ...messagesObject[key]
       }));
 
-      this.setState(prevState => ({
-        post: {
-          ...prevState.post,
-          timestamp: new Date().getTime()
-        },
-        typeList: getUniqueTypes(messagesList, "type"),
-        loading: false
-      }));
+      this.setState({
+        typeList: getUniqueTypes(messagesList, "type")
+      });
     });
+
+    const postToEdit = this.props.location.post;
+
+    // If post to edit, convert timestamp to number
+    postToEdit && (postToEdit.timestamp = parseInt(postToEdit.timestamp));
+
+    // Create new post object which is EITHER the post to edit, or the current state with new timestamp
+    const postForState = postToEdit || {
+      ...this.state.post,
+      timestamp: new Date().getTime()
+    };
+
+    // Set that state
+    this.setState({ post: postForState, loading: false });
   }
 
   componentWillUnmount() {

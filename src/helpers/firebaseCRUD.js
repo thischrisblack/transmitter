@@ -34,6 +34,10 @@ export const transmitMessage = (post, firebase) => {
   });
 };
 
+export const deleteMessage = (id, firebase) => {
+  firebase.message(id).remove();
+};
+
 /**
  * Uploads the given file to the Firebase Storage and returns the download URL for the file.
  * @param {*} file

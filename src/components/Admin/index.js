@@ -46,7 +46,7 @@ class Admin extends Component {
         <div className="adminContent">
           <Route exact path="/lord/" component={AdminNav} />
           <Route path="/lord/transmit" component={TransmitForm} />
-          <Route path="/lord/messages/:filter?" component={Messages} />
+          <Route path="/lord/messages/" component={Messages} />
         </div>
       </div>
     );

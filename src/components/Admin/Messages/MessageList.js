@@ -1,8 +1,10 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import SoundPlayer from "../../UI/SoundPlayer";
+import { deleteMessage } from "../../../helpers/firebaseCRUD";
+import { Link } from "react-router-dom";
 
-const MessageList = ({ messages, filter }) => {
+const MessageList = ({ messages, filter, firebase }) => {
   filter && (messages = messages.filter(message => message.type === filter));
 
   if (!messages.length) return <p>No messages.</p>;
@@ -10,6 +12,11 @@ const MessageList = ({ messages, filter }) => {
   const handleClick = event => {
     let width = event.currentTarget.style.width;
     event.currentTarget.style.width = width === "100%" ? "20rem" : "100%";
+  };
+
+  const deletePost = event => {
+    console.log(event.target.id);
+    deleteMessage(event.target.id, firebase);
   };
 
   return (
@@ -24,6 +31,14 @@ const MessageList = ({ messages, filter }) => {
           <li key={message.timestamp}>
             <div className="messages__list--timestamp">
               {new Date(Number(message.timestamp)).toUTCString()}
+              {" | "}
+              <Link to={{ pathname: "/lord/transmit", post: message }}>
+                edit
+              </Link>
+              {" | "}
+              <span id={message.timestamp} onClick={deletePost}>
+                &times;
+              </span>
             </div>
             {message.title && (
               <div className="messages__list--title">{message.title}</div>
@@ -43,12 +58,12 @@ const MessageList = ({ messages, filter }) => {
                 className="messages__list--message"
               />
             )}
+            <div className="clear" />
             {message.link && (
               <a className="messages__list--link" href={message.link}>
                 {message.link.split("/")[2]}
               </a>
             )}
-            <div className="clear" />
             {message.sound && <SoundPlayer source={message.sound} />}
           </li>
         );

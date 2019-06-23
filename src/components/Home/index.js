@@ -1,6 +1,5 @@
 import React from "react";
 import PlaceHolder from "./PlaceHolder";
-import Messages from "../Admin/Messages";
 
 class Home extends React.Component {
   render() {

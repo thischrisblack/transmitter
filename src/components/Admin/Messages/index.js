@@ -69,6 +69,7 @@ class Messages extends Component {
         <MessageList
           messages={this.state.messages}
           filter={this.state.filter}
+          firebase={this.props.firebase}
         />
       </div>
     );
