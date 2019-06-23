@@ -22,7 +22,7 @@ class TransmitFormBase extends Component {
       message: "",
       link: "",
       image: "",
-      imageRatio: null,
+      imageRatio: 0,
       sound: "",
       privatePost: true,
       sticky: false,

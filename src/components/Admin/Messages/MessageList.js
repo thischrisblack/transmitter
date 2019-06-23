@@ -30,19 +30,22 @@ const MessageList = ({ messages, filter, firebase }) => {
           <li key={message.timestamp}>
             <div className="messages__list--timestamp">
               {new Date(Number(message.timestamp)).toUTCString()}
-              {" | "}
-              <Link to={{ pathname: "/lord/transmit", post: message }}>
-                edit
-              </Link>
-              {" | "}
-              <span
-                className="messages__list--delete"
-                data-postid={message.timestamp}
-                data-image={message.image}
-                data-sound={message.sound}
-                onClick={deletePost}
-              >
-                &times;
+              <span className="messages__list--edit">
+                {" | "}
+                <Link to={{ pathname: "/lord/transmit", post: message }}>
+                  edit
+                </Link>
+                {" | "}
+                <span
+                  className="messages__list--delete"
+                  data-postid={message.timestamp}
+                  data-database="message"
+                  data-image={message.image}
+                  data-sound={message.sound}
+                  onClick={deletePost}
+                >
+                  &times;
+                </span>
               </span>
             </div>
             {message.title && (

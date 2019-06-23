@@ -47,7 +47,7 @@ export const deleteMessage = (messageData, firebase) => {
       console.log("Deleted sound!");
     });
   }
-  firebase.message(messageData.postid).remove();
+  firebase[messageData.database](messageData.postid).remove();
 };
 
 /**

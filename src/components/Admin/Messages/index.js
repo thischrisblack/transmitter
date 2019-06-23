@@ -59,7 +59,7 @@ class Messages extends Component {
         {/* <Link to={`/lord`} className="closer">
           [CLOSE]
         </Link> */}
-        {this.state.loading && <Loading message="Loading..." />}
+        <h1>MESSAGES</h1>
 
         <TypeList
           types={this.state.typeList}

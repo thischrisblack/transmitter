@@ -236,10 +236,14 @@ MESSAGE LIST
       }
     }
 
+    &--edit {
+      font-size: 1.1rem;
+    }
+
     &--delete {
-      font-weight: 700;
-      color: black;
+      color: maroon;
       cursor: pointer;
+      font-weight: 700;
     }
 
     &--title {
@@ -321,6 +325,16 @@ CALENDAR LIST
       }
     }
 
+    &--edit {
+      font-size: 1.3rem;
+    }
+
+    &--delete {
+      color: maroon;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
     &--timestamp {
       font-size: 1.6rem;
       color: #999;
@@ -328,11 +342,6 @@ CALENDAR LIST
       a {
         color: #555;
       }
-    }
-
-    &--delete {
-      color: maroon;
-      cursor: pointer;
     }
 
     &--title {
@@ -392,7 +401,7 @@ TYPE LIST
 
 .typelist {
   list-style-type: none;
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
 
   &__type {
     display: inline-block;

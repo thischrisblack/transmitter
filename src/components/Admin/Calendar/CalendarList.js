@@ -8,7 +8,7 @@ import formatDate from "../../../helpers/formatDate";
 const CalendarList = ({ messages, filter, firebase }) => {
   filter && (messages = messages.filter(message => message.type === filter));
 
-  if (!messages.length) return <p>No messages.</p>;
+  if (!messages.length) return <p>No events.</p>;
 
   const handleClick = event => {
     let width = event.currentTarget.style.width;
@@ -31,6 +31,23 @@ const CalendarList = ({ messages, filter, firebase }) => {
           <li key={message.timestamp}>
             <div className="calendar__list--timestamp">
               {formatDate(new Date(parseInt(message.timestamp)))}
+              <span className="calendar__list--edit">
+                {" | "}
+                <Link to={{ pathname: "/lord/transmit", post: message }}>
+                  edit
+                </Link>
+                {" | "}
+                <span
+                  className="calendar__list--delete"
+                  data-postid={message.timestamp}
+                  data-database="calendarEvent"
+                  data-image={message.image}
+                  data-sound={message.sound}
+                  onClick={deletePost}
+                >
+                  &times;
+                </span>
+              </span>
             </div>
             {message.title && (
               <div className="calendar__list--title">{message.title}</div>
@@ -57,17 +74,6 @@ const CalendarList = ({ messages, filter, firebase }) => {
               </a>
             )}
             {message.sound && <SoundPlayer source={message.sound} />}
-            <Link to={{ pathname: "/lord/transmit", post: message }}>edit</Link>
-            {" | "}
-            <span
-              className="calendar__list--delete"
-              data-postid={message.timestamp}
-              data-image={message.image}
-              data-sound={message.sound}
-              onClick={deletePost}
-            >
-              delete
-            </span>
           </li>
         );
       })}
