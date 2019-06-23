@@ -15,7 +15,7 @@ const MessageList = ({ messages, filter, firebase }) => {
   };
 
   const deletePost = event => {
-    deleteMessage(event.target.id, firebase);
+    deleteMessage(event.target.dataset, firebase);
   };
 
   return (
@@ -36,9 +36,9 @@ const MessageList = ({ messages, filter, firebase }) => {
               </Link>
               {" | "}
               <span
-                id={
-                  message.timestamp + " " + message.image + " " + message.sound
-                }
+                data-postid={message.timestamp}
+                data-image={message.image}
+                data-sound={message.sound}
                 onClick={deletePost}
               >
                 &times;

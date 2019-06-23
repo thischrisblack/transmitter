@@ -35,20 +35,19 @@ export const transmitMessage = (post, firebase) => {
 };
 
 export const deleteMessage = (messageData, firebase) => {
-  const [postId, imageUrl, soundUrl] = messageData.split(" ");
-  if (imageUrl) {
-    const imageReference = firebase.storage.refFromURL(imageUrl);
+  if (messageData.image) {
+    const imageReference = firebase.storage.refFromURL(messageData.image);
     imageReference.delete().then(() => {
       console.log("Deleted image!");
     });
   }
-  if (soundUrl) {
-    const soundReference = firebase.storage.refFromURL(soundUrl);
+  if (messageData.sound) {
+    const soundReference = firebase.storage.refFromURL(messageData.sound);
     soundReference.delete().then(() => {
       console.log("Deleted sound!");
     });
   }
-  firebase.message(postId).remove();
+  firebase.message(messageData.postid).remove();
 };
 
 /**
