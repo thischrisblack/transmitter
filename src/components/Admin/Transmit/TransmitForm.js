@@ -156,6 +156,15 @@ class TransmitFormBase extends Component {
       });
     }
     if (fileType === "sound") {
+      var jsmediatags = window.jsmediatags;
+      jsmediatags.read(this.soundRef.current.files[0], {
+        onSuccess: function(tag) {
+          console.log(tag);
+        },
+        onError: function(error) {
+          console.log(error);
+        }
+      });
       fileName = this.soundRef.current.files[0].name;
       this.setState(prevState => ({
         post: {
