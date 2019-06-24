@@ -9,6 +9,7 @@ import Calendar from "./Calendar";
 import AdminNav from "./Nav";
 import { Route } from "react-router-dom";
 import PropTypes from "prop-types";
+import BatchUpload from "./Transmit/BatchUpload";
 
 class Admin extends Component {
   render() {
@@ -19,6 +20,7 @@ class Admin extends Component {
           <Route path="/lord/transmit" component={TransmitForm} />
           <Route path="/lord/messages/" component={Messages} />
           <Route path="/lord/calendar/" component={Calendar} />
+          <Route path="/lord/batch/" component={BatchUpload} />
         </div>
       </div>
     );
