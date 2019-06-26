@@ -11,24 +11,22 @@ import Loading from "../../UI/LoadingScreen";
 class Calendar extends Component {
   state = {
     loading: true,
-    messages: []
+    dates: []
   };
 
   componentDidMount() {
     this.setState({ loading: true });
 
     this.props.firebase.calendar().on("value", snapshot => {
-      const messagesObject = snapshot.val() || {};
+      const datesObject = snapshot.val() || {};
 
-      const messagesList = Object.keys(messagesObject).map(key => ({
-        ...messagesObject[key],
+      const datesList = Object.keys(datesObject).map(key => ({
+        ...datesObject[key],
         timestamp: key
       }));
 
-      // messagesList.sort((a, b) => (a.timestamp < b.timestamp ? 1 : -1));
-
       this.setState({
-        messages: messagesList,
+        dates: datesList,
         loading: false
       });
     });
@@ -41,9 +39,6 @@ class Calendar extends Component {
   render() {
     return (
       <div className="calendar">
-        {/* <Link to={`/lord`} className="closer">
-          [CLOSE]
-        </Link> */}
         {this.state.loading && <Loading message="Loading..." />}
 
         <header className="calendar__header">
@@ -56,10 +51,7 @@ class Calendar extends Component {
           </Link>
         </header>
 
-        <CalendarList
-          messages={this.state.messages}
-          firebase={this.props.firebase}
-        />
+        <CalendarList dates={this.state.dates} firebase={this.props.firebase} />
       </div>
     );
   }

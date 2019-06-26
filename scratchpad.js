@@ -9,7 +9,7 @@ console.log(
  *
  * TODO:
  *
- * Filter calendar events to ones in the future.
+ * Add "SHOW ALL" to calendar.
  *
  * Home layout
  *

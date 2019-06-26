@@ -5,10 +5,11 @@ import SoundPlayer from "../../UI/SoundPlayer";
 import { deleteMessage } from "../../../helpers/firebaseCRUD";
 import formatDate from "../../../helpers/formatDate";
 
-const CalendarList = ({ messages, filter, firebase }) => {
-  filter && (messages = messages.filter(message => message.type === filter));
+const CalendarList = ({ dates, firebase }) => {
+  const today = new Date().setHours(0, 0, 0, 0);
+  dates = dates.filter(date => date.timestamp > today);
 
-  if (!messages.length) return <p>No events.</p>;
+  if (!dates.length) return <p>No events.</p>;
 
   const handleClick = event => {
     let width = event.currentTarget.style.width;
@@ -21,59 +22,59 @@ const CalendarList = ({ messages, filter, firebase }) => {
 
   return (
     <ul className="calendar calendar__list">
-      {messages.map(message => {
+      {dates.map(date => {
         let placeholderStyle;
-        if (message.imageRatio) {
-          const height = 20 * message.imageRatio;
+        if (date.imageRatio) {
+          const height = 20 * date.imageRatio;
           placeholderStyle = { minHeight: `${height}rem` };
         }
         return (
-          <li key={message.timestamp}>
+          <li key={date.timestamp}>
             <div className="calendar__list--timestamp">
-              {formatDate(new Date(parseInt(message.timestamp)))}
+              {formatDate(new Date(parseInt(date.timestamp)))}
               <span className="calendar__list--edit">
                 {" | "}
-                <Link to={{ pathname: "/lord/transmit", post: message }}>
+                <Link to={{ pathname: "/lord/transmit", post: date }}>
                   edit
                 </Link>
                 {" | "}
                 <span
                   className="calendar__list--delete"
-                  data-postid={message.timestamp}
+                  data-postid={date.timestamp}
                   data-database="calendarEvent"
-                  data-image={message.image}
-                  data-sound={message.sound}
+                  data-image={date.image}
+                  data-sound={date.sound}
                   onClick={deletePost}
                 >
                   &times;
                 </span>
               </span>
             </div>
-            {message.title && (
-              <div className="calendar__list--title">{message.title}</div>
+            {date.title && (
+              <div className="calendar__list--title">{date.title}</div>
             )}
-            {message.image && (
+            {date.image && (
               <div
                 className="calendar__list--image"
                 onClick={handleClick}
                 style={placeholderStyle}
               >
-                <img src={message.image} alt={message.title} />
+                <img src={date.image} alt={date.title} />
               </div>
             )}
-            {message.message && (
+            {date.message && (
               <ReactMarkdown
-                source={message.message}
+                source={date.message}
                 className="calendar__list--message"
               />
             )}
             <div className="clear" />
-            {message.link && (
-              <a className="calendar__list--link" href={message.link}>
-                {message.link.split("/")[2]}
+            {date.link && (
+              <a className="calendar__list--link" href={date.link}>
+                {date.link.split("/")[2]}
               </a>
             )}
-            {message.sound && <SoundPlayer source={message.sound} />}
+            {date.sound && <SoundPlayer source={date.sound} />}
           </li>
         );
       })}
