@@ -1,4 +1,4 @@
-import getUniqueTypes from "./getUniqueTypes";
+import getUniqueKeys from "./getUniqueKeys";
 
 it("returns array of unique values from an array of objects given a specific key", () => {
   const testArray = [
@@ -6,6 +6,6 @@ it("returns array of unique values from an array of objects given a specific key
     { name: "Frank", type: "Monkey" },
     { name: "Frank", type: "Stoat" }
   ];
-  expect(getUniqueTypes(testArray, "name")).toEqual(["Bob", "Frank"]);
-  expect(getUniqueTypes(testArray, "type")).toEqual(["Monkey", "Stoat"]);
+  expect(getUniqueKeys(testArray, "name")).toEqual(["Bob", "Frank"]);
+  expect(getUniqueKeys(testArray, "type")).toEqual(["Monkey", "Stoat"]);
 });

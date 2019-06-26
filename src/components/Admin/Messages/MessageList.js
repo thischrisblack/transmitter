@@ -23,6 +23,7 @@ const MessageList = ({ messages, filter, firebase }) => {
       {messages.map(message => {
         let placeholderStyle;
         if (message.imageRatio) {
+          // TODO: Not hard-code this 20 value. It's also in CSS.
           const height = 20 * message.imageRatio;
           placeholderStyle = { minHeight: `${height}rem` };
         }

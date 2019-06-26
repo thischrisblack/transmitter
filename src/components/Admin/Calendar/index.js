@@ -5,7 +5,6 @@ import { compose } from "recompose";
 import { config } from "../../../config";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import getUniqueTypes from "../../../helpers/getUniqueTypes";
 import CalendarList from "./CalendarList";
 import Loading from "../../UI/LoadingScreen";
 

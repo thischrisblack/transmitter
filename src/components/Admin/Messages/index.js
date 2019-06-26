@@ -4,8 +4,7 @@ import { withFirebase } from "../../Firebase";
 import { compose } from "recompose";
 import { config } from "../../../config";
 import PropTypes from "prop-types";
-// import { Link } from "react-router-dom";
-import getUniqueTypes from "../../../helpers/getUniqueTypes";
+import getUniqueKeys from "../../../helpers/getUniqueKeys";
 import MessageList from "./MessageList";
 import TypeList from "./TypeList";
 import Loading from "../../UI/LoadingScreen";
@@ -33,15 +32,9 @@ class Messages extends Component {
 
       this.setState({
         messages: messagesList,
-        typeList: getUniqueTypes(messagesList, "type"),
+        typeList: getUniqueKeys(messagesList, "type"),
         loading: false
       });
-    });
-
-    const { filter } = this.props.match.params;
-
-    this.setState({
-      filter: filter
     });
   }
 
@@ -56,9 +49,6 @@ class Messages extends Component {
   render() {
     return (
       <div className="messages">
-        {/* <Link to={`/lord`} className="closer">
-          [CLOSE]
-        </Link> */}
         {this.state.loading && <Loading message="Loading..." />}
         <h1>MESSAGES</h1>
 

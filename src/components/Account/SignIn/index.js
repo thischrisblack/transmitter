@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { compose } from "recompose";
 
-import { SignUpLink } from "../SignUp";
 import { withFirebase } from "../../Firebase";
 import * as ROUTES from "../../../constants/routes";
 
@@ -10,7 +9,6 @@ const Signin = () => (
   <div>
     <h1>Log On</h1>
     <SignInForm />
-    <SignUpLink />
   </div>
 );
 

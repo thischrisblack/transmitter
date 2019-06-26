@@ -14,6 +14,12 @@ class AdminNav extends Component {
         <Link to={`/lord/calendar`} className="admin__nav admin__nav--link">
           CALENDAR
         </Link>
+        <Link
+          to={`/lord/batchuploader`}
+          className="admin__nav admin__nav--link"
+        >
+          BATCH UPLOAD
+        </Link>
       </div>
     );
   }

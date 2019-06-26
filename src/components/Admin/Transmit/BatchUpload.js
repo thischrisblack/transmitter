@@ -4,7 +4,6 @@ import { withAuthorization } from "../../Firebase/Session";
 import { withFirebase } from "../../Firebase";
 import { config } from "../../../config";
 import { compose } from "recompose";
-import * as ROUTES from "../../../constants/routes";
 import { uploadFile } from "../../../helpers/firebaseCRUD";
 
 class BatchUploadFormBase extends Component {
@@ -25,7 +24,7 @@ class BatchUploadFormBase extends Component {
     );
     this.setState({ progress: progressMessages });
 
-    Array.from(fileList).forEach(async (file, key) => {
+    Array.from(fileList).forEach(async file => {
       var jsmediatags = window.jsmediatags;
 
       // Read the tags.

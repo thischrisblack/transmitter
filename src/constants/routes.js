@@ -1,6 +1,8 @@
 export const HOME = "/";
-export const ADMIN = "/lord";
+export const ADMIN = "/lord/";
+export const ADMIN_MESSAGES = "/lord/messages";
+export const ADMIN_CALENDAR = "/lord/calendar";
+export const ADMIN_BATCH = "/lord/batchuploader";
+export const ADMIN_TRANSMIT = "/lord/transmit";
 export const SIGN_IN = "/signin";
-export const SIGN_UP = "/signup";
-export const TEST_HOME = "/home";
-export const TRANSMIT = "/transmit";
+export const MUSIC = "/music";

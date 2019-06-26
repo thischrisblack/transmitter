@@ -6,10 +6,14 @@ console.log(
 );
 
 /**
- * For filtering:
  *
- * Create "rawList" in state for full results, and "activeList" for filtered messages.
- * filterMessages() uses the former to update the latter, and the latter is rendered.
+ * TODO:
  *
- * SO far, this is just in Admin.
+ * Filter calendar events to ones in the future.
+ *
+ * Home layout
+ *
+ *
+ *
+ *
  */

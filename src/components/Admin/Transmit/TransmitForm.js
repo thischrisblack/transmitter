@@ -7,9 +7,8 @@ import { compose } from "recompose";
 import * as ROUTES from "../../../constants/routes";
 import "flatpickr/dist/themes/airbnb.css";
 import Flatpickr from "react-flatpickr";
-// import { Link } from "react-router-dom";
 import { transmitMessage, uploadFile } from "../../../helpers/firebaseCRUD";
-import getUniqueTypes from "../../../helpers/getUniqueTypes";
+import getUniqueKeys from "../../../helpers/getUniqueKeys";
 import aspectRatioCalculator from "../../../helpers/aspectRatioCalculator";
 import Loading from "../../UI/LoadingScreen";
 
@@ -51,7 +50,7 @@ class TransmitFormBase extends Component {
         }));
 
         this.setState({
-          typeList: getUniqueTypes(messagesList, "type")
+          typeList: getUniqueKeys(messagesList, "type")
         });
       });
     }
