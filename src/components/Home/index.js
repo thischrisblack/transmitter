@@ -1,13 +1,12 @@
 import React from "react";
-import PlaceHolder from "./PlaceHolder";
+import Header from "./Header";
 
 class Home extends React.Component {
   render() {
     return (
       <div className="home">
-        <PlaceHolder />
-
-        <p>I like to get all monkeyfied and go out to bananatown.</p>
+        <Header />
+        <div className="home__content">Balls.</div>
       </div>
     );
   }

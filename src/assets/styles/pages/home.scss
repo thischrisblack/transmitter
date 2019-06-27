@@ -1,0 +1,41 @@
+.home {
+  display: grid;
+  grid-template-rows: min-content min-content;
+  grid-template-areas:
+    "sidebar"
+    "content";
+}
+
+.nav {
+  text-align: right;
+  float: right;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  padding: 0rem;
+  margin-bottom: 2rem;
+}
+
+@media screen and (min-width: 700px) {
+  .home {
+    display: grid;
+    grid-template-columns: min-content minmax(0, 700px) auto;
+    grid-template-areas: "sidebar content .";
+  }
+
+  .nav {
+    margin-top: 2rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  .sidebar {
+    margin-right: 5rem;
+  }
+}
+
+.home__content {
+  grid-area: content;
+  padding: 1rem;
+}
