@@ -9,8 +9,8 @@ import "flatpickr/dist/themes/airbnb.css";
 import Flatpickr from "react-flatpickr";
 
 import { transmitMessage, uploadFile } from "../../../helpers/firebaseCRUD";
-import getUniqueKeys from "../../../helpers/getUniqueKeys";
-import aspectRatioCalculator from "../../../helpers/aspectRatioCalculator";
+import { getUniqueKeys } from "../../../utils";
+import { aspectRatioCalculator } from "../../../utils";
 import Loading from "../../UI/LoadingScreen";
 
 class TransmitFormBase extends Component {
@@ -181,9 +181,6 @@ class TransmitFormBase extends Component {
     return (
       <form onSubmit={this.onSubmit}>
         {transmitting && <Loading message="Transmitting..." />}
-        {/* <Link to={`/lord`} className="closer">
-          [CANCEL]
-        </Link> */}
         <Flatpickr
           name="timestamp"
           data-enable-time
@@ -200,7 +197,6 @@ class TransmitFormBase extends Component {
           placeholder={loading ? "Loading ..." : "Message Type"}
         />
         <datalist id="prevTypes">
-          <option value="calendar" />
           {typeList.map(type => (
             <option key={type} value={type} />
           ))}

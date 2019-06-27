@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { withFirebase } from "../../Firebase";
 import PropTypes from "prop-types";
-// import getUniqueKeys from "../../../helpers/getUniqueKeys";
+// import {getUniqueKeys} from "../../../utils.js";
 import SongList from "./SongList";
 // import TypeList from "./TypeList";
 import Loading from "../../UI/LoadingScreen";

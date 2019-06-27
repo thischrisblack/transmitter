@@ -9,7 +9,7 @@ import MessageList from "./MessageList";
 import TypeList from "./TypeList";
 import Loading from "../../UI/LoadingScreen";
 
-import getUniqueKeys from "../../../helpers/getUniqueKeys";
+import { getUniqueKeys } from "../../../utils";
 
 class Messages extends Component {
   state = {

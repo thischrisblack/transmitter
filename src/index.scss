@@ -288,6 +288,12 @@ MESSAGE LIST
       font-weight: 700;
     }
 
+    &--cancel-delete {
+      color: green;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
     &--title {
       font-weight: 700;
       font-size: 1.8rem;

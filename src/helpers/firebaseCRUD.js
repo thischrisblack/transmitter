@@ -67,19 +67,3 @@ export const uploadFile = (file, firebase) => {
     });
   });
 };
-
-// Not used ...
-export const getMessages = firebase => {
-  return new Promise(resolve => {
-    firebase.messages().once("value", snapshot => {
-      const messagesObject = snapshot.val();
-
-      const messagesList = Object.keys(messagesObject).map(key => ({
-        ...messagesObject[key],
-        timestamp: key
-      }));
-
-      resolve(messagesList);
-    });
-  });
-};

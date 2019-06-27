@@ -16,6 +16,10 @@ class EditDelete extends Component {
     }
   };
 
+  cancelDelete = () => {
+    this.setState({ delete: false });
+  };
+
   render() {
     return (
       <div className="messages__list--edit">
@@ -33,6 +37,14 @@ class EditDelete extends Component {
         >
           {this.state.delete ? "confirm" : "delete"}
         </span>
+        {this.state.delete && (
+          <span
+            className="messages__list--cancel-delete"
+            onClick={this.cancelDelete}
+          >
+            | cancel
+          </span>
+        )}
       </div>
     );
   }
