@@ -1,0 +1,24 @@
+// Google fonts
+/* prettier-ignore */
+@import url(https://fonts.googleapis.com/css?family=Press+Start+2P);
+/**
+* font-family: 'Press Start 2P', monospace;
+*/
+
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  background-image: url("./assets/img/static02.gif");
+  background-size: cover;
+  padding: 5rem 4rem;
+  font-size: 2rem;
+  color: #eee;
+  font-family: "Press Start 2P", monospace;
+  text-shadow: 0 0 3px rgba(255, 255, 255, 1);
+}

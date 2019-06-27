@@ -1,0 +1,37 @@
+// Google fonts
+/* prettier-ignore */
+@import url(https://fonts.googleapis.com/css?family=Roboto+Mono:400,700);
+/**
+* font-family: 'Roboto Mono', monospace;
+*/
+
+body {
+  font-family: "Roboto Mono", monospace;
+  -webkit-font-smoothing: antialiased;
+  font-size: 1.6rem;
+}
+
+h1 {
+  margin-bottom: 2rem;
+
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-image: url(./assets/img/static03.gif);
+  color: white;
+}
+
+.clear {
+  display: block;
+  height: 0px;
+  clear: both;
+}
+
+a {
+  text-decoration: none;
+  font-weight: 400;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

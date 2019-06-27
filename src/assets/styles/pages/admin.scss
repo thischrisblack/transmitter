@@ -1,0 +1,21 @@
+.admin {
+  padding: 2rem 1.5rem;
+}
+
+@media screen and (min-width: 700px) {
+  .admin {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-areas: ". content .";
+  }
+}
+
+.adminContent {
+  grid-area: content;
+}
+
+.logo {
+  // display: inline-block;
+}
+
+

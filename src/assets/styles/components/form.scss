@@ -1,0 +1,66 @@
+.flatpickr-mobile {
+  background: #fff;
+}
+
+input,
+textarea {
+  display: block;
+  width: 100%;
+  font-size: 2rem;
+  margin: 2rem 0;
+  padding: 3px 5px;
+  border: 0;
+  border-bottom: 1px solid #333;
+  font-family: "Roboto Mono", monospace;
+}
+
+textarea {
+  height: 15rem;
+  background-color: #f8f8ff;
+}
+
+.inputFile,
+.inputCheckbox {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.inputFile + label,
+.inputCheckbox + label {
+  display: block;
+  font-size: 1.5rem;
+  padding: 3px 5px;
+  margin: 7px 0;
+  text-align: left;
+  cursor: pointer;
+}
+
+.inputFile:focus + label,
+.inputFile + label:hover,
+.inputCheckbox + label:hover {
+  font-weight: 700;
+}
+
+.inputCheckbox + label.selected:after {
+  content: " ✔";
+}
+
+.transmit-button {
+  font-family: "Roboto Mono", monospace;
+  font-size: 3.4rem;
+  margin-top: 2rem;
+  border: 0;
+  background-color: #fff;
+  text-align: center;
+  background-image: url(./assets/img/static03.gif);
+  background-size: cover;
+  cursor: pointer;
+  color: white;
+  display: block;
+  width: 100%;
+  text-align: center;
+}

@@ -47,10 +47,10 @@ class Calendar extends Component {
       <div className="calendar">
         {this.state.loading && <Loading message="Loading..." />}
 
-        <header className="calendar__header">
+        <header>
           <h1>CALENDAR</h1>
           <Link
-            className="calendar__add-date"
+            className="messages__add-date"
             to={{ pathname: "/lord/transmit", type: "calendar" }}
           >
             [add date]

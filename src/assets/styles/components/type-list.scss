@@ -1,0 +1,14 @@
+.typelist {
+  list-style-type: none;
+  margin-bottom: 3rem;
+
+  &__type {
+    display: inline-block;
+    margin-right: 1rem;
+    cursor: pointer;
+
+    &:hover {
+      font-weight: 700;
+    }
+  }
+}

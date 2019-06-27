@@ -1,0 +1,21 @@
+.sound-player {
+  line-height: 3rem;
+  font-size: 1.4rem;
+  &__controls {
+    display: inline-block;
+    width: 5rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  &__timer {
+    color: #999;
+  }
+
+  &__progress-bar {
+    background-image: url(./assets/img/static04.gif);
+    background-size: cover;
+    height: 1px;
+    display: block;
+  }
+}
