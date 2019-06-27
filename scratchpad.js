@@ -11,6 +11,8 @@ console.log(
  *
  * Add "SHOW ALL" to calendar.
  *
+ * Make calendar structure like messages, and both share Message.js
+ *
  * Home layout
  *
  *

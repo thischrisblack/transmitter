@@ -18,6 +18,8 @@ class Messages extends Component {
   };
 
   componentDidMount() {
+    console.log(this.props);
+
     this.setState({ loading: true });
 
     this.props.firebase.messages().on("value", snapshot => {
@@ -50,6 +52,7 @@ class Messages extends Component {
     return (
       <div className="messages">
         {this.state.loading && <Loading message="Loading..." />}
+
         <h1>MESSAGES</h1>
 
         <TypeList

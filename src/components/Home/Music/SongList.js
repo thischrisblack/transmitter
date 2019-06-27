@@ -14,7 +14,7 @@ const SongList = ({ songs, filter, firebase }) => {
             {song.title && (
               <div className="songs__list--title">{song.title}</div>
             )}
-            {song.url && <SoundPlayer source={song.url} />}
+            {/* {song.url && <SoundPlayer source={song.url} />} */}
           </li>
         );
       })}
