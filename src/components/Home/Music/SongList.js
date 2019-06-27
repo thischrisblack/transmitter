@@ -1,5 +1,4 @@
 import React from "react";
-import SoundPlayer from "../../UI/SoundPlayer";
 
 const SongList = ({ songs, filter, firebase }) => {
   filter && (songs = songs.filter(song => song.type === filter));
@@ -14,7 +13,6 @@ const SongList = ({ songs, filter, firebase }) => {
             {song.title && (
               <div className="songs__list--title">{song.title}</div>
             )}
-            {/* {song.url && <SoundPlayer source={song.url} />} */}
           </li>
         );
       })}

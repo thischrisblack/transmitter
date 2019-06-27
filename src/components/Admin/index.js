@@ -3,14 +3,15 @@ import { withAuthorization } from "../Firebase/Session";
 import { withFirebase } from "../Firebase";
 import { compose } from "recompose";
 import { config } from "../../config";
-import TransmitForm from "./Transmit/TransmitForm";
-import Messages from "./Messages";
-import Calendar from "./Calendar";
-import AdminNav from "./Nav";
 import { Route } from "react-router-dom";
-import PropTypes from "prop-types";
-import BatchUpload from "./Transmit/BatchUpload";
 import * as ROUTES from "../../constants/routes";
+import PropTypes from "prop-types";
+
+import AdminNav from "./Nav";
+import TransmitForm from "./Transmit/TransmitForm";
+import Messages from "./Messages/Messages";
+import Calendar from "./Messages/Calendar";
+import BatchUpload from "./Transmit/BatchUpload";
 
 class Admin extends Component {
   render() {

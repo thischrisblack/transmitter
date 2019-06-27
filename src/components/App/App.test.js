@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.scss";
-import App from "./components/App";
-import Firebase, { FirebaseContext } from "./components/Firebase";
+import App from ".";
+import Firebase, { FirebaseContext } from "../Firebase";
 
 it("renders without crashing", () => {
   const div = document.createElement("div");

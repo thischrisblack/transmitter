@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withAuthorization } from "../../Firebase/Session";
 import { withFirebase } from "../../Firebase";
-import { config } from "../../../config";
 import { compose } from "recompose";
+
+import { config } from "../../../config";
 import { uploadFile } from "../../../helpers/firebaseCRUD";
 
 class BatchUploadFormBase extends Component {

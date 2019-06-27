@@ -271,14 +271,15 @@ MESSAGE LIST
     &--timestamp {
       font-size: 1.2rem;
       color: #999;
-
-      a {
-        color: #555;
-      }
     }
 
     &--edit {
       font-size: 1.1rem;
+      float: right;
+
+      a {
+        color: #555;
+      }
     }
 
     &--delete {

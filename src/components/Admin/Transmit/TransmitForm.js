@@ -1,12 +1,13 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { withAuthorization } from "../../Firebase/Session";
 import { withFirebase } from "../../Firebase";
-import { config } from "../../../config";
 import { compose } from "recompose";
+import PropTypes from "prop-types";
+import { config } from "../../../config";
 import * as ROUTES from "../../../constants/routes";
 import "flatpickr/dist/themes/airbnb.css";
 import Flatpickr from "react-flatpickr";
+
 import { transmitMessage, uploadFile } from "../../../helpers/firebaseCRUD";
 import getUniqueKeys from "../../../helpers/getUniqueKeys";
 import aspectRatioCalculator from "../../../helpers/aspectRatioCalculator";

@@ -1,11 +1,13 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { withAuthorization } from "../../Firebase/Session";
 import { withFirebase } from "../../Firebase";
 import { compose } from "recompose";
-import { config } from "../../../config";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-import CalendarList from "./CalendarList";
+
+import { config } from "../../../config";
+
+import MessageList from "./MessageList";
 import Loading from "../../UI/LoadingScreen";
 
 class Calendar extends Component {
@@ -20,10 +22,14 @@ class Calendar extends Component {
     this.props.firebase.calendar().on("value", snapshot => {
       const datesObject = snapshot.val() || {};
 
-      const datesList = Object.keys(datesObject).map(key => ({
+      let datesList = Object.keys(datesObject).map(key => ({
         ...datesObject[key],
         timestamp: key
       }));
+
+      const today = new Date().setHours(0, 0, 0, 0);
+
+      datesList = datesList.filter(date => date.timestamp > today);
 
       this.setState({
         dates: datesList,
@@ -51,7 +57,11 @@ class Calendar extends Component {
           </Link>
         </header>
 
-        <CalendarList dates={this.state.dates} firebase={this.props.firebase} />
+        <MessageList
+          messages={this.state.dates}
+          firebase={this.props.firebase}
+          database="calendarEvent"
+        />
       </div>
     );
   }

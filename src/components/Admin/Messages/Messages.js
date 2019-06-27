@@ -4,10 +4,12 @@ import { withFirebase } from "../../Firebase";
 import { compose } from "recompose";
 import { config } from "../../../config";
 import PropTypes from "prop-types";
-import getUniqueKeys from "../../../helpers/getUniqueKeys";
+
 import MessageList from "./MessageList";
 import TypeList from "./TypeList";
 import Loading from "../../UI/LoadingScreen";
+
+import getUniqueKeys from "../../../helpers/getUniqueKeys";
 
 class Messages extends Component {
   state = {
@@ -18,8 +20,6 @@ class Messages extends Component {
   };
 
   componentDidMount() {
-    console.log(this.props);
-
     this.setState({ loading: true });
 
     this.props.firebase.messages().on("value", snapshot => {
@@ -64,6 +64,7 @@ class Messages extends Component {
           messages={this.state.messages}
           filter={this.state.filter}
           firebase={this.props.firebase}
+          database="message"
         />
       </div>
     );

@@ -1,7 +1,7 @@
 import React from "react";
 import Message from "./Message";
 
-const MessageList = ({ messages, filter, firebase }) => {
+const MessageList = ({ messages, filter, firebase, database }) => {
   filter && (messages = messages.filter(message => message.type === filter));
 
   if (!messages.length) return <p>No messages.</p>;
@@ -13,6 +13,7 @@ const MessageList = ({ messages, filter, firebase }) => {
           message={message}
           firebase={firebase}
           key={message.timestamp}
+          database={database}
         />
       ))}
     </ul>
