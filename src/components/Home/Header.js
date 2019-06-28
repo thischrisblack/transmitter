@@ -6,7 +6,7 @@ class Header extends React.Component {
     return (
       <header class="sidebar">
         <div className="logo">
-          <Logo width={"140"} />
+          <Logo width={"150"} />
         </div>
         <div className="nav">
           messages

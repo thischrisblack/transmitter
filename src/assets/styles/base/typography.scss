@@ -1,24 +1,21 @@
-// Google fonts
-/* prettier-ignore */
-@import url(https://fonts.googleapis.com/css?family=Roboto+Mono:400,700);
-/**
-* font-family: 'Roboto Mono', monospace;
-*/
-
 body {
   font-family: "Roboto Mono", monospace;
   -webkit-font-smoothing: antialiased;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
+  // line-height: 2rem;
+  color: #000;
+  // text-shadow: 1px 1px 15px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
   margin-bottom: 2rem;
+  color: #000;
+  text-shadow: none;
 
   -webkit-text-fill-color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
-  background-image: url(./assets/img/static03.gif);
-  color: white;
+  background-image: url(./assets/img/static06.gif);
 }
 
 .clear {
@@ -28,8 +25,13 @@ h1 {
 }
 
 a {
-  text-decoration: none;
-  font-weight: 400;
+  color: $logo-red;
+  font-weight: 700;
+
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-image: url(./assets/img/static03.gif);
 
   &:hover {
     text-decoration: underline;

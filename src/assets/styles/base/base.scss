@@ -9,10 +9,29 @@
 html {
   // This defines what 1rem is
   font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
-}
 
-body {
-  position: relative;
-  box-sizing: border-box;
-  padding: 2rem;
+  // &::after {
+  //   content: "";
+  //   background-image: url(./assets/img/static03.gif);
+  //   background-size: cover;
+  //   opacity: 0.05;
+  //   top: 0;
+  //   left: 0;
+  //   bottom: 0;
+  //   right: 0;
+  //   position: absolute;
+  //   z-index: -1;
+  // }
+
+  body {
+    position: relative;
+    box-sizing: border-box;
+    padding: 1rem;
+    background: #fff;
+  }
+}
+@media screen and (min-width: 700px) {
+  body {
+    padding: 2rem;
+  }
 }

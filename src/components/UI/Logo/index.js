@@ -69,7 +69,7 @@ const Logo = ({
         fill={fillLightning}
       />
     </svg>
-    <div class="logo__name">Chris Black</div>
+    {/* <div class="logo__name">Chris Black</div> */}
   </div>
 );
 

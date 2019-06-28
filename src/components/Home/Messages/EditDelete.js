@@ -35,13 +35,14 @@ class EditDelete extends Component {
           data-sound={this.props.message.sound}
           onClick={this.deleteThisMessage}
         >
-          {this.state.delete ? "confirm" : "delete"}
+          {this.state.delete ? "confirm " : "delete"}
         </span>
         {this.state.delete && (
           <span
             className="messages__list--cancel-delete"
             onClick={this.cancelDelete}
           >
+            {" "}
             | cancel
           </span>
         )}

@@ -42,6 +42,7 @@ class EditDelete extends Component {
             className="messages__list--cancel-delete"
             onClick={this.cancelDelete}
           >
+            {" "}
             | cancel
           </span>
         )}

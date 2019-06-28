@@ -50,7 +50,7 @@ class Messages extends Component {
       <div className="messages">
         {this.state.loading && <Loading message="Loading..." />}
 
-        {/* <h3>MESSAGES</h3> */}
+        {/* <h1>MESSAGES</h1> */}
 
         {/* <TypeList
           types={this.state.typeList}

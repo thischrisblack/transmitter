@@ -19,8 +19,8 @@
     }
 
     &--timestamp {
-      font-size: 1.2rem;
-      color: #999;
+      font-size: 1rem;
+      color: rgb(1, 74, 94);
       margin: 0 0 0.5rem 0;
     }
 
@@ -47,14 +47,9 @@
     }
 
     &--title {
-      font-weight: 700;
-      font-size: 1.8rem;
-      color: #333;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      -webkit-background-clip: text;
-      background-image: url(./assets/img/static03.gif);
-      color: white;
+      font-weight: 400;
+      font-size: 1.6rem;
+      color: rgb(44, 9, 9);
       margin-bottom: 0.5rem;
     }
 
