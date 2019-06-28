@@ -16,15 +16,12 @@
 
     li {
       margin-bottom: 5rem;
-
-      div {
-        margin-bottom: 0.5rem;
-      }
     }
 
     &--timestamp {
       font-size: 1.2rem;
       color: #999;
+      margin: 0 0 0.5rem 0;
     }
 
     &--edit {
@@ -58,9 +55,11 @@
       -webkit-background-clip: text;
       background-image: url(./assets/img/static03.gif);
       color: white;
+      margin-bottom: 0.5rem;
     }
 
     &--message {
+      margin-bottom: 0.5rem;
     }
 
     &--link {
@@ -72,7 +71,7 @@
     &--image {
       position: relative;
       float: left;
-      margin: 0 2rem 2rem 0;
+      margin: 0 2rem 1rem 0;
       transition: all 0.2s;
       cursor: pointer;
 
