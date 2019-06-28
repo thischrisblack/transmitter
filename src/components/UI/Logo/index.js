@@ -10,7 +10,7 @@ const Logo = ({
   height = "100%",
   viewBox = "-5 0 792 515"
 }) => (
-  <div class="logo">
+  <div className="logo">
     <svg
       width={width}
       style={style}

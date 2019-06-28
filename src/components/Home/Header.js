@@ -4,10 +4,8 @@ import Logo from "../UI/Logo";
 class Header extends React.Component {
   render() {
     return (
-      <header class="sidebar">
-        <div className="logo">
-          <Logo width={"150"} />
-        </div>
+      <header className="sidebar">
+        <Logo width={"150"} />
         <div className="nav">
           messages
           <br />

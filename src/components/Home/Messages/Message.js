@@ -9,8 +9,8 @@ const Message = ({ message }) => {
   let initialImageSize;
 
   if (message.imageRatio) {
-    const height = 16 * message.imageRatio;
-    initialImageSize = { width: "16rem", minHeight: `${height}rem` };
+    const height = 20 * message.imageRatio;
+    initialImageSize = { width: "20rem", minHeight: `${height}rem` };
   }
 
   return (
