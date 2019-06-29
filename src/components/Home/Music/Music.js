@@ -1,15 +1,20 @@
 import React, { Component } from "react";
 import { withFirebase } from "../../Firebase";
 import PropTypes from "prop-types";
-// import {getUniqueKeys} from "../../../utils.js";
+import { getUniqueKeys } from "../../../utils.js";
 import SongList from "./SongList";
-// import TypeList from "./TypeList";
+import TypeList from "./TypeList";
 import Loading from "../../UI/LoadingScreen";
 
 class Music extends Component {
   state = {
     loading: true,
     songs: [],
+    albums: [],
+    moods: [],
+    mood: null,
+    tempi: [],
+    tempo: null,
     filter: null
   };
 
@@ -23,10 +28,22 @@ class Music extends Component {
         ...songsObject[key]
       }));
 
-      songsList.sort((a, b) => (a.title > b.title ? 1 : -1));
+      songsList.sort((a, b) => {
+        const year = b.year.localeCompare(a.year);
+        const album = a.album.localeCompare(b.album);
+        const track = a.track.localeCompare(b.track, undefined, {
+          numeric: true,
+          sensitivity: "base"
+        });
+
+        return year || album || track;
+      });
 
       this.setState({
         songs: songsList,
+        albums: getUniqueKeys(songsList, "album"),
+        moods: getUniqueKeys(songsList, "genre"),
+        tempi: getUniqueKeys(songsList, "bpm"),
         loading: false
       });
     });
@@ -38,23 +55,28 @@ class Music extends Component {
     // });
   }
 
-  // updateFilter = event => {
-  //   this.setState({ filter: event.target.id });
-  // };
+  updateFilter = event => {
+    const { key, value } = event.target.dataset;
+    this.setState({ [key]: value });
+  };
 
-  componentWillUnmount() {
-    this.props.firebase.music().off();
-  }
+  componentWillUnmount() {}
 
   render() {
     return (
       <div className="messages">
         {this.state.loading && <Loading message="Loading..." />}
-        <h1>MUSIC</h1>
+
+        <TypeList
+          types={this.state.moods}
+          updateFilter={this.updateFilter}
+          title="mood"
+        />
 
         <SongList
           songs={this.state.songs}
-          filter={this.state.filter}
+          moodFilter={this.state.mood}
+          tempoFilter={this.state.tempo}
           firebase={this.props.firebase}
         />
       </div>

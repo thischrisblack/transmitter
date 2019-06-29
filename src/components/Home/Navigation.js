@@ -9,6 +9,9 @@ const Navigation = () => (
       <Link to={ROUTES.MESSAGES}>messages</Link>
     </li>
     <li className="home-nav__item">
+      <Link to={ROUTES.MUSIC}>music</Link>
+    </li>
+    <li className="home-nav__item">
       <Link to={ROUTES.CALENDAR}>calendar</Link>
     </li>
   </ul>

@@ -7,15 +7,21 @@ class TypeList extends Component {
   render() {
     return (
       <ul className="typelist">
-        <li className="typelist__type">Types:</li>
-        <li className="typelist__type" id={null} onClick={this.updateFilter}>
-          all
+        <li
+          className="typelist__type"
+          data-key={this.props.title}
+          data-value={null}
+          onClick={this.updateFilter}
+        >
+          All
         </li>
         {this.props.types.map(type => (
           <li
             className="typelist__type"
             key={type}
             id={type}
+            data-key={this.props.title}
+            data-value={type}
             onClick={this.updateFilter}
           >
             {type}

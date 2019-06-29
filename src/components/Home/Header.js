@@ -11,7 +11,7 @@ const Header = () => {
       <Link to={ROUTES.HOME}>
         <Logo width={"160"} />
       </Link>
-      <div class="logo__name">Chris Black</div>
+      <div className="logo__name">Chris Black</div>
       <Navigation />
     </header>
   );
