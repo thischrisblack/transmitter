@@ -38,7 +38,12 @@ const Message = ({ message }) => {
       )}
       <div className="clear" />
       {message.link && (
-        <a className="messages__list--link" href={message.link}>
+        <a
+          className="messages__list--link"
+          href={message.link}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
           {message.link.split("/")[2]}
         </a>
       )}

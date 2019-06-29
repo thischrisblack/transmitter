@@ -7,7 +7,7 @@
 */
 
 .loading {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -18,7 +18,7 @@
   background-image: url("./assets/img/static03.gif");
   background-size: cover;
   padding: 5rem 4rem;
-  font-size: 4rem;
+  font-size: 6rem;
   color: #eee;
   font-family: "VT323", monospace;
   text-shadow: 0 0 3px rgba(255, 255, 255, 1);

@@ -7,3 +7,4 @@ export const ADMIN_TRANSMIT = "/lord/transmit";
 export const SIGN_IN = "/signin";
 export const MUSIC = "/music";
 export const MESSAGES = "/messages";
+export const CALENDAR = "/calendar";

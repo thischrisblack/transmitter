@@ -14,17 +14,19 @@
 .sidebar {
   grid-area: sidebar;
   margin-bottom: 2rem;
+  padding: 1rem;
 }
 
 .home__content {
   grid-area: content;
-  padding: 1rem 0;
+  padding: 0;
+  // position: relative;
 }
 
 @media screen and (min-width: 700px) {
   .home {
     display: grid;
-    grid-template-columns: 23rem minmax(0, 70rem) auto;
+    grid-template-columns: 25rem minmax(0, 70rem) auto;
     grid-template-areas: ". content .";
   }
 
@@ -38,7 +40,12 @@
   .sidebar {
     position: fixed;
     top: 3rem;
-    left: 3rem;
-    width: 15rem;
+    left: 4rem;
+    width: 16rem;
+    padding: 0;
+  }
+
+  .home__content {
+    // padding-top: 3rem;
   }
 }

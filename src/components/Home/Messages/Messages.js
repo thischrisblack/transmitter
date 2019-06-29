@@ -19,22 +19,26 @@ class Messages extends Component {
   componentDidMount() {
     this.setState({ loading: true });
 
-    this.props.firebase.messages().on("value", snapshot => {
-      const messagesObject = snapshot.val() || {};
+    this.props.firebase
+      .messages()
+      .orderByChild("privatePost")
+      .equalTo(false)
+      .on("value", snapshot => {
+        const messagesObject = snapshot.val() || {};
 
-      const messagesList = Object.keys(messagesObject).map(key => ({
-        ...messagesObject[key],
-        timestamp: key
-      }));
+        const messagesList = Object.keys(messagesObject).map(key => ({
+          ...messagesObject[key],
+          timestamp: key
+        }));
 
-      messagesList.sort((a, b) => (a.timestamp < b.timestamp ? 1 : -1));
+        messagesList.sort((a, b) => (a.timestamp < b.timestamp ? 1 : -1));
 
-      this.setState({
-        messages: messagesList,
-        typeList: getUniqueKeys(messagesList, "type"),
-        loading: false
+        this.setState({
+          messages: messagesList,
+          typeList: getUniqueKeys(messagesList, "type"),
+          loading: false
+        });
       });
-    });
   }
 
   updateFilter = event => {

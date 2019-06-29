@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { withAuthorization } from "../../Firebase/Session";
 import { withFirebase } from "../../Firebase";
-import { compose } from "recompose";
 import PropTypes from "prop-types";
-
-import { config } from "../../../config";
 
 import MessageList from "./MessageList";
 import Loading from "../../UI/LoadingScreen";
@@ -19,23 +15,27 @@ class Calendar extends Component {
   componentDidMount() {
     this.setState({ loading: true });
 
-    this.props.firebase.calendar().on("value", snapshot => {
-      const datesObject = snapshot.val() || {};
+    this.props.firebase
+      .calendar()
+      .orderByChild("privatePost")
+      .equalTo(false)
+      .on("value", snapshot => {
+        const datesObject = snapshot.val() || {};
 
-      let datesList = Object.keys(datesObject).map(key => ({
-        ...datesObject[key],
-        timestamp: key
-      }));
+        let datesList = Object.keys(datesObject).map(key => ({
+          ...datesObject[key],
+          timestamp: key
+        }));
 
-      const today = new Date().setHours(0, 0, 0, 0);
+        const today = new Date().setHours(0, 0, 0, 0);
 
-      datesList = datesList.filter(date => date.timestamp > today);
+        datesList = datesList.filter(date => date.timestamp > today);
 
-      this.setState({
-        dates: datesList,
-        loading: false
+        this.setState({
+          dates: datesList,
+          loading: false
+        });
       });
-    });
   }
 
   componentWillUnmount() {
@@ -44,15 +44,8 @@ class Calendar extends Component {
 
   render() {
     return (
-      <div className="calendar">
+      <div className="messages">
         {this.state.loading && <Loading message="Loading..." />}
-        <h1>CALENDAR</h1>
-        <Link
-          className="messages__add-date"
-          to={{ pathname: "/lord/transmit", type: "calendar" }}
-        >
-          [add date]
-        </Link>
 
         <MessageList
           messages={this.state.dates}
@@ -69,9 +62,4 @@ Calendar.propTypes = {
   history: PropTypes.object
 };
 
-const condition = authUser => authUser && authUser.uid === config.adminUid;
-
-export default compose(
-  withAuthorization(condition),
-  withFirebase
-)(Calendar);
+export default withFirebase(Calendar);

@@ -1,4 +1,6 @@
 .messages {
+  padding: 1rem;
+
   &__add-date {
     margin-bottom: 3rem;
     font-size: 1.2rem;
@@ -15,7 +17,13 @@
     list-style-type: none;
 
     li {
-      margin-bottom: 5rem;
+      margin-bottom: 10rem;
+      // border-left: 2px solid white;
+      // border-image-source: url(./assets/img/static01.gif);
+      // border-image-slice: 1;
+      // border-image-width: 1;
+      // border-image-outset: 10;
+      // border-image-repeat: round;
     }
 
     &--timestamp {
@@ -51,6 +59,7 @@
       font-size: 1.6rem;
       color: rgb(44, 9, 9);
       margin-bottom: 0.5rem;
+      text-shadow: none;
     }
 
     &--message {
@@ -58,6 +67,7 @@
     }
 
     &--link {
+      text-shadow: none;
       &:after {
         content: " →";
       }
@@ -66,9 +76,17 @@
     &--image {
       position: relative;
       float: left;
-      margin: 0 2rem 1rem 0;
+      margin: 0 1rem 1rem 0;
       transition: all 0.2s;
       cursor: pointer;
+
+      border: 1px solid black;
+
+      border-image-source: url(./assets/img/static06.gif);
+      border-image-slice: 1;
+      border-image-width: 1;
+      border-image-outset: 0;
+      border-image-repeat: round;
 
       &::after {
         content: "";
