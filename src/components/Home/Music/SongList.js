@@ -1,9 +1,6 @@
 import React from "react";
 
-const SongList = ({ songs, moodFilter, tempoFilter, firebase }) => {
-  moodFilter && (songs = songs.filter(song => song.genre === moodFilter));
-  tempoFilter && (songs = songs.filter(song => song.bpm === tempoFilter));
-
+const SongList = ({ songs }) => {
   if (!songs.length) return <p>No songs.</p>;
 
   return (

@@ -10,12 +10,11 @@ class Music extends Component {
   state = {
     loading: true,
     songs: [],
+    filteredSongs: [],
+    genres: [],
     albums: [],
-    moods: [],
-    mood: null,
-    tempi: [],
-    tempo: null,
-    filter: null
+    bpm: [],
+    filters: {}
   };
 
   componentDidMount() {
@@ -41,26 +40,37 @@ class Music extends Component {
 
       this.setState({
         songs: songsList,
+        filteredSongs: songsList,
         albums: getUniqueKeys(songsList, "album"),
-        moods: getUniqueKeys(songsList, "genre"),
-        tempi: getUniqueKeys(songsList, "bpm"),
+        genres: getUniqueKeys(songsList, "genre"),
+        bpm: getUniqueKeys(songsList, "bpm"),
         loading: false
       });
     });
-
-    // const { filter } = this.props.match.params;
-
-    // this.setState({
-    //   filter: filter
-    // });
   }
 
-  updateFilter = event => {
+  updateFilter = async event => {
     const { key, value } = event.target.dataset;
-    this.setState({ [key]: value });
-  };
 
-  componentWillUnmount() {}
+    await this.setState(prevState => ({
+      filters: {
+        ...prevState.filters,
+        [key]: value
+      }
+    }));
+
+    let newFilteredSongs = [...this.state.songs];
+    const filters = this.state.filters;
+
+    Object.keys(filters).forEach(filter => {
+      filters[filter] &&
+        (newFilteredSongs = newFilteredSongs.filter(
+          song => song[filter] === filters[filter]
+        ));
+    });
+
+    this.setState({ filteredSongs: newFilteredSongs });
+  };
 
   render() {
     return (
@@ -68,17 +78,24 @@ class Music extends Component {
         {this.state.loading && <Loading message="Loading..." />}
 
         <TypeList
-          types={this.state.moods}
+          types={this.state.genres}
           updateFilter={this.updateFilter}
-          title="mood"
+          title="genre"
         />
 
-        <SongList
-          songs={this.state.songs}
-          moodFilter={this.state.mood}
-          tempoFilter={this.state.tempo}
-          firebase={this.props.firebase}
+        <TypeList
+          types={this.state.albums}
+          updateFilter={this.updateFilter}
+          title="album"
         />
+
+        <TypeList
+          types={this.state.bpm}
+          updateFilter={this.updateFilter}
+          title="bpm"
+        />
+
+        <SongList songs={this.state.filteredSongs} />
       </div>
     );
   }
