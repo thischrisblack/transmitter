@@ -1,7 +1,7 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
 
-import SoundPlayer from "../../UI/SoundPlayer";
+import SoundPlayer from "../../UI/SoundPlayer/SoundPlayer";
 import EditDelete from "./EditDelete";
 
 import { resizeImage } from "../../../utils";

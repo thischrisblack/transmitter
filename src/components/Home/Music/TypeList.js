@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class TypeList extends Component {
   updateFilter = event => {
     this.props.updateFilter(event);
   };
+
   render() {
     return (
       <ul className="typelist">
@@ -31,5 +33,11 @@ class TypeList extends Component {
     );
   }
 }
+
+TypeList.propTypes = {
+  types: PropTypes.array,
+  updateFilter: PropTypes.func,
+  title: PropTypes.string
+};
 
 export default TypeList;
