@@ -151,6 +151,7 @@ class Music extends Component {
           types={getUniqueKeys(this.state.songs, "genre")}
           updateFilter={this.updateFilter}
           title="genre"
+          activeFilter={this.state.filters.genre}
         />
 
         <SongList

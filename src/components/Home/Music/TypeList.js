@@ -10,7 +10,7 @@ class TypeList extends Component {
     return (
       <ul className="typelist">
         <li
-          className="typelist__type"
+          className={"typelist__type " + (!this.props.activeFilter && "active")}
           data-key={this.props.title}
           data-value={null}
           onClick={this.updateFilter}
@@ -19,7 +19,10 @@ class TypeList extends Component {
         </li>
         {this.props.types.map(type => (
           <li
-            className="typelist__type"
+            className={
+              "typelist__type" +
+              (type === this.props.activeFilter ? " active" : "")
+            }
             key={type}
             id={type}
             data-key={this.props.title}

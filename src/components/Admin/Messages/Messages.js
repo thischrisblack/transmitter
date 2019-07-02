@@ -58,6 +58,7 @@ class Messages extends Component {
         <TypeList
           types={this.state.typeList}
           updateFilter={this.updateFilter}
+          activeFilter={this.state.filter}
         />
 
         <MessageList

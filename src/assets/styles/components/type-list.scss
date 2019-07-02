@@ -1,6 +1,6 @@
 .typelist {
-  list-style-type: none;
-  margin-bottom: 4rem;
+  // list-style-type: none;
+  margin-bottom: 3rem;
   margin-top: 2rem;
 
   &__type {
@@ -11,5 +11,13 @@
     &:hover {
       font-weight: 700;
     }
+
+    .active {
+      font-weight: 700;
+    }
   }
+}
+
+.active {
+  font-weight: 700;
 }
