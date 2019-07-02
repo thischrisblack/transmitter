@@ -19,7 +19,7 @@
   }
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: $breakpoint) {
   .logo__name {
     margin-top: -4px;
   }

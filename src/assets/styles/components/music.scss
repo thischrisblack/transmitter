@@ -21,12 +21,13 @@
 
     &:hover {
       font-weight: 700;
+      background: #f6f6f6;
     }
   }
 
   .active {
     color: #000;
-    background: #fafafa;
+    // background: #fafafa;
     border: 1px solid #aaa;
     font-weight: 700;
   }

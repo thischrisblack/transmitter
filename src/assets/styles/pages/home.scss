@@ -31,7 +31,7 @@
   // position: relative;
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: $breakpoint) {
   .home {
     display: grid;
     grid-template-columns: 24rem minmax(0, 70rem) auto;

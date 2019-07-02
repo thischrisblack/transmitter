@@ -29,7 +29,7 @@ html {
     background: #fff;
   }
 }
-@media screen and (min-width: 700px) {
+@media screen and (min-width: $breakpoint) {
   body {
     padding: 2rem;
   }
