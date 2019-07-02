@@ -11,14 +11,42 @@
   }
 
   &__timer {
-    color: #999;
+    float: right;
+    color: #333;
     padding: 0;
   }
 
-  &__progress-bar {
-    background-image: url(./assets/img/static04.gif);
-    background-size: cover;
-    height: 1px;
-    display: block;
+  // &__progress-bar {
+  //   background-image: url(./assets/img/static04.gif);
+  //   background-size: cover;
+  //   height: 1px;
+  //   display: block;
+  // }
+}
+
+.playlist {
+  list-style: none;
+
+  li {
+    margin-bottom: 0.25rem;
+    padding: 2px 5px;
+    border: 1px solid transparent;
+  }
+  .active {
+    position: relative;
+    color: #000;
+    border: 1px solid #ccc;
+
+    .sound-player__progress-bar {
+      background-image: url(./assets/img/static04.gif);
+      background-size: 1500px;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0;
+      opacity: 0.15;
+    }
   }
 }

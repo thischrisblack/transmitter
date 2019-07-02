@@ -5,7 +5,6 @@ import { getUniqueKeys } from "../../../utils.js";
 import SongList from "./SongList";
 import TypeList from "./TypeList";
 import Loading from "../../UI/LoadingScreen";
-import { formatTimer } from "../../../utils";
 
 class Music extends Component {
   state = {
@@ -80,6 +79,16 @@ class Music extends Component {
 
   soundRef = React.createRef();
 
+  playSong = async songId => {
+    if (songId === this.state.nowPlaying) {
+      this.toggleAudio();
+    } else {
+      await this.resetAudio();
+      await this.setState({ nowPlaying: songId });
+      await this.toggleAudio();
+    }
+  };
+
   toggleAudio = async () => {
     await this.setState({ playing: !this.state.playing });
     if (!this.state.playing) {
@@ -127,36 +136,15 @@ class Music extends Component {
         {this.state.loading && <Loading message="Loading..." />}
 
         {this.state.filteredSongs[this.state.nowPlaying] && (
-          <div className="sound-player">
-            <audio
-              src={this.state.filteredSongs[this.state.nowPlaying].url}
-              ref={this.soundRef}
-              onCanPlay={this.audioReady}
-              onTimeUpdate={this.updateProgress}
-              onEnded={this.playNextSong}
-            >
-              <p>Your browser doesn't support HTML5 audio.</p>
-            </audio>
-            <span
-              className="sound-player sound-player__controls"
-              onClick={this.toggleAudio}
-            >
-              {/* {this.state.playing ? "❚❚" : "▶"} */}
-              {this.state.playing ? "STOP" : "PLAY"}
-            </span>
-            <span className="sound-player sound-player__timer">
-              {formatTimer(this.state.progress)} /{" "}
-              {formatTimer(this.state.duration)}
-            </span>
-            <span>
-              {" "}
-              | {this.state.filteredSongs[this.state.nowPlaying].title}
-            </span>
-            <div
-              className="sound-player__progress-bar"
-              style={{ width: this.state.progressPercent * 100 + "%" }}
-            />
-          </div>
+          <audio
+            src={this.state.filteredSongs[this.state.nowPlaying].url}
+            ref={this.soundRef}
+            onCanPlay={this.audioReady}
+            onTimeUpdate={this.updateProgress}
+            onEnded={this.playNextSong}
+          >
+            <p>Your browser doesn't support HTML5 audio.</p>
+          </audio>
         )}
 
         <TypeList
@@ -165,7 +153,15 @@ class Music extends Component {
           title="genre"
         />
 
-        <SongList songs={this.state.filteredSongs} />
+        <SongList
+          songs={this.state.filteredSongs}
+          playSong={this.playSong}
+          nowPlaying={this.state.nowPlaying}
+          progressPercent={this.state.progressPercent}
+          progress={this.state.progress}
+          duration={this.state.duration}
+          playing={this.state.playing}
+        />
       </div>
     );
   }
