@@ -161,6 +161,7 @@ class Music extends Component {
           progress={this.state.progress}
           duration={this.state.duration}
           playing={this.state.playing}
+          filters={this.state.filters}
         />
       </div>
     );

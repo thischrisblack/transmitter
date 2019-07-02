@@ -1,0 +1,52 @@
+.playlist {
+  &__album {
+    margin: 2rem 0 0.5rem 0;
+    font-size: 1.6rem;
+    // text-shadow: none;
+
+    &--title {
+      font-weight: 700;
+    }
+
+    &--year {
+      font-size: 1.4rem;
+    }
+  }
+
+  &__item {
+    padding: 1px 5px;
+    border: 1px solid transparent;
+    position: relative;
+    cursor: pointer;
+
+    &:hover {
+      font-weight: 700;
+    }
+  }
+
+  .active {
+    color: #000;
+    background: #fafafa;
+    border: 1px solid #aaa;
+    font-weight: 700;
+  }
+
+  &__timer {
+    color: #333;
+    padding: 0;
+    float: right;
+    font-weight: 400;
+  }
+
+  &__progress-bar {
+    background-image: url(./assets/img/static04.gif);
+    background-size: 1500px;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    opacity: 0.15;
+  }
+}

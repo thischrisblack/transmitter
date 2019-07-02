@@ -1,18 +1,26 @@
 .logo {
   display: inline-block;
+  text-align: center;
 
   &__name {
-    display: none;
+    // display: none;
+    display: block;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    text-shadow: none;
+    text-align: center;
+
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-image: url(./assets/img/static06.gif);
   }
 }
 
 @media screen and (min-width: 700px) {
   .logo__name {
-    font-weight: 400;
-    font-size: 1.6rem;
-    text-transform: uppercase;
-    text-shadow: none;
-    display: block;
-    text-align: center;
+    margin-top: -4px;
   }
 }
