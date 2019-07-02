@@ -11,7 +11,7 @@ class Home extends React.Component {
   render() {
     return (
       <div className="home">
-        <Header />
+        <Header location={this.props.location.pathname} />
         <div className="home__content">
           <Route path={ROUTES.MESSAGES} component={Messages} />
           <Route path={ROUTES.CALENDAR} component={Calendar} />

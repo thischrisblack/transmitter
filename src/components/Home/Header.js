@@ -5,14 +5,15 @@ import { Link } from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
 import Navigation from "./Navigation";
 
-const Header = () => {
+const Header = location => {
+  console.log(location.location);
   return (
     <header className="sidebar">
       <Link to={ROUTES.HOME}>
         <Logo width={"160"} />
       </Link>
 
-      <Navigation />
+      <Navigation location={location.location} />
     </header>
   );
 };

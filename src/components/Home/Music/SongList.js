@@ -33,7 +33,9 @@ const SongList = ({
             {prevAlbum !== thisAlbum && !filters.genre && (
               <div className="playlist__album">
                 <span className="playlist__album--title">{song.album}</span>
-                <span className="playlist__album--year"> ({song.year})</span>
+                {song.album !== "Unreleased Demos" && (
+                  <span className="playlist__album--year"> ({song.year})</span>
+                )}
               </div>
             )}
 

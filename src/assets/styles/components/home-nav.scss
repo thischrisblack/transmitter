@@ -12,6 +12,15 @@
       text-shadow: none;
     }
   }
+
+  .active a {
+    font-size: 2rem;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-image: url(./assets/img/static02.gif);
+    background-size: 7000%;
+  }
 }
 
 @media screen and (min-width: 700px) {

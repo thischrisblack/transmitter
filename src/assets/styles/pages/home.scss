@@ -13,20 +13,28 @@
 
 .sidebar {
   grid-area: sidebar;
-  margin-bottom: 2rem;
+  margin-bottom: 0;
   padding: 1rem;
 }
 
 .home__content {
   grid-area: content;
-  padding: 0;
+  padding: 1rem 0 0 0;
+
+  border-top: 5px solid black;
+
+  border-image-source: url(./assets/img/static06.gif);
+  border-image-slice: 1;
+  border-image-width: 1;
+  border-image-outset: 0;
+  border-image-repeat: round;
   // position: relative;
 }
 
 @media screen and (min-width: 700px) {
   .home {
     display: grid;
-    grid-template-columns: 25rem minmax(0, 70rem) auto;
+    grid-template-columns: 24rem minmax(0, 70rem) auto;
     grid-template-areas: ". content .";
   }
 
@@ -46,6 +54,15 @@
   }
 
   .home__content {
-    // padding-top: 3rem;
+    min-height: 100vh;
+    padding-left: 2rem;
+    border-top: 0;
+    border-left: 5px solid black;
+
+    border-image-source: url(./assets/img/static06.gif);
+    border-image-slice: 1;
+    border-image-width: 1;
+    border-image-outset: 0;
+    border-image-repeat: round;
   }
 }
