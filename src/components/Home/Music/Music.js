@@ -16,7 +16,8 @@ class Music extends Component {
     nowPlaying: 0,
     playing: false,
     duration: "",
-    progress: 0
+    progress: 0,
+    trackLoadError: false
   };
 
   componentDidMount() {
@@ -127,6 +128,10 @@ class Music extends Component {
     }
   };
 
+  trackLoadError = () => {
+    this.setState({ trackLoadError: true });
+  };
+
   render() {
     const {
       loading,
@@ -136,7 +141,8 @@ class Music extends Component {
       nowPlaying,
       playing,
       duration,
-      progress
+      progress,
+      trackLoadError
     } = this.state;
 
     return (
@@ -150,6 +156,8 @@ class Music extends Component {
             onCanPlay={this.audioReady}
             onTimeUpdate={this.updateProgress}
             onEnded={this.playNextSong}
+            onError={this.trackLoadError}
+            preload="none"
           >
             <p>Your browser doesn't support HTML5 audio.</p>
           </audio>
@@ -161,6 +169,13 @@ class Music extends Component {
           filterCategory="genre"
           activeFilter={filters.genre}
         />
+
+        {trackLoadError && (
+          <p className="error">
+            At this time it seems I have surpassed my bandwidth quota for the
+            day. Please try again tomorrow.
+          </p>
+        )}
 
         <SongList
           songs={filteredSongs}

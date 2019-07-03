@@ -7,7 +7,8 @@ class SoundPlayer extends Component {
     playing: false,
     duration: "",
     progress: 0,
-    progressPercent: 0
+    progressPercent: 0,
+    trackLoadError: false
   };
 
   soundRef = React.createRef();
@@ -42,9 +43,19 @@ class SoundPlayer extends Component {
     });
   };
 
+  trackLoadError = () => {
+    this.setState({ trackLoadError: true });
+  };
+
   render() {
     return (
       <div className="sound-player">
+        {this.state.trackLoadError && (
+          <p className="error">
+            At this time it seems I have surpassed my bandwidth quota for the
+            day. Please try again tomorrow.
+          </p>
+        )}
         <audio
           src={this.props.source}
           ref={this.soundRef}
@@ -52,6 +63,7 @@ class SoundPlayer extends Component {
           onTimeUpdate={this.updateProgress}
           onEnded={this.resetAudio}
           preload="none"
+          onError={this.trackLoadError}
         >
           <p>Your browser doesn't support HTML5 audio.</p>
         </audio>
