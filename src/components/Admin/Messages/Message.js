@@ -20,9 +20,11 @@ const Message = ({ message, firebase, database }) => {
         {new Date(Number(message.timestamp)).toUTCString()}
         <EditDelete database={database} message={message} firebase={firebase} />
       </div>
+
       {message.title && (
         <div className="messages__list--title">{message.title}</div>
       )}
+
       {message.image && (
         <div
           className="messages__list--image"
@@ -32,18 +34,22 @@ const Message = ({ message, firebase, database }) => {
           <img src={message.image} alt={message.title} />
         </div>
       )}
+
       {message.message && (
         <ReactMarkdown
           source={message.message}
           className="messages__list--message"
         />
       )}
+
       <div className="clear" />
+
       {message.link && (
         <a className="messages__list--link" href={message.link}>
           {message.link.split("/")[2]}
         </a>
       )}
+
       {message.sound && <SoundPlayer source={message.sound} />}
     </li>
   );

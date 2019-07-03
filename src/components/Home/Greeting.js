@@ -6,7 +6,7 @@ const Greeting = () => {
   return (
     <div className="greeting">
       <div className="greeting__img">
-        <img src={greetingImg} alt="Chris Black in a train." height="665" />
+        <img src={greetingImg} alt="Chris Black in a train." />
       </div>
       <p>
         This is Chris Black transmitting from an undisclosed location. Please
