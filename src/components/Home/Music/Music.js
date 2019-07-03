@@ -132,7 +132,7 @@ class Music extends Component {
 
   render() {
     return (
-      <div className="messages">
+      <div className="music">
         {this.state.loading && <Loading message="Loading..." />}
 
         {this.state.filteredSongs[this.state.nowPlaying] && (

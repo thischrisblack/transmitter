@@ -1,0 +1,27 @@
+.greeting {
+  padding: 1rem 0 3rem 2rem;
+
+  &__img {
+    position: relative;
+    &:after {
+      content: "";
+      background-image: url(./assets/img/static05.gif);
+      background-size: cover;
+      opacity: 0.25;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      position: absolute;
+    }
+  }
+  img {
+    width: 100%;
+    display: block;
+  }
+
+  p {
+    margin: 2rem 0;
+    font-size: 1.6rem;
+  }
+}

@@ -1,7 +1,7 @@
 body {
   font-family: "Roboto Mono", monospace;
   -webkit-font-smoothing: antialiased;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   // line-height: 2rem;
   color: #000;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
@@ -18,6 +18,10 @@ h1 {
   background-image: url(./assets/img/static06.gif);
 }
 
+h2 {
+  margin-bottom: 1.6rem;
+}
+
 .clear {
   display: block;
   height: 0px;
@@ -27,11 +31,13 @@ h1 {
 a {
   color: $logo-red;
   font-weight: 700;
+  text-decoration: none;
+  // text-shadow: none;
 
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
-  background-image: url(./assets/img/static03.gif);
+  // -webkit-text-fill-color: transparent;
+  // background-clip: text;
+  // -webkit-background-clip: text;
+  // background-image: url(./assets/img/static03.gif);
 
   &:hover {
     text-decoration: underline;

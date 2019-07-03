@@ -9,11 +9,15 @@ console.log(
  *
  * TODO:
  *
+ * Single message component
+ *
+ * Lazy images
+ *
+ * Title and meta tag insertion
+ *
+ * OG tags?
+ *
  * Add "SHOW ALL" to calendar.
- *
- * Home layout
- *
- * Move functions tests to a utils.test.js file.
  *
  *
  *

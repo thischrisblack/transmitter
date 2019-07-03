@@ -1,5 +1,5 @@
 .messages {
-  padding: 1rem;
+  padding: 1rem 0 3rem 2rem;
 
   &__add-date {
     margin-bottom: 3rem;
@@ -18,18 +18,16 @@
 
     li {
       margin-bottom: 10rem;
-      // border-left: 2px solid white;
-      // border-image-source: url(./assets/img/static01.gif);
-      // border-image-slice: 1;
-      // border-image-width: 1;
-      // border-image-outset: 10;
-      // border-image-repeat: round;
     }
 
     &--timestamp {
       font-size: 1rem;
       color: rgb(1, 74, 94);
       margin: 0 0 0.5rem 0;
+
+      &:hover {
+        font-weight: 700;
+      }
     }
 
     &--edit {
@@ -55,8 +53,8 @@
     }
 
     &--title {
-      font-weight: 400;
-      font-size: 1.6rem;
+      font-weight: 700;
+      font-size: 1.7rem;
       color: rgb(44, 9, 9);
       margin-bottom: 0.5rem;
       text-shadow: none;
@@ -76,7 +74,7 @@
     &--image {
       position: relative;
       float: left;
-      margin: 0 1rem 1rem 0;
+      margin: 0 2rem 1rem 0;
       transition: all 0.2s;
       cursor: pointer;
 

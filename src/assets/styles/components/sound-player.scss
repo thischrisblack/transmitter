@@ -8,6 +8,12 @@
     font-weight: 700;
     cursor: pointer;
     padding: 0;
+
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-image: url(./assets/img/static01.gif);
+    background-size: 10000%;
   }
 
   &__timer {

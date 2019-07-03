@@ -2,11 +2,13 @@
 @import "./assets/styles/abstracts/variables.scss";
 @import "./assets/styles/base/base.scss";
 @import "./assets/styles/base/typography.scss";
+@import "./assets/styles/pages/home.scss";
+@import "./assets/styles/pages/admin.scss";
 @import "./assets/styles/components/loading.scss";
 @import "./assets/styles/components/form.scss";
 @import "./assets/styles/components/batch-upload.scss";
-@import "./assets/styles/pages/admin.scss";
-@import "./assets/styles/pages/home.scss";
+@import "./assets/styles/components/greeting.scss";
+@import "./assets/styles/components/contact.scss";
 @import "./assets/styles/components/home-nav.scss";
 @import "./assets/styles/components/admin-nav.scss";
 @import "./assets/styles/components/message-list.scss";
@@ -14,3 +16,4 @@
 @import "./assets/styles/components/type-list.scss";
 @import "./assets/styles/components/sound-player.scss";
 @import "./assets/styles/components/logo.scss";
+@import "./assets/styles/components/code.scss";

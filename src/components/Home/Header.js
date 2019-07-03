@@ -6,7 +6,6 @@ import * as ROUTES from "../../constants/routes";
 import Navigation from "./Navigation";
 
 const Header = location => {
-  console.log(location.location);
   return (
     <header className="sidebar">
       <Link to={ROUTES.HOME}>

@@ -4,10 +4,10 @@ import Message from "./Message";
 const MessageList = ({ messages, filter, firebase, database }) => {
   filter && (messages = messages.filter(message => message.type === filter));
 
-  if (!messages.length) return <p>No messages.</p>;
+  if (!messages.length) return <p>Nothing.</p>;
 
   return (
-    <ul className="messages messages__list">
+    <ul className="messages__list">
       {messages.map(message => (
         <Message
           message={message}

@@ -46,6 +46,8 @@ class Calendar extends Component {
       <div className="messages">
         {this.state.loading && <Loading message="Loading..." />}
 
+        <h2>What will happen?</h2>
+
         <MessageList
           messages={this.state.dates}
           firebase={this.props.firebase}

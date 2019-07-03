@@ -8,3 +8,5 @@ export const SIGN_IN = "/signin";
 export const MUSIC = "/music";
 export const MESSAGES = "/messages";
 export const CALENDAR = "/calendar";
+export const CODE = "/code";
+export const CONTACT = "/contact";

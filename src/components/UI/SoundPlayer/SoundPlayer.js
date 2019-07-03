@@ -51,6 +51,7 @@ class SoundPlayer extends Component {
           onCanPlay={this.audioReady}
           onTimeUpdate={this.updateProgress}
           onEnded={this.resetAudio}
+          preload="none"
         >
           <p>Your browser doesn't support HTML5 audio.</p>
         </audio>
@@ -58,13 +59,15 @@ class SoundPlayer extends Component {
           className="sound-player sound-player__controls"
           onClick={this.toggleAudio}
         >
-          {/* {this.state.playing ? "❚❚" : "▶"} */}
+          {/* {this.state.playing ? "◼" : "▶"} */}
           {this.state.playing ? "STOP" : "PLAY"}
         </span>
-        <span className="sound-player sound-player__timer">
-          {formatTimer(this.state.progress)} /{" "}
-          {formatTimer(this.state.duration)}
-        </span>
+        {this.state.duration && (
+          <span className="sound-player sound-player__timer">
+            {formatTimer(this.state.progress)} /{" "}
+            {formatTimer(this.state.duration)}
+          </span>
+        )}
         <div
           className="sound-player__progress-bar"
           style={{ width: this.state.progressPercent * 100 + "%" }}

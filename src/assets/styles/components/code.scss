@@ -1,0 +1,31 @@
+.code {
+  padding: 1rem 0 3rem 2rem;
+
+  h3 {
+    margin-top: 5rem;
+  }
+
+  .messages__list {
+    li {
+      margin-bottom: 4rem;
+    }
+
+    &--timestamp {
+      display: none;
+    }
+
+    &--title {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__greeting {
+    margin-bottom: 2rem;
+    p {
+      font-size: 1.6rem;
+      margin: 2rem 0;
+      line-height: 2.4rem;
+    }
+  }
+}

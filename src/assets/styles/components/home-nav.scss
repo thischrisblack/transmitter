@@ -10,16 +10,22 @@
 
     a {
       text-shadow: none;
+      text-decoration: none;
+
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
+      background-image: url(./assets/img/static03.gif);
     }
   }
 
   .active a {
-    font-size: 2rem;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    -webkit-background-clip: text;
-    background-image: url(./assets/img/static02.gif);
-    background-size: 7000%;
+    font-size: 2.2rem;
+    // -webkit-text-fill-color: transparent;
+    // background-clip: text;
+    // -webkit-background-clip: text;
+    // background-image: url(./assets/img/static02.gif);
+    // background-size: 7000%;
   }
 }
 
