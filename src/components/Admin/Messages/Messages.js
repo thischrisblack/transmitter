@@ -5,7 +5,7 @@ import { compose } from "recompose";
 import { config } from "../../../config";
 import PropTypes from "prop-types";
 
-import MessageList from "../../Home/Messages/MessageList";
+import MessageList from "./MessageList";
 import TypeList from "./TypeList";
 import Loading from "../../UI/LoadingScreen";
 
