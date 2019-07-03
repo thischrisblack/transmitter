@@ -10,7 +10,14 @@ const Message = ({ message }) => {
   // Set the image / placeholder size
   let initialImageSize;
   if (message.imageRatio) {
-    initialImageSize = setInitialImageSize(message.imageRatio);
+    if (window.innerWidth > 700) {
+      initialImageSize = setInitialImageSize(message.imageRatio);
+    } else {
+      initialImageSize = {
+        width: "100%",
+        paddingTop: `${message.imageRatio * 99.7}%`
+      };
+    }
   }
 
   return (
@@ -18,18 +25,22 @@ const Message = ({ message }) => {
       <div className="messages__list--timestamp">
         {new Date(Number(message.timestamp)).toUTCString()}
       </div>
+
       {message.title && (
         <div className="messages__list--title">{message.title}</div>
       )}
+
       {message.image && (
         <div
           className="messages__list--image"
-          onClick={resizeImage}
+          // No click if mobile.
+          onClick={window.innerWidth > 700 && resizeImage}
           style={initialImageSize}
         >
           <img src={message.image} alt={message.title} />
         </div>
       )}
+
       {message.message && (
         <ReactMarkdown
           source={message.message}

@@ -5,13 +5,20 @@ import SoundPlayer from "../../UI/SoundPlayer";
 import EditDelete from "./EditDelete";
 
 import { resizeImage } from "../../../utils";
+import { setInitialImageSize } from "../../../utils";
 
 const Message = ({ message, firebase, database }) => {
+  // Set the image / placeholder size
   let initialImageSize;
-
   if (message.imageRatio) {
-    const height = 20 * message.imageRatio;
-    initialImageSize = { width: "20rem", minHeight: `${height}rem` };
+    if (window.innerWidth > 700) {
+      initialImageSize = setInitialImageSize(message.imageRatio);
+    } else {
+      initialImageSize = {
+        width: "100%",
+        paddingTop: `${message.imageRatio * 99.7}%`
+      };
+    }
   }
 
   return (
@@ -28,7 +35,8 @@ const Message = ({ message, firebase, database }) => {
       {message.image && (
         <div
           className="messages__list--image"
-          onClick={resizeImage}
+          // No click if mobile.
+          onClick={window.innerWidth > 700 && resizeImage}
           style={initialImageSize}
         >
           <img src={message.image} alt={message.title} />

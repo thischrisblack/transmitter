@@ -78,13 +78,13 @@
       transition: all 0.2s;
       cursor: pointer;
 
-      border: 1px solid black;
+      // border: 1px solid black;
 
-      border-image-source: url(./assets/img/static06.gif);
-      border-image-slice: 1;
-      border-image-width: 1;
-      border-image-outset: 0;
-      border-image-repeat: round;
+      // border-image-source: url(./assets/img/static06.gif);
+      // border-image-slice: 1;
+      // border-image-width: 1;
+      // border-image-outset: 0;
+      // border-image-repeat: round;
 
       &::after {
         content: "";
@@ -100,8 +100,19 @@
       }
 
       img {
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
         display: block;
+        //   box-shadow: 1px 1px 3px #000;
+        border: 1px solid black;
+      }
+
+      @media screen and (min-width: $breakpoint) {
+        img {
+          position: relative;
+        }
       }
     }
 
