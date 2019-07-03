@@ -34,7 +34,7 @@ const Message = ({ message }) => {
         <div
           className="messages__list--image"
           // No click if mobile.
-          onClick={window.innerWidth > 700 && resizeImage}
+          onClick={window.innerWidth > 700 ? resizeImage : undefined}
           style={initialImageSize}
         >
           <img src={message.image} alt={message.title} />
