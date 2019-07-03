@@ -32,14 +32,20 @@ a {
   color: $logo-red;
   font-weight: 700;
   text-decoration: none;
-  // text-shadow: none;
+  text-shadow: none;
 
-  // -webkit-text-fill-color: transparent;
-  // background-clip: text;
-  // -webkit-background-clip: text;
-  // background-image: url(./assets/img/static03.gif);
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-image: url(./assets/img/static07.gif);
 
   &:hover {
     text-decoration: underline;
+  }
+}
+
+p {
+  a {
+    border-bottom: 1px solid black;
   }
 }

@@ -9,7 +9,7 @@ const Greeting = () => {
         <img src={greetingImg} alt="Chris Black in a train." height="665" />
       </div>
       <p>
-        I am Chris Black, transmitting from an undisclosed location. Please
+        This is Chris Black transmitting from an undisclosed location. Please
         remain calm.
       </p>
     </div>

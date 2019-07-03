@@ -16,8 +16,7 @@ class Music extends Component {
     nowPlaying: 0,
     playing: false,
     duration: "",
-    progress: 0,
-    progressPercent: 0
+    progress: 0
   };
 
   componentDidMount() {
@@ -38,7 +37,6 @@ class Music extends Component {
           numeric: true,
           sensitivity: "base"
         });
-
         return year || album || track;
       });
 
@@ -70,6 +68,7 @@ class Music extends Component {
           song => song[filter] === filters[filter]
         ));
     });
+
     this.toggleAudio();
     this.resetAudio();
     this.setState({ filteredSongs: newFilteredSongs, nowPlaying: 0 });
@@ -107,8 +106,6 @@ class Music extends Component {
 
   updateProgress = () => {
     this.setState({ progress: this.soundRef.current.currentTime });
-    const percent = this.state.progress / this.state.duration;
-    this.setState({ progressPercent: percent });
   };
 
   resetAudio = () => {
@@ -131,13 +128,24 @@ class Music extends Component {
   };
 
   render() {
+    const {
+      loading,
+      songs,
+      filteredSongs,
+      filters,
+      nowPlaying,
+      playing,
+      duration,
+      progress
+    } = this.state;
+
     return (
       <div className="music">
-        {this.state.loading && <Loading message="Loading..." />}
+        {loading && <Loading message="Loading..." />}
 
-        {this.state.filteredSongs[this.state.nowPlaying] && (
+        {filteredSongs[nowPlaying] && (
           <audio
-            src={this.state.filteredSongs[this.state.nowPlaying].url}
+            src={filteredSongs[nowPlaying].url}
             ref={this.soundRef}
             onCanPlay={this.audioReady}
             onTimeUpdate={this.updateProgress}
@@ -148,21 +156,20 @@ class Music extends Component {
         )}
 
         <TypeList
-          types={getUniqueKeys(this.state.songs, "genre")}
+          types={getUniqueKeys(songs, "genre")}
           updateFilter={this.updateFilter}
-          title="genre"
-          activeFilter={this.state.filters.genre}
+          filterCategory="genre"
+          activeFilter={filters.genre}
         />
 
         <SongList
-          songs={this.state.filteredSongs}
+          songs={filteredSongs}
           playSong={this.playSong}
-          nowPlaying={this.state.nowPlaying}
-          progressPercent={this.state.progressPercent}
-          progress={this.state.progress}
-          duration={this.state.duration}
-          playing={this.state.playing}
-          filters={this.state.filters}
+          nowPlaying={nowPlaying}
+          progress={progress}
+          duration={duration}
+          playing={playing}
+          filters={filters}
         />
       </div>
     );

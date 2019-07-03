@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 
 import { config } from "../../../config";
 
-import MessageList from "./MessageList";
+import MessageList from "../../Home/Messages/MessageList";
 import Loading from "../../UI/LoadingScreen";
 
 class Calendar extends Component {
@@ -43,9 +43,10 @@ class Calendar extends Component {
   }
 
   render() {
+    const { loading, dates } = this.state;
     return (
       <div className="calendar">
-        {this.state.loading && <Loading message="Loading..." />}
+        {loading && <Loading message="Loading..." />}
         <h1>CALENDAR</h1>
         <Link
           className="messages__add-date"
@@ -55,7 +56,7 @@ class Calendar extends Component {
         </Link>
 
         <MessageList
-          messages={this.state.dates}
+          messages={dates}
           firebase={this.props.firebase}
           database="calendarEvent"
         />
@@ -65,8 +66,7 @@ class Calendar extends Component {
 }
 
 Calendar.propTypes = {
-  firebase: PropTypes.object,
-  history: PropTypes.object
+  firebase: PropTypes.object
 };
 
 const condition = authUser => authUser && authUser.uid === config.adminUid;

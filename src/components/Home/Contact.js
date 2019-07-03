@@ -13,6 +13,7 @@ const Contact = () => {
         <a
           href="https://chrisblackmusic.us4.list-manage.com/subscribe?u=c34da350025e08d5c3a2afd49&id=9b8fff5b69"
           target="_blank"
+          rel="noopener noreferrer"
         >
           email list
         </a>

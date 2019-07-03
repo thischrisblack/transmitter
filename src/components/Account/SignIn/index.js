@@ -6,8 +6,8 @@ import { withFirebase } from "../../Firebase";
 import * as ROUTES from "../../../constants/routes";
 
 const Signin = () => (
-  <div>
-    <h1>Log On</h1>
+  <div className="sign-in">
+    <h1>Sign In to Transmitter</h1>
     <SignInForm />
   </div>
 );
@@ -65,7 +65,7 @@ class SignInFormBase extends Component {
           type="password"
           placeholder="Password"
         />
-        <button disabled={isInvalid} type="submit">
+        <button disabled={isInvalid} type="submit" className="transmit-button">
           Sign In
         </button>
 

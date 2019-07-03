@@ -3,16 +3,12 @@ import { withFirebase } from "../../Firebase";
 import PropTypes from "prop-types";
 
 import MessageList from "./MessageList";
-// import TypeList from "./TypeList";
 import Loading from "../../UI/LoadingScreen";
-
-import { getUniqueKeys } from "../../../utils";
 
 class Messages extends Component {
   state = {
     loading: true,
     messages: [],
-    typeList: [],
     filter: null
   };
 
@@ -35,7 +31,6 @@ class Messages extends Component {
 
         this.setState({
           messages: messagesList,
-          typeList: getUniqueKeys(messagesList, "type"),
           loading: false
         });
       });
@@ -50,20 +45,14 @@ class Messages extends Component {
   }
 
   render() {
+    const { loading, messages, filter } = this.state;
     return (
       <div className="messages">
-        {this.state.loading && <Loading message="Loading..." />}
-
-        {/* <h1>MESSAGES</h1> */}
-
-        {/* <TypeList
-          types={this.state.typeList}
-          updateFilter={this.updateFilter}
-        /> */}
+        {loading && <Loading message="Loading..." />}
 
         <MessageList
-          messages={this.state.messages}
-          filter={this.state.filter}
+          messages={messages}
+          filter={filter}
           firebase={this.props.firebase}
           database="message"
         />
@@ -73,8 +62,7 @@ class Messages extends Component {
 }
 
 Messages.propTypes = {
-  firebase: PropTypes.object,
-  history: PropTypes.object
+  firebase: PropTypes.object
 };
 
 export default withFirebase(Messages);

@@ -1,26 +1,28 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 import { deleteMessage } from "../../../helpers/firebaseCRUD";
 import { Link } from "react-router-dom";
 
 class EditDelete extends Component {
   state = {
-    delete: false
+    deleteThis: false
   };
 
   deleteThisMessage = event => {
-    if (this.state.delete) {
+    if (this.state.deleteThis) {
       deleteMessage(event.target.dataset, this.props.firebase);
     } else {
-      this.setState({ delete: true });
+      this.setState({ deleteThis: true });
     }
   };
 
   cancelDelete = () => {
-    this.setState({ delete: false });
+    this.setState({ deleteThis: false });
   };
 
   render() {
+    const { deleteThis } = this.state;
     return (
       <div className="messages__list--edit">
         <Link to={{ pathname: "/lord/transmit", post: this.props.message }}>
@@ -35,9 +37,9 @@ class EditDelete extends Component {
           data-sound={this.props.message.sound}
           onClick={this.deleteThisMessage}
         >
-          {this.state.delete ? "confirm" : "delete"}
+          {deleteThis ? "confirm" : "delete"}
         </span>
-        {this.state.delete && (
+        {deleteThis && (
           <span
             className="messages__list--cancel-delete"
             onClick={this.cancelDelete}
@@ -50,5 +52,11 @@ class EditDelete extends Component {
     );
   }
 }
+
+EditDelete.propTypes = {
+  firebase: PropTypes.object,
+  message: PropTypes.object,
+  database: PropTypes.string
+};
 
 export default EditDelete;

@@ -1,20 +1,20 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
 
-import SoundPlayer from "../../UI/SoundPlayer/SoundPlayer";
+import SoundPlayer from "../../UI/SoundPlayer";
 
 import { resizeImage } from "../../../utils";
+import { setInitialImageSize } from "../../../utils";
 
 const Message = ({ message }) => {
+  // Set the image / placeholder size
   let initialImageSize;
-
   if (message.imageRatio) {
-    const height = 20 * message.imageRatio;
-    initialImageSize = { width: "20rem", minHeight: `${height}rem` };
+    initialImageSize = setInitialImageSize(message.imageRatio);
   }
 
   return (
-    <li key={message.timestamp}>
+    <li>
       <div className="messages__list--timestamp">
         {new Date(Number(message.timestamp)).toUTCString()}
       </div>

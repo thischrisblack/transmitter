@@ -9,6 +9,8 @@ console.log(
  *
  * TODO:
  *
+ * Add more content.
+ *
  * Single message component
  *
  * Lazy images

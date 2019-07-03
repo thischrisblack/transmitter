@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
-import { formatTimer } from "../../../utils";
+import { formatTimer } from "../../utils";
 
-class PlaylistPlayer extends Component {
+class SoundPlayer extends Component {
   state = {
     playing: false,
     duration: "",
@@ -46,11 +46,12 @@ class PlaylistPlayer extends Component {
     return (
       <div className="sound-player">
         <audio
-          src={this.props.source.url}
+          src={this.props.source}
           ref={this.soundRef}
           onCanPlay={this.audioReady}
           onTimeUpdate={this.updateProgress}
           onEnded={this.resetAudio}
+          preload="none"
         >
           <p>Your browser doesn't support HTML5 audio.</p>
         </audio>
@@ -58,14 +59,15 @@ class PlaylistPlayer extends Component {
           className="sound-player sound-player__controls"
           onClick={this.toggleAudio}
         >
-          {/* {this.state.playing ? "❚❚" : "▶"} */}
+          {/* {this.state.playing ? "◼" : "▶"} */}
           {this.state.playing ? "STOP" : "PLAY"}
         </span>
-        <span className="sound-player sound-player__timer">
-          {formatTimer(this.state.progress)} /{" "}
-          {formatTimer(this.state.duration)}
-        </span>
-        <span> | {this.props.source.title}</span>
+        {this.state.duration && (
+          <span className="sound-player sound-player__timer">
+            {formatTimer(this.state.progress)} /{" "}
+            {formatTimer(this.state.duration)}
+          </span>
+        )}
         <div
           className="sound-player__progress-bar"
           style={{ width: this.state.progressPercent * 100 + "%" }}
@@ -75,4 +77,4 @@ class PlaylistPlayer extends Component {
   }
 }
 
-export default PlaylistPlayer;
+export default SoundPlayer;

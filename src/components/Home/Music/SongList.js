@@ -6,7 +6,6 @@ const SongList = ({
   songs,
   playSong,
   nowPlaying,
-  progressPercent,
   progress,
   duration,
   playing,
@@ -20,6 +19,7 @@ const SongList = ({
     playSong(event.currentTarget.dataset.track);
   };
 
+  // Enable album name/year display at each new album.
   let prevAlbum, thisAlbum;
 
   return (
@@ -30,6 +30,7 @@ const SongList = ({
 
         return (
           <div key={key}>
+            {/* If the current track album is different from the last, and there is no active filter, display the album info */}
             {prevAlbum !== thisAlbum && !filters.genre && (
               <div className="playlist__album">
                 <span className="playlist__album--title">{song.album}</span>
@@ -44,6 +45,7 @@ const SongList = ({
               data-track={key}
               onClick={handleClick}
               className={
+                // Sets active class if current track is playing.
                 "playlist__item " + (key === nowPlaying && playing && "active")
               }
             >
@@ -56,7 +58,7 @@ const SongList = ({
                   </span>
                   <div
                     className="playlist__progress-bar"
-                    style={{ width: progressPercent * 100 + "%" }}
+                    style={{ width: (progress / duration) * 100 + "%" }}
                   />
                 </span>
               )}

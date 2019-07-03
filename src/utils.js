@@ -92,3 +92,12 @@ export const getUniqueKeys = (itemsList, key) => {
   typeList.sort();
   return typeList;
 };
+
+/**
+ * Set intial image size
+ */
+export const setInitialImageSize = ratio => {
+  const width = 20;
+  const height = width * ratio;
+  return { width: `${width}rem`, minHeight: `${height}rem` };
+};

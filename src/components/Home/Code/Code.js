@@ -40,9 +40,10 @@ class Code extends Component {
   }
 
   render() {
+    const { loading, messages } = this.state;
     return (
       <div className="code">
-        {this.state.loading && <Loading message="Loading..." />}
+        {loading && <Loading message="Loading..." />}
 
         <div className="code__greeting">
           <h2>JavaScript, React, PHP, WordPress, and things like that.</h2>
@@ -57,6 +58,7 @@ class Code extends Component {
             <a
               href="https://thischrisblack.github.io/Resume-the-Hard-Way/"
               target="_blank"
+              rel="noopener noreferrer"
             >
               resume
             </a>
@@ -67,7 +69,7 @@ class Code extends Component {
         </div>
 
         <MessageList
-          messages={this.state.messages}
+          messages={messages}
           filter="code"
           firebase={this.props.firebase}
           database="message"
@@ -78,8 +80,7 @@ class Code extends Component {
 }
 
 Code.propTypes = {
-  firebase: PropTypes.object,
-  history: PropTypes.object
+  firebase: PropTypes.object
 };
 
 export default withFirebase(Code);

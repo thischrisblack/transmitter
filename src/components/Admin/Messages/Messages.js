@@ -5,7 +5,7 @@ import { compose } from "recompose";
 import { config } from "../../../config";
 import PropTypes from "prop-types";
 
-import MessageList from "./MessageList";
+import MessageList from "../../Home/Messages/MessageList";
 import TypeList from "./TypeList";
 import Loading from "../../UI/LoadingScreen";
 
@@ -49,21 +49,22 @@ class Messages extends Component {
   }
 
   render() {
+    const { loading, messages, typeList, filter } = this.state;
     return (
       <div className="messages">
-        {this.state.loading && <Loading message="Loading..." />}
+        {loading && <Loading message="Loading..." />}
 
         <h1>MESSAGES</h1>
 
         <TypeList
-          types={this.state.typeList}
+          types={typeList}
           updateFilter={this.updateFilter}
-          activeFilter={this.state.filter}
+          activeFilter={filter}
         />
 
         <MessageList
-          messages={this.state.messages}
-          filter={this.state.filter}
+          messages={messages}
+          filter={filter}
           firebase={this.props.firebase}
           database="message"
         />

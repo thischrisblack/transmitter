@@ -22,9 +22,6 @@ class Home extends React.Component {
           <Route path={ROUTES.CODE} component={Code} />
           <Route path={ROUTES.CONTACT} component={Contact} />
           <Route exact path={ROUTES.HOME} component={Greeting} />
-
-          {/* <Route path={ROUTES.MUSIC} component={Music} />
-          <Route path={ROUTES.CALENDAR} component={Calendar} /> */}
         </div>
       </div>
     );

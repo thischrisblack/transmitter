@@ -7,7 +7,7 @@ import { Route } from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
 import PropTypes from "prop-types";
 
-import AdminNav from "./Nav";
+import AdminNav from "./AdminNav";
 import TransmitForm from "./Transmit/TransmitForm";
 import Messages from "./Messages/Messages";
 import Calendar from "./Messages/Calendar";

@@ -42,14 +42,15 @@ class Calendar extends Component {
   }
 
   render() {
+    const { loading, dates } = this.state;
     return (
       <div className="messages">
-        {this.state.loading && <Loading message="Loading..." />}
+        {loading && <Loading message="Loading..." />}
 
         <h2>What will happen?</h2>
 
         <MessageList
-          messages={this.state.dates}
+          messages={dates}
           firebase={this.props.firebase}
           database="calendarEvent"
         />
@@ -59,8 +60,7 @@ class Calendar extends Component {
 }
 
 Calendar.propTypes = {
-  firebase: PropTypes.object,
-  history: PropTypes.object
+  firebase: PropTypes.object
 };
 
 export default withFirebase(Calendar);

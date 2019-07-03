@@ -1,5 +1,5 @@
 .messages {
-  padding: 1rem 0 3rem 2rem;
+  padding: 1rem 0 3rem 0;
 
   &__add-date {
     margin-bottom: 3rem;
@@ -17,7 +17,7 @@
     list-style-type: none;
 
     li {
-      margin-bottom: 10rem;
+      margin-bottom: 8rem;
     }
 
     &--timestamp {
