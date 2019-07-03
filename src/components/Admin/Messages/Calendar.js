@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 
 import { config } from "../../../config";
 
-import MessageList from "../../Home/Messages/MessageList";
+import MessageList from "./MessageList";
 import Loading from "../../UI/LoadingScreen";
 
 class Calendar extends Component {
