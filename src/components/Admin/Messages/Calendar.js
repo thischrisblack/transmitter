@@ -17,6 +17,7 @@ class Calendar extends Component {
   };
 
   componentDidMount() {
+    document.title = "Transmitter: Calendar";
     this.setState({ loading: true });
 
     this.props.firebase.calendar().on("value", snapshot => {

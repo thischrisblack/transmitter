@@ -12,6 +12,7 @@ class Code extends Component {
   };
 
   componentDidMount() {
+    document.title = "Chris Black: Code";
     this.setState({ loading: true });
 
     this.props.firebase

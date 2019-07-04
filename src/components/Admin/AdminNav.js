@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 class AdminNav extends Component {
+  componentDidMount() {
+    document.title = "Transmitter";
+  }
   render() {
     return (
       <div className="admin__nav">

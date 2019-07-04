@@ -1,6 +1,7 @@
 import React from "react";
 
 const Contact = () => {
+  document.title = "Chris Black: Contact";
   return (
     <div className="contact">
       <h2>Reach</h2>

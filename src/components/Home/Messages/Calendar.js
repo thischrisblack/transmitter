@@ -12,6 +12,7 @@ class Calendar extends Component {
   };
 
   componentDidMount() {
+    document.title = "Chris Black: Calendar";
     this.setState({ loading: true });
 
     this.props.firebase

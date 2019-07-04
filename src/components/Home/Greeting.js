@@ -3,6 +3,7 @@ import React from "react";
 import greetingImg from "../../assets/img/ChrisBlack-Train.jpg";
 
 const Greeting = () => {
+  document.title = "Chris Black";
   return (
     <div className="greeting">
       <div className="greeting__img">

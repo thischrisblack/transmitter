@@ -21,6 +21,7 @@ class Music extends Component {
   };
 
   componentDidMount() {
+    document.title = "Chris Black: Music";
     this.setState({ loading: true });
 
     this.props.firebase.music().once("value", snapshot => {

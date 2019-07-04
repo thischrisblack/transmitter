@@ -13,6 +13,7 @@ class Messages extends Component {
   };
 
   componentDidMount() {
+    document.title = "Chris Black: Messages";
     this.setState({ loading: true });
 
     this.props.firebase

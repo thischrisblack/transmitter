@@ -9,13 +9,11 @@ console.log(
  *
  * TODO:
  *
- * Add more content.
+ * Install react-helmet
  *
  * Single message component
  *
- * Lazy images
- *
- * Title and meta tag insertion
+ * Lazy images *
  *
  * OG tags?
  *

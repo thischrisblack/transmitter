@@ -20,6 +20,7 @@ class Messages extends Component {
   };
 
   componentDidMount() {
+    document.title = "Transmitter: Messages";
     this.setState({ loading: true });
 
     this.props.firebase.messages().on("value", snapshot => {

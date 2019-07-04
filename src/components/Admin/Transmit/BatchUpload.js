@@ -14,6 +14,10 @@ class BatchUploadFormBase extends Component {
   soundRef = React.createRef();
   progressRef = React.createRef();
 
+  componentDidMount() {
+    document.title = "Transmitter: Batch Upload";
+  }
+
   transmitFiles = () => {
     const fileList = this.soundRef.current.files;
 

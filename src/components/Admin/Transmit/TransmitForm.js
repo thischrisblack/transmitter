@@ -39,6 +39,7 @@ class TransmitFormBase extends Component {
   soundRef = React.createRef();
 
   componentDidMount() {
+    document.title = "Transmitter: Transmit";
     this.setState({ loading: true });
 
     // If this isn't adding a calendar date, get previous post types.
