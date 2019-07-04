@@ -13,12 +13,7 @@ console.log(
  *
  * Single message component
  *
- * Lazy images *
- *
- * OG tags?
- *
- * Add "SHOW ALL" to calendar.
- *
+ * Lazy images
  *
  *
  *
