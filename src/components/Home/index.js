@@ -10,6 +10,10 @@ import { Route } from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
 import { withFirebase } from "../Firebase";
 
+/**
+ * Okay, go into Navigation, make it a class, add withFirebase and the componentDidMount to it, and then get rid of the componentDidMount from here.
+ */
+
 class Home extends React.Component {
   render() {
     return (

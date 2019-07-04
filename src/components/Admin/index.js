@@ -15,6 +15,7 @@ import BatchUpload from "./Transmit/BatchUpload";
 
 class Admin extends Component {
   render() {
+    console.log(this.props.firebase);
     return (
       <div className="admin">
         <div className="adminContent">
