@@ -29,7 +29,7 @@ const Logo = ({
         {/* prettier-ignore */}
         <image
       use="true"
-      href="./img/static01.gif"
+      href="../img/static01.gif"
       x="0"
       y="0"
       width="4000"
@@ -46,7 +46,7 @@ const Logo = ({
         {/* prettier-ignore */}
         <image
       use="true"
-      href="./img/static03.gif"
+      href="../img/static03.gif"
       x="0"
       y="0"
       width="500"

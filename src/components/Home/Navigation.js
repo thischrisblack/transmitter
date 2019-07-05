@@ -17,7 +17,6 @@ class Navigation extends React.Component {
   }
 
   render() {
-    console.log(this.state.authUser, config.uid);
     return (
       <ul className="home-nav">
         <li

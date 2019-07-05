@@ -1,12 +1,13 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
+import { Link } from "react-router-dom";
 
 import SoundPlayer from "../../UI/SoundPlayer";
 
 import { resizeImage } from "../../../utils";
 import { setInitialImageSize } from "../../../utils";
 
-const Message = ({ message }) => {
+const Message = ({ message, database }) => {
   // Set the image / placeholder size
   let initialImageSize;
   if (message.imageRatio) {
@@ -23,7 +24,13 @@ const Message = ({ message }) => {
   return (
     <li>
       <div className="messages__list--timestamp">
-        {new Date(Number(message.timestamp)).toUTCString()}
+        {database === "calendarEvent" ? (
+          new Date(Number(message.timestamp)).toUTCString()
+        ) : (
+          <Link to={"/message/" + message.timestamp}>
+            {new Date(Number(message.timestamp)).toUTCString()}
+          </Link>
+        )}
       </div>
 
       {message.title && (

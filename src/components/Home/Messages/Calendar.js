@@ -48,7 +48,7 @@ class Calendar extends Component {
       <div className="messages">
         {loading && <Loading message="Loading..." />}
 
-        <h2>What will happen?</h2>
+        <h2>Upcoming events.</h2>
 
         <MessageList
           messages={dates}

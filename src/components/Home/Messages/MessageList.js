@@ -11,7 +11,6 @@ const MessageList = ({ messages, filter, firebase, database }) => {
       {messages.map(message => (
         <Message
           message={message}
-          firebase={firebase}
           key={message.timestamp}
           database={database}
         />

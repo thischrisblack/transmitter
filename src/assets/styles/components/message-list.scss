@@ -36,12 +36,13 @@
     }
 
     &--timestamp {
-      font-size: 1rem;
-      color: rgb(1, 74, 94);
+      font-size: 1.2rem;
+      color: rgb(1, 57, 73);
       margin: 0 0 0.5rem 0;
+      text-shadow: 0 0 0;
 
       &:hover {
-        font-weight: 700;
+        // font-weight: 700;
       }
     }
 
