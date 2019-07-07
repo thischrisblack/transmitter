@@ -66,7 +66,7 @@ class Code extends Component {
             . You can reach me by email at{" "}
             <a href="mailto:black@chrisblack.net">black@chrisblack.net</a>.
           </p>
-          <h3>Selected Projects and Experiments:</h3>
+          <h3>Projects and experiments:</h3>
         </div>
 
         <MessageList
