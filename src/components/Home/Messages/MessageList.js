@@ -1,7 +1,7 @@
 import React from "react";
 import Message from "./Message";
 
-const MessageList = ({ messages, filter, firebase, database }) => {
+const MessageList = ({ messages, filter, database }) => {
   filter && (messages = messages.filter(message => message.type === filter));
 
   if (!messages.length) return <p>Nothing.</p>;

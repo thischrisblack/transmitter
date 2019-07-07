@@ -11,8 +11,6 @@ console.log(
  *
  * Install react-helmet
  *
- * Single message component
- *
  * Lazy images
  *
  *

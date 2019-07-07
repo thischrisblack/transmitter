@@ -13,7 +13,6 @@ class SingleMessage extends React.Component {
   };
 
   componentDidMount() {
-    const database = this.props.location;
     this.props.firebase
       .message(this.props.match.params.id)
       .once("value", snapshot => {

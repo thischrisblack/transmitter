@@ -51,12 +51,7 @@ class Messages extends Component {
       <div className="messages">
         {loading && <Loading message="Loading..." />}
 
-        <MessageList
-          messages={messages}
-          filter={filter}
-          firebase={this.props.firebase}
-          database="message"
-        />
+        <MessageList messages={messages} filter={filter} database="message" />
       </div>
     );
   }

@@ -22,8 +22,8 @@ const Message = ({ message, database }) => {
   }
 
   return (
-    <li>
-      <div className="messages__list--timestamp">
+    <li className="message">
+      <div className="message__timestamp">
         {database === "calendarEvent" ? (
           new Date(Number(message.timestamp)).toUTCString()
         ) : (
@@ -33,13 +33,11 @@ const Message = ({ message, database }) => {
         )}
       </div>
 
-      {message.title && (
-        <div className="messages__list--title">{message.title}</div>
-      )}
+      {message.title && <div className="message__title">{message.title}</div>}
 
       {message.image && (
         <div
-          className="messages__list--image"
+          className="message__image"
           // No click if mobile.
           onClick={window.innerWidth > 700 ? resizeImage : undefined}
           style={initialImageSize}
@@ -49,15 +47,12 @@ const Message = ({ message, database }) => {
       )}
 
       {message.message && (
-        <ReactMarkdown
-          source={message.message}
-          className="messages__list--message"
-        />
+        <ReactMarkdown source={message.message} className="message__message" />
       )}
       <div className="clear" />
       {message.link && (
         <a
-          className="messages__list--link"
+          className="message__link"
           href={message.link}
           rel="noopener noreferrer"
           target="_blank"

@@ -8,6 +8,9 @@ class AdminNav extends Component {
   render() {
     return (
       <div className="admin__nav">
+        <Link to={`/`} className="admin__nav admin__nav--link">
+          HOME
+        </Link>
         <Link to={`/lord/transmit`} className="admin__nav admin__nav--link">
           TRANSMIT
         </Link>
@@ -22,6 +25,9 @@ class AdminNav extends Component {
           className="admin__nav admin__nav--link"
         >
           BATCH UPLOAD
+        </Link>
+        <Link to={`/`} className="admin__nav admin__nav--link">
+          HOME
         </Link>
       </div>
     );

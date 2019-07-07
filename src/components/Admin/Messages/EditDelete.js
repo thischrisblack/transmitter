@@ -24,13 +24,13 @@ class EditDelete extends Component {
   render() {
     const { deleteThis } = this.state;
     return (
-      <div className="messages__list--edit">
+      <div className="message__edit">
         <Link to={{ pathname: "/lord/transmit", post: this.props.message }}>
           edit
         </Link>
         {" | "}
         <span
-          className="messages__list--delete"
+          className="message__delete"
           data-postid={this.props.message.timestamp}
           data-database={this.props.database}
           data-image={this.props.message.image}
@@ -40,10 +40,7 @@ class EditDelete extends Component {
           {deleteThis ? "confirm" : "delete"}
         </span>
         {deleteThis && (
-          <span
-            className="messages__list--cancel-delete"
-            onClick={this.cancelDelete}
-          >
+          <span className="message__cancel-delete" onClick={this.cancelDelete}>
             {" "}
             | cancel
           </span>

@@ -22,19 +22,17 @@ const Message = ({ message, firebase, database }) => {
   }
 
   return (
-    <li key={message.timestamp}>
-      <div className="messages__list--timestamp">
+    <li key={message.timestamp} className="message">
+      <div className="message__timestamp">
         {new Date(Number(message.timestamp)).toUTCString()}
         <EditDelete database={database} message={message} firebase={firebase} />
       </div>
 
-      {message.title && (
-        <div className="messages__list--title">{message.title}</div>
-      )}
+      {message.title && <div className="message__title">{message.title}</div>}
 
       {message.image && (
         <div
-          className="messages__list--image"
+          className="message__image"
           // No click if mobile.
           onClick={window.innerWidth > 700 ? resizeImage : undefined}
           style={initialImageSize}
@@ -44,16 +42,13 @@ const Message = ({ message, firebase, database }) => {
       )}
 
       {message.message && (
-        <ReactMarkdown
-          source={message.message}
-          className="messages__list--message"
-        />
+        <ReactMarkdown source={message.message} className="message__message" />
       )}
 
       <div className="clear" />
 
       {message.link && (
-        <a className="messages__list--link" href={message.link}>
+        <a className="message__link" href={message.link}>
           {message.link.split("/")[2]}
         </a>
       )}
