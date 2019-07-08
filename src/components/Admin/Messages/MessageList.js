@@ -12,7 +12,7 @@ const MessageList = ({ messages, filter, firebase, database }) => {
         <Message
           message={message}
           firebase={firebase}
-          key={message.timestamp}
+          key={message.id}
           database={database}
         />
       ))}

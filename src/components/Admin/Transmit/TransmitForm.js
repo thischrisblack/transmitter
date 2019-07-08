@@ -16,6 +16,7 @@ import Loading from "../../UI/LoadingScreen";
 class TransmitFormBase extends Component {
   state = {
     post: {
+      id: null,
       timestamp: null,
       type: "",
       title: "",

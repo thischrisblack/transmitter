@@ -31,7 +31,7 @@ class EditDelete extends Component {
         {" | "}
         <span
           className="message__delete"
-          data-postid={this.props.message.timestamp}
+          data-postid={this.props.message.id}
           data-database={this.props.database}
           data-image={this.props.message.image}
           data-sound={this.props.message.sound}

@@ -5,6 +5,7 @@
  */
 export const transmitMessage = (post, firebase) => {
   const {
+    id,
     timestamp,
     type,
     title,
@@ -20,7 +21,10 @@ export const transmitMessage = (post, firebase) => {
 
   const dbNode = type === "calendar" ? "calendarEvent" : "message";
 
-  return firebase[dbNode](timestamp).set({
+  const ref = id ? id : timestamp;
+
+  return firebase[dbNode](ref).set({
+    timestamp,
     type,
     title,
     message,
