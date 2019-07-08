@@ -12,7 +12,6 @@ import TransmitForm from "./Transmit/TransmitForm";
 import Messages from "./Messages/Messages";
 import Calendar from "./Messages/Calendar";
 import BatchUpload from "./Transmit/BatchUpload";
-import DbFix from "./DbFix";
 
 class Admin extends Component {
   render() {
@@ -24,7 +23,6 @@ class Admin extends Component {
           <Route path={ROUTES.ADMIN_MESSAGES} component={Messages} />
           <Route path={ROUTES.ADMIN_CALENDAR} component={Calendar} />
           <Route path={ROUTES.ADMIN_BATCH} component={BatchUpload} />
-          <Route path="/lord/dbfix/" component={DbFix} />
         </div>
       </div>
     );
