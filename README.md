@@ -1,8 +1,8 @@
 # Transmitter
 
-## A custom CMS built on React and Firebase.
+### A custom CMS built on React and Firebase.
 
-A microblog / music player / code portfolio on the frontend, and a creativity archive manager on the backend. As a musician, web developer, artist, and amusing idiot, I needed a place to store and display my various scraps of ideas, and to sort them for my own review and further development. This is Transmitter.
+A microblog / music player / code portfolio on the frontend, and a creativity archive manager on the backend. As a musician, web developer, artist, and amusing idiot I needed a place to store and display my various scraps of ideas, and to sort them for my own review and further development. This is Transmitter.
 
 My own public implementation is at [www.chrisblack.net](https://www.chrisblack.net). Here's what it has:
 
