@@ -9,8 +9,6 @@ console.log(
  *
  * TODO:
  *
- * LOOK for changes in firebaseCRUD and TransmitForm, MessageList, and Messages, all dealing with the "id".
- *
  * Install react-helmet
  *
  * Fix edit where you change the date.
@@ -19,14 +17,4 @@ console.log(
  *
  *
  *
- */
-
-/**
- * UPDATE all DB
- *
- * Get all posts, like in messages component. Same mapping with timestamp: key, PLUS id: null.
- *
- * ForEach those with new TransmitMessage function.
- *
- * Then forEach those again with firebase.messages(TIMESTAMP).remove();
  */

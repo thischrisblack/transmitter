@@ -9,11 +9,7 @@ const MessageList = ({ messages, filter, database }) => {
   return (
     <ul className="messages__list">
       {messages.map(message => (
-        <Message
-          message={message}
-          key={message.timestamp}
-          database={database}
-        />
+        <Message message={message} key={message.id} database={database} />
       ))}
     </ul>
   );

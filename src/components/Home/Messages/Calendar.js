@@ -24,7 +24,7 @@ class Calendar extends Component {
 
         let datesList = Object.keys(datesObject).map(key => ({
           ...datesObject[key],
-          timestamp: key
+          id: key
         }));
 
         const today = new Date().setHours(0, 0, 0, 0);

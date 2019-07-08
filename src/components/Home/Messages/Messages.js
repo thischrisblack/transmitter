@@ -25,7 +25,7 @@ class Messages extends Component {
 
         const messagesList = Object.keys(messagesObject).map(key => ({
           ...messagesObject[key],
-          timestamp: key
+          id: key
         }));
 
         messagesList.sort((a, b) => (a.timestamp < b.timestamp ? 1 : -1));
