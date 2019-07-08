@@ -2,31 +2,57 @@
 
 ## A custom CMS built on React and Firebase.
 
-A microblog / music player / code portfolio on the frontend, and a creativity archive manager on the backend. This is Transmitter.
+A microblog / music player / code portfolio on the frontend, and a creativity archive manager on the backend. As a musician, web developer, artist, and amusing idiot, I needed a play to store and display my various scraps of ideas, and to sort them for my own review and further development. This is Transmitter.
 
 ![Transmitter public view.](./src/assets/img/screenshot.JPG)
 
-Here's what it has:
+My own public implementation is at [www.chrisblack.net](https://www.chrisblack.net). Here's what it has:
 
-1. **Blog.** Post whatever little bits of anything come to mind, from photos to sound files to anecdotes to links to jokes to coding projects and whatever else occurs to you.
+**Blog.** Post whatever little bits of anything come to mind, from photos to sound files to anecdotes to links to jokes to coding projects and whatever else occurs to you.
 
 - Make the posts public or private.
 - On the admin side, filter by post type to review all entries of a certain type ("jokes" or "lyrics" or "images" or what have you).
 
-2. **Music Player.** I am a musician, so I wanted a custom music player for my work.
+**Music Player.** I am a musician, so I wanted a custom music player for my work.
 
-- Batch upload your MP3s
-- ID3 tag info extracted and stored in the database for diplay / filtering.
+- Batch upload your MP3s.
+- ID3 tag info extracted and stored in the database for display / filtering.
 
-3. **Calendar.**
+**Calendar**
 
-- Add pubilc of private events.
+- Add pubilc or private events.
 
-4. **Admin Features**
+**Code Portfolio**
 
-- Sort your posts by post type, and check out your calendar for your day's tasks.
+- Any messages of type "code" will be displayed in the /code part of the website, which also has some introductory text.
 
-5. **Mobile-first.** This app was made for your phone, to transmit your wisdom from anywhere at any time.
+**Admin Features**
+
+- Sort your posts by post type to see everything of a kind at once, and check out your calendar for your day's tasks.
+
+**Mobile-first.** This app was made for your phone, to transmit your wisdom from anywhere at any time.
+
+## TO-DO
+
+This is a first-draft public deployment of this app, and there is much to do to make it usable and add all the features I intend to add.
+
+1. Documentation! This is the barest documentation possible right now, and there is a lot to add!
+
+2. Blank Slatification! Right now, a lot of my specific content and needs are hard-coded. I'll have to take some time to refactor to make it easier for you to use.
+
+3. Meta tags! I need to install react-helmet.
+
+4. Lazy images! We can't be using up all that free bandwidth on images below the fold.
+
+5. Video! I'd like to add a native video player.
+
+6. Social! I'd like to add the ability to cross-post to Facebook, Twitter, etc.
+
+7. Sticky! Some posts want to be sticky.
+
+# Create React App Boilerplate
+
+## From here on down is the React boilerplate README text, which I have not modified.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
