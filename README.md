@@ -1,3 +1,33 @@
+# Transmitter
+
+## A custom CMS built on React and Firebase.
+
+A microblog / music player / code portfolio on the frontend, and a creativity archive manager on the backend. This is Transmitter.
+
+![Transmitter public view.](./src/assets/img/screenshot.JPG)
+
+Here's what it has:
+
+1. **Blog.** Post whatever little bits of anything come to mind, from photos to sound files to anecdotes to links to jokes to coding projects and whatever else occurs to you.
+
+- Make the posts public or private.
+- On the admin side, filter by post type to review all entries of a certain type ("jokes" or "lyrics" or "images" or what have you).
+
+2. **Music Player.** I am a musician, so I wanted a custom music player for my work.
+
+- Batch upload your MP3s
+- ID3 tag info extracted and stored in the database for diplay / filtering.
+
+3. **Calendar.**
+
+- Add pubilc of private events.
+
+4. **Admin Features**
+
+- Sort your posts by post type, and check out your calendar for your day's tasks.
+
+5. **Mobile-first.** This app was made for your phone, to transmit your wisdom from anywhere at any time.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

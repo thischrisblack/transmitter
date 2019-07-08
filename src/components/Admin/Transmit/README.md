@@ -26,7 +26,7 @@ This uploader does the following:
 
 3. It creates new entries in the "Music" node of your Realtime Database for each file uploaded with all of this information.
 
-In the music player on the site, I've implemented a feature for the user to filter by mood, which is data that I had entered in the "genre" filed of each MP3's ID3 tag ("sad," or "playlful" etc.). You can use this same filter feature for the other database fields as well. I used the "BPM" field in the ID3 tags to store strings like "slow," "moderate," and "fast." Even though that's not what that ID3 field is for, it works for this purpose, so I could have users filter by tempo if I wanted to add another filter component.
+In the music player on the site, I've implemented a feature for the user to filter by mood, which is data that I had entered in the "genre" field of each MP3's ID3 tag ("sad," or "playful" etc.). You can use this same filter feature for the other database fields as well. I used the "BPM" field in the ID3 tags to store strings like "slow," "moderate," and "fast." Even though that's not what that ID3 field is for, it works for this purpose, so I could have users filter by tempo if I wanted to add another filter component.
 
 I used [MP3tag](https://www.mp3tag.de/en/) to update all the ID3 tags in my MP3 files before upload. It's very handy.
 
