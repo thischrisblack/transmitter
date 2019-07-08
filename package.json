@@ -1,7 +1,7 @@
 {
   "name": "transmitter",
   "version": "0.1.0",
-  "description": "An austere blog.",
+  "description": "A custom CMS built on React and Firebase.",
   "author": "Chris Black <black@chrisblack.net>",
   "license": "MIT",
   "dependencies": {
