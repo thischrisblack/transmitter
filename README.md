@@ -2,16 +2,14 @@
 
 ## A custom CMS built on React and Firebase.
 
-A microblog / music player / code portfolio on the frontend, and a creativity archive manager on the backend. As a musician, web developer, artist, and amusing idiot, I needed a play to store and display my various scraps of ideas, and to sort them for my own review and further development. This is Transmitter.
-
-![Transmitter public view.](./src/assets/img/screenshot.JPG)
+A microblog / music player / code portfolio on the frontend, and a creativity archive manager on the backend. As a musician, web developer, artist, and amusing idiot, I needed a place to store and display my various scraps of ideas, and to sort them for my own review and further development. This is Transmitter.
 
 My own public implementation is at [www.chrisblack.net](https://www.chrisblack.net). Here's what it has:
 
 **Blog.** Post whatever little bits of anything come to mind, from photos to sound files to anecdotes to links to jokes to coding projects and whatever else occurs to you.
 
-- Make the posts public or private.
-- On the admin side, filter by post type to review all entries of a certain type ("jokes" or "lyrics" or "images" or what have you).
+- Make the messages (for what does a transmitter transmit but messages?) public or private.
+- On the admin side, filter by message type ("jokes" or "lyrics" or "images" or what have you).
 
 **Music Player.** I am a musician, so I wanted a custom music player for my work.
 
@@ -34,7 +32,7 @@ My own public implementation is at [www.chrisblack.net](https://www.chrisblack.n
 
 ## TO-DO
 
-This is a first-draft public deployment of this app, and there is much to do to make it usable and add all the features I intend to add.
+This is a first-draft public deployment of this app, and there is _much_ to do to make it open-source-usable and add all the features I intend to add.
 
 1. Documentation! This is the barest documentation possible right now, and there is a lot to add!
 
@@ -52,7 +50,7 @@ This is a first-draft public deployment of this app, and there is much to do to 
 
 # Create React App Boilerplate
 
-## From here on down is the React boilerplate README text, which I have not modified.
+From here on down is the React boilerplate README text, which I have not modified.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
