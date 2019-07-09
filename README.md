@@ -2,57 +2,43 @@
 
 ### A custom CMS built on React and Firebase.
 
-A microblog / music player / code portfolio on the frontend, and a creativity archive manager on the backend. As a musician, web developer, artist, and amusing idiot I needed a place to store and display my various scraps of ideas, and to sort them for my own review and further development. This is Transmitter.
+![Transmitter frontend](./src/assets/img/screenshot.JPG)
 
-My own public implementation is at [www.chrisblack.net](https://www.chrisblack.net). Here's what it has:
+A microblog / music player / code portfolio on the frontend, and a creativity archive manager on the backend. My own public implementation is at [www.chrisblack.net](https://www.chrisblack.net). It has:
 
-**Blog.** Post whatever little bits of anything come to mind, from photos to sound files to anecdotes to links to jokes to coding projects and whatever else occurs to you.
+**Blog.** Transmit "messages" to the blog frontend or keep them private like a notes app. Upload text, images, sound files, links. Markdown-compatible. On the admin side, messages are filterable by user-defined "types" for easy review of growing collections.
 
-- Make the messages (for what does a transmitter transmit but messages?) public or private.
-- On the admin side, filter by message type ("jokes" or "lyrics" or "images" or what have you).
+**Music Player.** Attractive, straightforward music player, filterable by "mood" or other attributes. Batch upload of MP3 files supported. Batch uploader extracts ID3 tags from MP3s and enters them in the database for display and filtering.
 
-**Music Player.** I am a musician, so I wanted a custom music player for my work.
+**Code Portfolio** Any messages of type "code" will be displayed in the `/code` part of the website, along with some introductory text.
 
-- Batch upload your MP3s.
-- ID3 tag info extracted and stored in the database for display / filtering.
+**Calendar** Supports public and private events.
 
-**Calendar**
-
-- Add pubilc or private events.
-
-**Code Portfolio**
-
-- Any messages of type "code" will be displayed in the /code part of the website, which also has some introductory text.
-
-**Admin Features**
-
-- Sort your posts by post type to see everything of a kind at once, and check out your calendar for your day's tasks.
-
-**Mobile-first.** This app was made for your phone, to transmit your wisdom from anywhere at any time.
+**Mobile-first / PWA** While not fully embracing all the features of PWA, this app is "add to home screen" compatible, with a mobile-first design.
 
 ## TO-DO
 
-This is a first-draft public deployment of this app, and there is _much_ to do to make it open-source-usable and add all the features I intend to add.
+This is a first-draft public deployment of this app, and there is _much_ to do.
 
-1. Documentation! This is the barest documentation possible right now, and there is a lot to add!
+1. Full documentation, including Firebase setup, NPM installation, and feature overview.
 
-2. Blank Slatification! Right now, a lot of my specific content and needs are hard-coded. I'll have to take some time to refactor to make it easier for you to use.
+2. My own content and use case is fairly baked-in, and I'd like to separate that to make it more immediately flexible for open-source use.
 
-3. Meta tags! I need to install react-helmet.
+3. Install react-helmet for meta tag generation.
 
-4. Lazy images! We can't be using up all that free bandwidth on images below the fold.
+4. Make the images and sound files lazy-load.
 
-5. Video! I'd like to add a native video player.
+5. Add a native video player.
 
-6. Social! I'd like to add the ability to cross-post to Facebook, Twitter, etc.
+6. Add the ability to cross-post to Facebook, Twitter, etc.
 
-7. Sticky! Some posts want to be sticky.
-
-# Create React App Boilerplate
+7. Add the ability to make some messages "sticky."
 
 From here on down is the React boilerplate README text, which I have not modified.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
+
+This project was bootstrapped with Create React App.
 
 ## Available Scripts
 
