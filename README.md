@@ -8,11 +8,11 @@ A microblog / music player / code portfolio on the frontend, and a creativity ar
 
 **Music Player.** Attractive, straightforward music player, filterable by "mood" or other attributes. Batch upload of MP3 files supported. Batch uploader extracts ID3 tags from MP3s and enters them in the database for display and filtering.
 
-**Code Portfolio** Any messages of type "code" will be displayed in the `/code` part of the website, along with some introductory text.
+**Code Portfolio.** Any messages of type "code" will be displayed in the `/code` part of the website, along with some introductory text.
 
-**Calendar** Supports public and private events.
+**Calendar.** Supports public and private events.
 
-**Mobile-first / PWA** While not fully embracing all the features of PWA, this app is "add to home screen" compatible, with a mobile-first design.
+**Mobile-first / PWA.** While not fully embracing all the features of PWA, this app is "add to home screen" compatible, with a mobile-first design.
 
 ## TO-DO
 
