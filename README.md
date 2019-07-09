@@ -2,8 +2,6 @@
 
 ### A custom CMS built on React and Firebase.
 
-![Transmitter frontend](./src/assets/img/screenshot.JPG)
-
 A microblog / music player / code portfolio on the frontend, and a creativity archive manager on the backend. My own public implementation is at [www.chrisblack.net](https://www.chrisblack.net). It has:
 
 **Blog.** Transmit "messages" to the blog frontend or keep them private like a notes app. Upload text, images, sound files, links. Markdown-compatible. On the admin side, messages are filterable by user-defined "types" for easy review of growing collections.
