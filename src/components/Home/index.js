@@ -22,7 +22,10 @@ class Home extends React.Component {
         <Header location={this.props.location.pathname} />
         <div className="home__content">
           <Route path={ROUTES.MESSAGES} component={Messages} />
-          <Route path={ROUTES.MESSAGE} component={SingleMessage} />
+          <Route
+            path={ROUTES.MESSAGE}
+            render={props => <SingleMessage {...props} />}
+          />
           <Route path={ROUTES.CALENDAR} component={Calendar} />
           <Route path={ROUTES.MUSIC} component={Music} />
           <Route path={ROUTES.CODE} component={Code} />
