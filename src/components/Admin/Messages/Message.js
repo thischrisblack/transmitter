@@ -24,7 +24,7 @@ const Message = ({ message, firebase, database }) => {
   return (
     <li key={message.timestamp} className="message">
       <div className="message__timestamp">
-        {new Date(Number(message.timestamp)).toUTCString()}
+        {new Date(Number(message.timestamp)).toString()}
         <EditDelete database={database} message={message} firebase={firebase} />
       </div>
 

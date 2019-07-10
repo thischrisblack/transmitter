@@ -25,7 +25,7 @@ const Message = ({ message, database }) => {
     <li className="message">
       <div className="message__timestamp">
         {database === "calendarEvent" ? (
-          new Date(Number(message.timestamp)).toUTCString()
+          new Date(Number(message.timestamp)).toString()
         ) : (
           <Link to={"/message/" + message.id}>
             {new Date(Number(message.timestamp)).toUTCString()}

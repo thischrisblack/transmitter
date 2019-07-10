@@ -1,0 +1,55 @@
+FIRST clone the repo.
+
+1. Create new project in Firebase
+
+2. Create new user with email authentication.
+
+3. Copy user ID.
+
+4. Create Realtime Database.
+
+5. Edit rules:
+
+{
+  "rules": {
+    ".write": "auth.uid === 'USER_ID'",
+    ".read": true,
+    "messages": {
+      ".indexOn": "privatePost"
+    },
+    "calendar": {
+      ".indexOn": "privatePost"
+    }
+  }
+}
+
+6. Create storage bucket.
+
+7. Edit rules:
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /{allPaths=**} {
+      allow write: if request.auth != null;
+      allow read: if true;
+    }
+  }
+}
+
+8. Setup hosting.
+
+9. Follow instructions for Firebase Deploy (CLI) and select hosting. Make your public folder for deployment be "build"
+
+10. Rename config-EXAMPLE to config and edit info.
+
+11. Run npm install.
+
+===
+
+13. Run npm start for localhost, if you like.
+
+14. Run npm run build to build the site for deployment.
+
+15. Run firebase deploy to deploy to hosting.
+
+
