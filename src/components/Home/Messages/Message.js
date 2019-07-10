@@ -6,6 +6,7 @@ import SoundPlayer from "../../UI/SoundPlayer";
 
 import { resizeImage } from "../../../utils";
 import { setInitialImageSize } from "../../../utils";
+import { formatDate } from "../../../utils";
 
 const Message = ({ message, database }) => {
   // Set the image / placeholder size
@@ -25,7 +26,7 @@ const Message = ({ message, database }) => {
     <li className="message">
       <div className="message__timestamp">
         {database === "calendarEvent" ? (
-          new Date(Number(message.timestamp)).toString()
+          formatDate(new Date(Number(message.timestamp)))
         ) : (
           <Link to={"/message/" + message.id}>
             {new Date(Number(message.timestamp)).toUTCString()}

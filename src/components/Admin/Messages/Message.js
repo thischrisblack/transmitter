@@ -6,6 +6,7 @@ import EditDelete from "./EditDelete";
 
 import { resizeImage } from "../../../utils";
 import { setInitialImageSize } from "../../../utils";
+import { formatDate } from "../../../utils";
 
 const Message = ({ message, firebase, database }) => {
   // Set the image / placeholder size
@@ -24,7 +25,7 @@ const Message = ({ message, firebase, database }) => {
   return (
     <li key={message.timestamp} className="message">
       <div className="message__timestamp">
-        {new Date(Number(message.timestamp)).toString()}
+        {formatDate(new Date(Number(message.timestamp)))}
         <EditDelete database={database} message={message} firebase={firebase} />
       </div>
 
