@@ -18,19 +18,23 @@ A microblog / music player / code portfolio on the frontend, and a creativity ar
 
 This is a first-draft public deployment of this app, and there is _much_ to do.
 
-1. Full documentation, including Firebase setup, NPM installation, and feature overview.
+- Write many tests.
 
-2. My own content and use case is fairly baked-in, and I'd like to separate that to make it more immediately flexible for open-source use.
+- Clean up CSS.
 
-3. Install react-helmet for meta tag generation.
+- Full documentation, including Firebase setup, NPM installation, and feature overview.
 
-4. Make the images and sound files lazy-load.
+- My own content and use case is fairly baked-in, and I'd like to separate that to make it more immediately flexible for open-source use.
 
-5. Add a native video player.
+- Install react-helmet for meta tag generation.
 
-6. Add the ability to cross-post to Facebook, Twitter, etc.
+- Make the images and sound files lazy-load.
 
-7. Add the ability to make some messages "sticky."
+- Add a native video player.
+
+- Add the ability to cross-post to Facebook, Twitter, etc.
+
+- Add the ability to make some messages "sticky."
 
 From here on down is the React boilerplate README text, which I have not modified.
 
