@@ -5,7 +5,6 @@ import { withFirebase } from "../../Firebase";
 import { compose } from "recompose";
 
 import { config } from "../../../config";
-import { uploadFile } from "../../../helpers/firebaseCRUD";
 
 class BatchUploadFormBase extends Component {
   state = {
@@ -61,7 +60,10 @@ class BatchUploadFormBase extends Component {
       };
 
       // Upload the file and add the download URL to newPost object
-      newPost.url = await uploadFile(file, this.props.firebase);
+      newPost.url = await this.props.firebase.uploadFile(
+        file,
+        this.props.firebase
+      );
 
       // Upload the post to the DB
       const timestamp = new Date().getTime();

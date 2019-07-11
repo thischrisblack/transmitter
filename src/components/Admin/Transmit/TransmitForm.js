@@ -8,7 +8,6 @@ import * as ROUTES from "../../../constants/routes";
 import "flatpickr/dist/themes/airbnb.css";
 import Flatpickr from "react-flatpickr";
 
-import { transmitMessage, uploadFile } from "../../../helpers/firebaseCRUD";
 import { getUniqueKeys } from "../../../utils";
 import { aspectRatioCalculator } from "../../../utils";
 import Loading from "../../UI/LoadingScreen";
@@ -89,7 +88,10 @@ class TransmitFormBase extends Component {
     const soundFile = this.soundRef.current.files;
 
     if (imageFile.length) {
-      const imageURL = await uploadFile(imageFile[0], this.props.firebase);
+      const imageURL = await this.props.firebase.uploadFile(
+        imageFile[0],
+        this.props.firebase
+      );
       this.setState(prevState => ({
         post: {
           ...prevState.post,
@@ -99,7 +101,10 @@ class TransmitFormBase extends Component {
     }
 
     if (soundFile.length) {
-      const soundURL = await uploadFile(soundFile[0], this.props.firebase);
+      const soundURL = await this.props.firebase.uploadFile(
+        soundFile[0],
+        this.props.firebase
+      );
       this.setState(prevState => ({
         post: {
           ...prevState.post,
@@ -109,7 +114,8 @@ class TransmitFormBase extends Component {
     }
 
     // Post the new message to the database.
-    transmitMessage(this.state.post, this.props.firebase)
+    this.props.firebase
+      .transmitMessage(this.state.post)
       .then(() => {
         this.props.history.push(ROUTES.ADMIN);
       })

@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-import { deleteMessage } from "../../../helpers/firebaseCRUD";
+import { withFirebase } from "../../Firebase";
+
 import { Link } from "react-router-dom";
 
 class EditDelete extends Component {
@@ -11,7 +12,10 @@ class EditDelete extends Component {
 
   deleteThisMessage = event => {
     if (this.state.deleteThis) {
-      deleteMessage(event.target.dataset, this.props.firebase);
+      this.props.firebase.deleteMessage(
+        event.target.dataset,
+        this.props.firebase
+      );
     } else {
       this.setState({ deleteThis: true });
     }
@@ -23,6 +27,7 @@ class EditDelete extends Component {
 
   render() {
     const { deleteThis } = this.state;
+    console.log(this.props);
     return (
       <div className="message__edit">
         <Link to={{ pathname: "/lord/transmit", post: this.props.message }}>
@@ -56,4 +61,4 @@ EditDelete.propTypes = {
   database: PropTypes.string
 };
 
-export default EditDelete;
+export default withFirebase(EditDelete);

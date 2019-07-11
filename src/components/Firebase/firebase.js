@@ -39,6 +39,73 @@ class Firebase {
   // *** Storage API ***
 
   storage = () => this.storage;
+
+  // *** Transmit Message *** //
+  transmitMessage = post => {
+    const {
+      id,
+      timestamp,
+      type,
+      title,
+      message,
+      link,
+      image,
+      imageRatio,
+      sound,
+      privatePost,
+      sticky,
+      social
+    } = post;
+
+    const dbNode = type === "calendar" ? "calendarEvent" : "message";
+
+    const ref = id ? id : timestamp;
+
+    return this[dbNode](ref).set({
+      timestamp,
+      type,
+      title,
+      message,
+      link,
+      image,
+      imageRatio,
+      sound,
+      privatePost,
+      sticky,
+      social
+    });
+  };
+
+  /*** Delete Message ***/
+  deleteMessage = messageData => {
+    if (messageData.image) {
+      const imageReference = this.storage.refFromURL(messageData.image);
+      imageReference.delete().then(() => {
+        console.log("Deleted image!");
+      });
+    }
+    if (messageData.sound) {
+      const soundReference = this.storage.refFromURL(messageData.sound);
+      soundReference.delete().then(() => {
+        console.log("Deleted sound!");
+      });
+    }
+    this[messageData.database](messageData.postid).remove();
+  };
+
+  /*** Upload File ***/
+  uploadFile = file => {
+    return new Promise(resolve => {
+      const storageRef = this.storage.ref();
+      const filePath = storageRef.child(file.name);
+
+      filePath.put(file).then(() => {
+        filePath.getDownloadURL().then(url => {
+          resolve(url);
+        });
+      });
+    });
+  };
 }
 
 export default Firebase;
