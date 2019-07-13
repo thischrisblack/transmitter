@@ -13,7 +13,6 @@ class Code extends Component {
 
   componentDidMount() {
     document.title = "Chris Black: Code";
-    this.setState({ loading: true });
 
     this.props.firebase
       .messages()
@@ -24,7 +23,7 @@ class Code extends Component {
 
         const messagesList = Object.keys(messagesObject).map(key => ({
           ...messagesObject[key],
-          timestamp: key
+          id: key
         }));
 
         messagesList.sort((a, b) => (a.timestamp < b.timestamp ? 1 : -1));
@@ -69,12 +68,7 @@ class Code extends Component {
           <h3>Projects and experiments:</h3>
         </div>
 
-        <MessageList
-          messages={messages}
-          filter="code"
-          firebase={this.props.firebase}
-          database="message"
-        />
+        <MessageList messages={messages} filter="code" database="message" />
       </div>
     );
   }
