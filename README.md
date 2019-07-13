@@ -14,6 +14,10 @@ A microblog / music player / code portfolio on the frontend, and a creativity ar
 
 **Mobile-first / PWA.** While not fully embracing all the features of PWA, this app is "add to home screen" compatible, with a mobile-first design.
 
+## Credit
+
+I was given a tremendous head start in this from [Robin Wieruch's excellent tutorial](https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial/), especially with the Firebase code in the src/components/Firebase code which is essentially unchanged. If you want a deep dive into Firebase and React, please read that material!
+
 ## TO-DO
 
 This is a first-draft public deployment of this app, and there is _much_ to do.
