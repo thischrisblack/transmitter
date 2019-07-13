@@ -63,7 +63,7 @@ class Messages extends Component {
         <MessageList
           messages={messages}
           filter={filter}
-          firebase={this.props.firebase}
+          // firebase={this.props.firebase}
           database="message"
         />
       </div>

@@ -8,7 +8,7 @@ import { resizeImage } from "../../../utils";
 import { setInitialImageSize } from "../../../utils";
 import { formatDate } from "../../../utils";
 
-const Message = ({ message, firebase, database }) => {
+const Message = ({ message, database }) => {
   // Set the image / placeholder size
   let initialImageSize;
   if (message.imageRatio) {
@@ -26,7 +26,7 @@ const Message = ({ message, firebase, database }) => {
     <li key={message.timestamp} className="message">
       <div className="message__timestamp">
         {formatDate(new Date(Number(message.timestamp)))}
-        <EditDelete database={database} message={message} firebase={firebase} />
+        <EditDelete database={database} message={message} />
       </div>
 
       {message.title && <div className="message__title">{message.title}</div>}

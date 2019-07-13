@@ -9,7 +9,6 @@ import Code from "./Code/Code";
 import SingleMessage from "./Messages/SingleMessage";
 import { Route } from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
-import { withFirebase } from "../Firebase";
 
 class Home extends React.Component {
   render() {
@@ -33,4 +32,4 @@ class Home extends React.Component {
   }
 }
 
-export default withFirebase(Home);
+export default Home;

@@ -66,7 +66,6 @@ class Calendar extends Component {
 
         <MessageList
           messages={dates.filter(date => date.timestamp > filterDate)}
-          firebase={this.props.firebase}
           database="calendarEvent"
         />
       </div>

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
+import { withAuthentication } from "../Firebase/Session";
 import { withAuthorization } from "../Firebase/Session";
-import { withFirebase } from "../Firebase";
-import { compose } from "recompose";
 import { config } from "../../config";
 import { Route } from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
@@ -35,7 +34,4 @@ Admin.propTypes = {
 
 const condition = authUser => authUser && authUser.uid === config.adminUid;
 
-export default compose(
-  withAuthorization(condition),
-  withFirebase
-)(Admin);
+export default withAuthentication(withAuthorization(condition)(Admin));
