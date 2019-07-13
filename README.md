@@ -16,11 +16,13 @@ A microblog / music player / code portfolio on the frontend, and a creativity ar
 
 ## Credit
 
-I was given a tremendous head start in this from [Robin Wieruch's excellent tutorial](https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial/), especially with the Firebase code in the src/components/Firebase folder which is essentially unchanged. If you want a deep dive into Firebase and React, please read that material!
+I was given a tremendous head start in this from [Robin Wieruch's excellent tutorial](https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial/), especially with the code in the src/components/Firebase folder which is essentially unchanged. If you want a deep dive into Firebase and React, please read that material!
 
 ## TO-DO
 
 This is a first-draft public deployment of this app, and there is _much_ to do.
+
+- Convert as much as possible to function components, using HOC to manage state.
 
 - Write many tests.
 
