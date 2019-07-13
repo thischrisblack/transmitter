@@ -9,6 +9,8 @@ import * as ROUTES from "../../../constants/routes";
 const withAuthorization = condition => Component => {
   class WithAuthorization extends React.Component {
     componentDidMount() {
+      // Sends user to sign-in if authUser provided by firebase does not meet condition.
+      // This is somewhat different from the behavior in the render conditional.
       this.listener = this.props.firebase.auth.onAuthStateChanged(authUser => {
         if (!condition(authUser)) {
           this.props.history.push(ROUTES.SIGN_IN);
@@ -23,9 +25,9 @@ const withAuthorization = condition => Component => {
     render() {
       return (
         <AuthUserContext.Consumer>
-          {authUser =>
-            condition(authUser) ? <Component {...this.props} /> : null
-          }
+          {// Only renders Component if authUser provided by AuthUserContext meets the condition
+          authUser =>
+            condition(authUser) ? <Component {...this.props} /> : null}
         </AuthUserContext.Consumer>
       );
     }

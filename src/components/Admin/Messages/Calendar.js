@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { withAuthorization } from "../../Firebase/Session";
 import { withFirebase } from "../../Firebase";
-import { compose } from "recompose";
 import PropTypes from "prop-types";
-
-import { config } from "../../../config";
 
 import MessageList from "./MessageList";
 import Loading from "../../UI/LoadingScreen";
@@ -14,7 +10,7 @@ class Calendar extends Component {
   state = {
     loading: true,
     dates: [],
-    filterDate: [],
+    filterDate: null,
     beginningOfTime: 0
   };
 
@@ -82,9 +78,4 @@ Calendar.propTypes = {
   firebase: PropTypes.object
 };
 
-const condition = authUser => authUser && authUser.uid === config.adminUid;
-
-export default compose(
-  withAuthorization(condition),
-  withFirebase
-)(Calendar);
+export default withFirebase(Calendar);

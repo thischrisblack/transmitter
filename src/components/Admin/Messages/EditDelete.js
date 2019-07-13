@@ -27,7 +27,6 @@ class EditDelete extends Component {
 
   render() {
     const { deleteThis } = this.state;
-    console.log(this.props);
     return (
       <div className="message__edit">
         <Link to={{ pathname: "/lord/transmit", post: this.props.message }}>

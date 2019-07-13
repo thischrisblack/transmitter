@@ -1,9 +1,6 @@
 import React, { Component } from "react";
-import { withAuthorization } from "../../Firebase/Session";
 import { withFirebase } from "../../Firebase";
-import { compose } from "recompose";
 import PropTypes from "prop-types";
-import { config } from "../../../config";
 import * as ROUTES from "../../../constants/routes";
 import "flatpickr/dist/themes/airbnb.css";
 import Flatpickr from "react-flatpickr";
@@ -305,11 +302,6 @@ TransmitFormBase.propTypes = {
   history: PropTypes.object
 };
 
-const condition = authUser => authUser && authUser.uid === config.adminUid;
-
-const TransmitForm = compose(
-  withAuthorization(condition),
-  withFirebase
-)(TransmitFormBase);
+const TransmitForm = withFirebase(TransmitFormBase);
 
 export default TransmitForm;

@@ -1,8 +1,5 @@
 import React, { Component } from "react";
-import { withAuthorization } from "../../Firebase/Session";
 import { withFirebase } from "../../Firebase";
-import { compose } from "recompose";
-import { config } from "../../../config";
 import PropTypes from "prop-types";
 
 import MessageList from "./MessageList";
@@ -79,9 +76,4 @@ Messages.propTypes = {
   history: PropTypes.object
 };
 
-const condition = authUser => authUser && authUser.uid === config.adminUid;
-
-export default compose(
-  withAuthorization(condition),
-  withFirebase
-)(Messages);
+export default withFirebase(Messages);

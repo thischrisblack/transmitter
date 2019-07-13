@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { withAuthorization } from "../../Firebase/Session";
 import { withFirebase } from "../../Firebase";
-import { compose } from "recompose";
-
-import { config } from "../../../config";
 
 class BatchUploadFormBase extends Component {
   state = {
@@ -131,11 +127,6 @@ BatchUploadFormBase.propTypes = {
   history: PropTypes.object
 };
 
-const condition = authUser => authUser && authUser.uid === config.adminUid;
-
-const BatchUpload = compose(
-  withAuthorization(condition),
-  withFirebase
-)(BatchUploadFormBase);
+const BatchUpload = withFirebase(BatchUploadFormBase);
 
 export default BatchUpload;
