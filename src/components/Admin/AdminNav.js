@@ -9,29 +9,20 @@ class AdminNav extends Component {
   }
   render() {
     return (
-      <div className="admin__nav">
-        <Link
-          to={ROUTES.ADMIN_TRANSMIT}
-          className="admin__nav admin__nav--link"
-        >
+      <div className="admin-nav">
+        <Link to={ROUTES.ADMIN_TRANSMIT} className="admin-nav__link">
           TRANSMIT
         </Link>
-        <Link
-          to={ROUTES.ADMIN_MESSAGES}
-          className="admin__nav admin__nav--link"
-        >
+        <Link to={ROUTES.ADMIN_MESSAGES} className="admin-nav__link">
           MESSAGES
         </Link>
-        <Link
-          to={ROUTES.ADMIN_CALENDAR}
-          className="admin__nav admin__nav--link"
-        >
+        <Link to={ROUTES.ADMIN_CALENDAR} className="admin-nav__link">
           CALENDAR
         </Link>
-        <Link to={ROUTES.ADMIN_BATCH} className="admin__nav admin__nav--link">
+        <Link to={ROUTES.ADMIN_BATCH} className="admin-nav__link">
           BATCH UPLOAD
         </Link>
-        <Link to={ROUTES.HOME} className="admin__nav admin__nav--link">
+        <Link to={ROUTES.HOME} className="admin-nav__link">
           HOME
         </Link>
       </div>

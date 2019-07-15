@@ -4,7 +4,7 @@
   &__timestamp {
     font-size: 1.2rem;
     color: rgb(1, 74, 94);
-    margin: 0 0 1.5rem 0;
+    margin: 0 0 1rem 0;
     text-shadow: 0 0 0;
   }
 
@@ -18,7 +18,7 @@
 
   &__message {
     font-size: 1.8rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
   }
 
   &__link {
@@ -58,18 +58,5 @@
       display: block;
       border: 1px solid black;
     }
-  }
-
-  .sound-player {
-    margin-top: 0.8rem;
-  }
-
-  .sound-player__controls {
-    font-size: 1.8rem;
-    width: 7rem;
-  }
-
-  .sound-player__timer {
-    font-size: 1.8rem;
   }
 }

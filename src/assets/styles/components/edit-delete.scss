@@ -1,0 +1,21 @@
+.message__edit {
+  font-size: 1.1rem;
+  float: right;
+
+  a {
+    color: #333;
+    font-weight: 700;
+  }
+}
+
+.message__delete {
+  color: maroon;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.message__cancel-delete {
+  color: green;
+  cursor: pointer;
+  font-weight: 700;
+}

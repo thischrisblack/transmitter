@@ -6,20 +6,28 @@
 
 @import "./assets/styles/pages/home.scss";
 @import "./assets/styles/pages/admin.scss";
+@import "./assets/styles/pages/greeting.scss";
+@import "./assets/styles/pages/music.scss";
+@import "./assets/styles/pages/code.scss";
+@import "./assets/styles/pages/contact.scss";
 
 @import "./assets/styles/components/loading.scss";
 @import "./assets/styles/components/logo.scss";
 
 @import "./assets/styles/components/home-nav.scss";
-@import "./assets/styles/components/greeting.scss";
+
+@import "./assets/styles/components/messages.scss";
 @import "./assets/styles/components/sound-player.scss";
-@import "./assets/styles/components/music.scss";
-@import "./assets/styles/components/code.scss";
+
 @import "./assets/styles/components/type-list.scss";
-@import "./assets/styles/components/contact.scss";
+@import "./assets/styles/components/playlist.scss";
+
 @import "./assets/styles/components/admin-nav.scss";
+@import "./assets/styles/components/calendar.scss";
 @import "./assets/styles/components/sign-in.scss";
+
 @import "./assets/styles/components/form.scss";
 @import "./assets/styles/components/batch-upload.scss";
-@import "./assets/styles/components/messages.scss";
+
+@import "./assets/styles/components/edit-delete.scss";
 @import "./assets/styles/components/single-message.scss";

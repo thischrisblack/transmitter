@@ -54,11 +54,11 @@ class Calendar extends Component {
       <div className="calendar">
         {loading && <Loading message="Loading..." />}
         <h1>CALENDAR</h1>
-        <span className="messages__show-all" onClick={this.toggleShowAll}>
+        <span className="calendar__show-all" onClick={this.toggleShowAll}>
           show {filterDate === beginningOfTime ? "future" : "all"}
         </span>
         <Link
-          className="messages__add-date"
+          className="calendar__add-date"
           to={{ pathname: "/lord/transmit", type: "calendar" }}
         >
           [add date]

@@ -1,9 +1,9 @@
-.admin__nav {
-  display: block;
-  text-decoration: none;
+.admin-nav {
   // text-align: center;
 
-  &--link {
+  &__link {
+    display: block;
+    text-decoration: none;
     font-size: 3.5rem;
     margin-top: 2rem;
     color: black;
@@ -13,12 +13,5 @@
     background-image: url(./assets/img/static03.gif);
     color: white;
     text-shadow: none;
-  }
-
-  &--cancel {
-    margin: 1rem;
-    font-weight: 700;
-    font-size: 1.5rem;
-    color: $logo-red;
   }
 }
