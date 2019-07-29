@@ -49,8 +49,9 @@ class Code extends Component {
           <h2>JavaScript, React, PHP, WordPress, and things like that.</h2>
 
           <p>
-            I am a full-stack developer currently obsessed with React and all
-            things JavaScript. I'd love to talk to you about your project.
+            I am a full-stack developer currently obsessed with JavaScript and
+            everything around it. Do you need some code written? I'd love to
+            talk to you about your project.
           </p>
 
           <p>
