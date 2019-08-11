@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { withFirebase } from "../../Firebase";
 import ReactMarkdown from "react-markdown";
+import { Helmet } from "react-helmet";
 
 import SoundPlayer from "../../UI/SoundPlayer";
 import Loading from "../../UI/LoadingScreen";
@@ -18,7 +19,14 @@ const SingleMessage = props => {
 
   return (
     <div className="single-message">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>My Title</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
+
       {loading && <Loading message="Loading..." />}
+
       {message && (
         <div>
           {message.timestamp && (

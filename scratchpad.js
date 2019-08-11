@@ -8,6 +8,19 @@
  *
  * Lazy images
  *
+ * TO INSTALL:
+ *
+ * Clone
+ *
+ * npm install
+ *
+ * https://firebase.google.com/docs/cli
+ * npm install -g firebase-tools
+ *
+ * firebase login
+ *
+ *
+ *
  *
  *
  */
