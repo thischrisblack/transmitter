@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Helmet } from "react-helmet";
 import { withFirebase } from "../../Firebase";
 import PropTypes from "prop-types";
 import { getUniqueKeys } from "../../../utils.js";
@@ -148,6 +149,26 @@ class Music extends Component {
 
     return (
       <div className="music">
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Chris Black: Music</title>
+          <meta
+            name="description"
+            content="Music transmitted from an undisclosed location."
+          />
+
+          <meta property="og:title" content="Chris Black: Music" />
+          <meta
+            property="og:description"
+            content="Music transmitted from an undisclosed location."
+          />
+          <meta property="og:url" content="https://www.chrisblack.net/music" />
+          <meta name="twitter:title" content="Chris Black: Music" />
+          <meta
+            name="twitter:description"
+            content="Music transmitted from an undisclosed location."
+          />
+        </Helmet>
         {loading && <Loading message="Loading..." />}
 
         {filteredSongs[nowPlaying] && (

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Helmet } from "react-helmet";
 import { withFirebase } from "../../Firebase";
 import PropTypes from "prop-types";
 
@@ -46,6 +47,29 @@ class Calendar extends Component {
     const { loading, dates } = this.state;
     return (
       <div className="messages">
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Chris Black: Calendar</title>
+          <meta
+            name="description"
+            content="What's happening at the undisclosed location."
+          />
+
+          <meta property="og:title" content="Chris Black: Calendar" />
+          <meta
+            property="og:description"
+            content="What's happening at the undisclosed location."
+          />
+          <meta
+            property="og:url"
+            content="https://www.chrisblack.net/calendar"
+          />
+          <meta name="twitter:title" content="Chris Black: Calendar" />
+          <meta
+            name="twitter:description"
+            content="What's happening at the undisclosed location."
+          />
+        </Helmet>
         {loading && <Loading message="Loading..." />}
 
         <h2>Upcoming events.</h2>

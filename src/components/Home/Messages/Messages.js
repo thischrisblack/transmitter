@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Helmet } from "react-helmet";
 import { withFirebase } from "../../Firebase";
 import PropTypes from "prop-types";
 
@@ -13,7 +14,6 @@ class Messages extends Component {
   };
 
   componentDidMount() {
-    document.title = "Chris Black: Messages";
     this.setState({ loading: true });
 
     this.props.firebase
@@ -49,6 +49,30 @@ class Messages extends Component {
     const { loading, messages, filter } = this.state;
     return (
       <div className="messages">
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Chris Black: Messages</title>
+          <meta
+            name="description"
+            content="Messages transmitted from an undisclosed location."
+          />
+
+          <meta property="og:title" content="Chris Black: Messages" />
+          <meta
+            property="og:description"
+            content="Messages transmitted from an undisclosed location."
+          />
+          <meta
+            property="og:url"
+            content="https://www.chrisblack.net/messages"
+          />
+          <meta name="twitter:title" content="Chris Black: Messages" />
+          <meta
+            name="twitter:description"
+            content="Messages transmitted from an undisclosed location."
+          />
+        </Helmet>
+
         {loading && <Loading message="Loading..." />}
 
         <MessageList messages={messages} filter={filter} database="message" />

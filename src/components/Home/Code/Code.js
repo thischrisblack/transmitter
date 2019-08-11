@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Helmet } from "react-helmet";
 import { withFirebase } from "../../Firebase";
 import PropTypes from "prop-types";
 
@@ -43,6 +44,27 @@ class Code extends Component {
     const { loading, messages } = this.state;
     return (
       <div className="code">
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Chris Black: Code</title>
+          <meta
+            name="description"
+            content="JavaScript, React, PHP, WordPress, and things like that."
+          />
+
+          <meta property="og:title" content="Chris Black: Code" />
+          <meta
+            property="og:description"
+            content="JavaScript, React, PHP, WordPress, and things like that."
+          />
+          <meta property="og:url" content="https://www.chrisblack.net/code" />
+          <meta name="twitter:title" content="Chris Black: Code" />
+          <meta
+            name="twitter:description"
+            content="JavaScript, React, PHP, WordPress, and things like that."
+          />
+        </Helmet>
+
         {loading && <Loading message="Loading..." />}
 
         <div className="code__greeting">
