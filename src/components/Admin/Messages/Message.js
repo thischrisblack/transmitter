@@ -23,7 +23,10 @@ const Message = ({ message, database }) => {
   }
 
   return (
-    <li key={message.timestamp} className="message">
+    <li
+      key={message.timestamp}
+      className={"message" + (message.privatePost === true ? " private" : "")}
+    >
       <div className="message__timestamp">
         {formatDate(new Date(Number(message.timestamp)))}
         <EditDelete database={database} message={message} />

@@ -71,4 +71,10 @@
       }
     }
   }
+
+  .private::after {
+    content: "PRIVATE";
+    color: maroon;
+    font-size: 1rem;
+  }
 }
