@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 import { withFirebase } from "../../Firebase";
 import PropTypes from "prop-types";
 
-import MessageList from "./MessageList";
+import MessageList from "../Messages/MessageList";
 import Loading from "../../UI/LoadingScreen";
 
 class Calendar extends Component {

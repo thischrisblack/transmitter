@@ -169,6 +169,7 @@ class Music extends Component {
             content="Music transmitted from an undisclosed location."
           />
         </Helmet>
+
         {loading && <Loading message="Loading..." />}
 
         {filteredSongs[nowPlaying] && (
