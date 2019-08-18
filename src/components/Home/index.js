@@ -11,7 +11,7 @@ import { Route } from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
 import { Helmet } from "react-helmet";
 
-import greetingImg from "../../assets/img/ChrisBlack-Train.jpg";
+import { siteMeta } from "../../config";
 
 class Home extends React.Component {
   render() {
@@ -19,32 +19,23 @@ class Home extends React.Component {
       <div className="home">
         <Helmet>
           <meta charSet="utf-8" />
-          <title>
-            Chris Black: Music and code from an undisclosed location.
-          </title>
-          <meta
-            name="description"
-            content="Transmitting music and code from an undisclosed location."
-          />
-          <meta property="og:title" content="Chris Black" />
-          <meta
-            property="og:description"
-            content="Transmitting music and code from an undisclosed location."
-          />
-          <meta property="og:url" content="https://www.chrisblack.net" />
-          <meta property="og:image" content={greetingImg} />
+          <title>{siteMeta.title + ": " + siteMeta.description}</title>
+          <meta name="description" content={siteMeta.description} />
+          <meta property="og:title" content={siteMeta.title} />
+          <meta property="og:description" content={siteMeta.description} />
+          <meta property="og:url" content={siteMeta.url} />
+          <meta property="og:image" content={siteMeta.image} />
           <meta property="og:type" content="article" />
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:site" content="@thischrisblack" />
-          <meta name="twitter:creator" content="@thischrisblack" />
-          <meta name="twitter:title" content="Chris Black" />
-          <meta
-            name="twitter:description"
-            content="Transmitting music and code from an undisclosed location."
-          />
-          <meta name="twitter:image" content={greetingImg} />
+          <meta name="twitter:site" content={siteMeta.twitterCreator} />
+          <meta name="twitter:creator" content={siteMeta.twitterCreator} />
+          <meta name="twitter:title" content={siteMeta.title} />
+          <meta name="twitter:description" content={siteMeta.description} />
+          <meta name="twitter:image" content={siteMeta.image} />
         </Helmet>
+
         <Header location={this.props.location.pathname} />
+
         <div className="home__content">
           <Route path={ROUTES.MESSAGES} component={Messages} />
           <Route

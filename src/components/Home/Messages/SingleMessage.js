@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet";
 import SoundPlayer from "../../UI/SoundPlayer";
 import Loading from "../../UI/LoadingScreen";
 
-import greetingImg from "../../../assets/img/ChrisBlack-Train.jpg";
+import { siteMeta } from "../../../config";
 
 const SingleMessage = props => {
   const [loading, setLoading] = useState(true);
@@ -52,7 +52,10 @@ const SingleMessage = props => {
                 "https://www.chrisblack.net/message/" + props.match.params.id
               }
             />
-            <meta property="og:image" content={message.image || greetingImg} />
+            <meta
+              property="og:image"
+              content={message.image || siteMeta.image}
+            />
             <meta
               name="twitter:title"
               content={"Chris Black" + (message.title && ": " + message.title)}
@@ -64,7 +67,10 @@ const SingleMessage = props => {
                 "Transmitting music and code from an undisclosed location."
               }
             />
-            <meta name="twitter:image" content={message.image || greetingImg} />
+            <meta
+              name="twitter:image"
+              content={message.image || siteMeta.image}
+            />
           </Helmet>
           {message.timestamp && (
             <div className="single-message__timestamp">

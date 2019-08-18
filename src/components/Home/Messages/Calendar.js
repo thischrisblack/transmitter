@@ -74,11 +74,7 @@ class Calendar extends Component {
 
         <h2>Upcoming events.</h2>
 
-        <MessageList
-          messages={dates}
-          firebase={this.props.firebase}
-          database="calendarEvent"
-        />
+        <MessageList messages={dates} database="calendarEvent" />
       </div>
     );
   }

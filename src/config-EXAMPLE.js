@@ -1,3 +1,14 @@
+import siteImage from "./assets/img/ChrisBlack-Train.jpg";
+
+// This is for the site main image, and for Helmet tags.
+export const siteMeta = {
+  image: siteImage,
+  title: "Your title",
+  description: "Your description.",
+  url: "https://www.yourUrl.com",
+  twitterCreator: "@yourTwitterHandle"
+};
+
 // This is the user id for your Firebase Auth login.
 export const config = {
   adminUid: "YOUR_FIREBASE_USER_ID"

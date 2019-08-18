@@ -6,6 +6,8 @@ import PropTypes from "prop-types";
 import MessageList from "./MessageList";
 import Loading from "../../UI/LoadingScreen";
 
+import { siteMeta } from "../../../config";
+
 class Messages extends Component {
   state = {
     loading: true,
@@ -51,7 +53,7 @@ class Messages extends Component {
       <div className="messages">
         <Helmet>
           <meta charSet="utf-8" />
-          <title>Chris Black: Messages</title>
+          <title>{siteMeta.title}: Messages</title>
           <meta
             name="description"
             content="Messages transmitted from an undisclosed location."
