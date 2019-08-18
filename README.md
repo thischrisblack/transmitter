@@ -22,17 +22,11 @@ I was given a tremendous head start in this from [Robin Wieruch's excellent tuto
 
 This is a first-draft public deployment of this app, and there is _much_ to do.
 
-- Convert as much as possible to function components, using HOC to manage state.
-
 - Write many tests.
-
-- Clean up CSS.
 
 - Full documentation, including Firebase setup, NPM installation, and feature overview.
 
 - My own content and use case is fairly baked-in, and I'd like to separate that to make it more immediately flexible for open-source use.
-
-- Install react-helmet for meta tag generation.
 
 - Make the images and sound files lazy-load.
 
@@ -41,6 +35,8 @@ This is a first-draft public deployment of this app, and there is _much_ to do.
 - Add the ability to cross-post to Facebook, Twitter, etc.
 
 - Add the ability to make some messages "sticky."
+
+- Add "documents" section (i.e. longer-form posts)
 
 From here on down is the React boilerplate README text, which I have not modified.
 

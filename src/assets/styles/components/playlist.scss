@@ -2,13 +2,13 @@
   &__album {
     margin: 2rem 0 0.5rem 0;
     font-size: 1.6rem;
-    // text-shadow: none;
+    text-shadow: none;
 
-    &--title {
+    &-title {
       font-weight: 700;
     }
 
-    &--year {
+    &-year {
       font-size: 1.4rem;
     }
   }

@@ -67,15 +67,12 @@ class SoundPlayer extends Component {
         >
           <p>Your browser doesn't support HTML5 audio.</p>
         </audio>
-        <span
-          className="sound-player sound-player__controls"
-          onClick={this.toggleAudio}
-        >
+        <span className="sound-player__controls" onClick={this.toggleAudio}>
           {/* {this.state.playing ? "◼" : "▶"} */}
           {this.state.playing ? "STOP" : "PLAY"}
         </span>
         {this.state.duration && (
-          <span className="sound-player sound-player__timer">
+          <span className="sound-player__timer">
             {formatTimer(this.state.progress)} /{" "}
             {formatTimer(this.state.duration)}
           </span>

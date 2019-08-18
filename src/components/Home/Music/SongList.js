@@ -33,9 +33,9 @@ const SongList = ({
             {/* If the current track album is different from the last, and there is no active filter, display the album info */}
             {prevAlbum !== thisAlbum && !filters.genre && (
               <div className="playlist__album">
-                <span className="playlist__album--title">{song.album}</span>
+                <span className="playlist__album-title">{song.album}</span>
                 {song.album !== "Unreleased Demos" && (
-                  <span className="playlist__album--year"> ({song.year})</span>
+                  <span className="playlist__album-year"> ({song.year})</span>
                 )}
               </div>
             )}
