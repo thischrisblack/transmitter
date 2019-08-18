@@ -6,4 +6,4 @@ import { compose } from "recompose";
 export default compose(
   withFirebase,
   HOC
-)(MyComponent);
+)(MyComponent, "monkey");
