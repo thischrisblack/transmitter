@@ -60,20 +60,14 @@ class Messages extends Component {
           activeFilter={filter}
         />
 
-        <MessageList
-          messages={messages}
-          filter={filter}
-          // firebase={this.props.firebase}
-          database="message"
-        />
+        <MessageList messages={messages} filter={filter} database="message" />
       </div>
     );
   }
 }
 
 Messages.propTypes = {
-  firebase: PropTypes.object,
-  history: PropTypes.object
+  firebase: PropTypes.object
 };
 
 export default withFirebase(Messages);
