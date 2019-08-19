@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { withFirebase } from "../Firebase";
+import { withFirebase } from "./Firebase";
 
-import * as ROUTES from "../../constants/routes";
-import { config } from "../../config";
+import * as ROUTES from "../constants/routes";
+import { config } from "../config";
 
 class Navigation extends React.Component {
   state = { authUser: null };

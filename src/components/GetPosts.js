@@ -24,6 +24,11 @@ const GetPosts = (Component, database) => {
               messagesList.sort((a, b) => (a.timestamp < b.timestamp ? 1 : -1));
             }
 
+            if (database === "calendar") {
+              const today = new Date().setHours(0, 0, 0, 0);
+              messagesList.filter(date => date.timestamp > today);
+            }
+
             setMessages({
               data: messagesList,
               loading: false

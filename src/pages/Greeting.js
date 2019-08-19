@@ -1,6 +1,6 @@
 import React from "react";
 
-import { siteMeta } from "../../config";
+import { siteMeta } from "../config";
 
 const Greeting = () => {
   document.title = "Chris Black";

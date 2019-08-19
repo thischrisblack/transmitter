@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 import MessageList from "./MessageList";
 import TypeList from "./TypeList";
-import Loading from "../../UI/LoadingScreen";
+import Loading from "../../LoadingScreen";
 
 import { getUniqueKeys } from "../../../utils";
 

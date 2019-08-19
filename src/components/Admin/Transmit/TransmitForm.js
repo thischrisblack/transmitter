@@ -7,7 +7,7 @@ import Flatpickr from "react-flatpickr";
 
 import { getUniqueKeys } from "../../../utils";
 import { aspectRatioCalculator } from "../../../utils";
-import Loading from "../../UI/LoadingScreen";
+import Loading from "../../LoadingScreen";
 
 class TransmitFormBase extends Component {
   state = {

@@ -1,8 +1,8 @@
 import React from "react";
-import Logo from "../UI/Logo";
+import Logo from "./Logo";
 import { Link } from "react-router-dom";
 
-import * as ROUTES from "../../constants/routes";
+import * as ROUTES from "../constants/routes";
 import Navigation from "./Navigation";
 
 const Header = location => {

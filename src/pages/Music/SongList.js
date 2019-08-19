@@ -1,6 +1,6 @@
 import React from "react";
 
-import { formatTimer } from "../../../utils";
+import { formatTimer } from "../../utils";
 
 const SongList = ({
   songs,

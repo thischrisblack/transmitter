@@ -2,11 +2,11 @@ import React from "react";
 import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
 
-import SoundPlayer from "../../UI/SoundPlayer";
+import SoundPlayer from "./SoundPlayer";
 
-import { resizeImage } from "../../../utils";
-import { setInitialImageSize } from "../../../utils";
-import { formatDate } from "../../../utils";
+import { resizeImage } from "../utils";
+import { setInitialImageSize } from "../utils";
+import { formatDate } from "../utils";
 
 const Message = ({ message, database }) => {
   // Set the image / placeholder size

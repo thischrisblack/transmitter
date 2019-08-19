@@ -4,7 +4,7 @@ import { withFirebase } from "../../Firebase";
 import PropTypes from "prop-types";
 
 import MessageList from "./MessageList";
-import Loading from "../../UI/LoadingScreen";
+import Loading from "../../LoadingScreen";
 
 class Calendar extends Component {
   state = {

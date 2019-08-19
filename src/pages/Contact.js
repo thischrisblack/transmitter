@@ -16,7 +16,7 @@ const Contact = () => {
         <meta name="twitter:title" content="Chris Black: Contact" />
         <meta name="twitter:description" content="Let's reach each other." />
       </Helmet>
-      <h2>Reach</h2>
+      <h2>Contact</h2>
       <p>
         You can reach me at{" "}
         <a href="mailto:black@chrisblack.net">black@chrisblack.net</a>.

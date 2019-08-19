@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { withFirebase } from "../../Firebase";
+import { withFirebase } from "./Firebase";
 import ReactMarkdown from "react-markdown";
 import { Helmet } from "react-helmet";
 
-import SoundPlayer from "../../UI/SoundPlayer";
-import Loading from "../../UI/LoadingScreen";
+import SoundPlayer from "./SoundPlayer";
+import Loading from "./LoadingScreen";
 
-import { siteMeta } from "../../../config";
+import { siteMeta } from "../config";
 
 const SingleMessage = props => {
   const [loading, setLoading] = useState(true);

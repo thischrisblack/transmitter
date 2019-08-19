@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { formatTimer } from "../../utils";
+import { formatTimer } from "../utils";
 
 class SoundPlayer extends Component {
   state = {

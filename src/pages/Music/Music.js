@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { Helmet } from "react-helmet";
-import { withFirebase } from "../../Firebase";
+import { withFirebase } from "../../components/Firebase";
 import PropTypes from "prop-types";
-import { getUniqueKeys } from "../../../utils.js";
+import { getUniqueKeys } from "../../utils";
 import SongList from "./SongList";
 import TypeList from "./TypeList";
-import Loading from "../../UI/LoadingScreen";
+import Loading from "../../components/LoadingScreen";
 
 class Music extends Component {
   state = {

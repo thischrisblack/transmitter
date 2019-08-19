@@ -1,17 +1,19 @@
 import React from "react";
-import Header from "./Header";
-import Messages from "./Messages/Messages";
-import Calendar from "./Calendar/Calendar";
-import Music from "./Music/Music";
+import Header from "../components/Header";
+import SingleMessage from "../components/SinglePost";
+
 import Greeting from "./Greeting";
+import Messages from "./Messages";
+import Music from "./Music/Music";
+import Code from "./Code";
+import Calendar from "./Calendar";
 import Contact from "./Contact";
-import Code from "./Code/Code";
-import SingleMessage from "./Messages/SingleMessage";
+
 import { Route } from "react-router-dom";
-import * as ROUTES from "../../constants/routes";
+import * as ROUTES from "../constants/routes";
 import { Helmet } from "react-helmet";
 
-import { siteMeta } from "../../config";
+import { siteMeta } from "../config";
 
 class Home extends React.Component {
   render() {
