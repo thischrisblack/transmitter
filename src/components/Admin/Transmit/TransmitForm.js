@@ -27,7 +27,7 @@ class TransmitFormBase extends Component {
     },
     error: "",
     typeList: [],
-    loading: false,
+    loading: true,
     transmitting: false
   };
 
@@ -37,7 +37,6 @@ class TransmitFormBase extends Component {
 
   componentDidMount() {
     document.title = "Transmitter: Transmit";
-    this.setState({ loading: true });
 
     // If this isn't adding a calendar date, get previous post types.
     if (!this.props.location.type) {
@@ -161,15 +160,6 @@ class TransmitFormBase extends Component {
       });
     }
     if (fileType === "sound") {
-      var jsmediatags = window.jsmediatags;
-      jsmediatags.read(this.soundRef.current.files[0], {
-        onSuccess: function(tag) {
-          console.log(tag);
-        },
-        onError: function(error) {
-          console.log(error);
-        }
-      });
       fileName = this.soundRef.current.files[0].name;
       this.setState(prevState => ({
         post: {
@@ -186,6 +176,7 @@ class TransmitFormBase extends Component {
     return (
       <form onSubmit={this.onSubmit}>
         {transmitting && <Loading message="Transmitting..." />}
+        {loading && <Loading message="Loading..." />}
         <Flatpickr
           name="timestamp"
           data-enable-time
