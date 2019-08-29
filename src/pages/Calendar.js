@@ -8,7 +8,12 @@ import { withFirebase } from "../components/Firebase";
 import { siteMeta } from "../config";
 
 const Calendar = ({ messages, loading, database }) => {
-  if (!loading && !messages.length) return <p>Nothing.</p>;
+  if (!loading && !messages.length)
+    return (
+      <div className="calendar">
+        <p>Nothing happening.</p>
+      </div>
+    );
 
   return (
     <div className="calendar">

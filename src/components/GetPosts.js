@@ -15,7 +15,7 @@ const GetPosts = (Component, database) => {
           .on("value", snapshot => {
             const messagesObject = snapshot.val() || {};
 
-            const messagesList = Object.keys(messagesObject).map(key => ({
+            let messagesList = Object.keys(messagesObject).map(key => ({
               ...messagesObject[key],
               id: key
             }));
@@ -25,8 +25,10 @@ const GetPosts = (Component, database) => {
             }
 
             if (database === "calendar") {
-              const today = new Date().setHours(0, 0, 0, 0);
-              messagesList.filter(date => date.timestamp > today);
+              const today = Date.now();
+              messagesList = messagesList.filter(
+                date => date.timestamp > today
+              );
             }
 
             setMessages({
