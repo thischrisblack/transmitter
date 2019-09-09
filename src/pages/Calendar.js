@@ -40,6 +40,8 @@ const Calendar = ({ messages, loading, database }) => {
 
       {loading && <Loading message="Loading..." />}
 
+      <h2>Events</h2>
+
       <ul className="messages__list">
         {messages.map(message => (
           <Post message={message} key={message.id} database={database} />

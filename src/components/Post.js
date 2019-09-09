@@ -25,7 +25,7 @@ const Message = ({ message, database }) => {
   return (
     <li className="message">
       <div className="message__timestamp">
-        {database === "calendarEvent" ? (
+        {database === "calendar" ? (
           formatDate(new Date(Number(message.timestamp)))
         ) : (
           <Link to={"/message/" + message.id}>
