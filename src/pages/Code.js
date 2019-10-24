@@ -38,15 +38,14 @@ const Code = ({ messages, loading, database }) => {
       {loading && <Loading message="Loading..." />}
 
       <div className="code__greeting">
-        <h2>JavaScript, React, PHP, WordPress, and things like that.</h2>
+        <h2>JavaScript, React, and things like that.</h2>
 
         <p>
           I am a front-end developer currently obsessed with JavaScript and
-          everything around it. Do you need some code written? I'd love to talk
-          to you about your project.
+          everything around it.
         </p>
 
-        <p>
+        {/* <p>
           Please have a look at my{" "}
           <a
             href="https://thischrisblack.github.io/Resume-the-Hard-Way/"
@@ -57,7 +56,7 @@ const Code = ({ messages, loading, database }) => {
           </a>
           . You can reach me by email at{" "}
           <a href="mailto:black@chrisblack.net">black@chrisblack.net</a>.
-        </p>
+        </p> */}
         <h3>Projects and experiments:</h3>
       </div>
 
