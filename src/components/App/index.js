@@ -5,10 +5,18 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Signin from "../Account/SignIn";
 import Admin from "../Admin";
 import Home from "../../pages/Home";
+import ReactGA from "react-ga";
 
 import Test from "../Test";
 
 import * as ROUTES from "../../constants/routes";
+
+function initializeReactGA() {
+  ReactGA.initialize("UA-67947602-4");
+  ReactGA.pageview("/");
+}
+
+initializeReactGA();
 
 const App = () => (
   <Router>
