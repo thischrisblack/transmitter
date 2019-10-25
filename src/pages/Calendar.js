@@ -19,7 +19,7 @@ const Calendar = ({ messages, loading, database }) => {
     <div className="calendar">
       <Helmet>
         <meta charSet="utf-8" />
-        <title>{siteMeta.title}: Messages</title>
+        <title>{siteMeta.title}: Calendar</title>
         <meta
           name="description"
           content="Events transmitted from an undisclosed location."

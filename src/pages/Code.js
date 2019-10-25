@@ -37,7 +37,7 @@ const Code = ({ messages, loading, database }) => {
 
       {loading && <Loading message="Loading..." />}
 
-      <div className="code__greeting">
+      {/* <div className="code__greeting">
         <h2>JavaScript, React, and things like that.</h2>
 
         <p>
@@ -45,7 +45,7 @@ const Code = ({ messages, loading, database }) => {
           everything around it.
         </p>
 
-        {/* <p>
+        <p>
           Please have a look at my{" "}
           <a
             href="https://thischrisblack.github.io/Resume-the-Hard-Way/"
@@ -56,9 +56,9 @@ const Code = ({ messages, loading, database }) => {
           </a>
           . You can reach me by email at{" "}
           <a href="mailto:black@chrisblack.net">black@chrisblack.net</a>.
-        </p> */}
+        </p>
         <h3>Projects and experiments:</h3>
-      </div>
+      </div> */}
 
       <ul className="messages__list">
         {messages.map(message => (
